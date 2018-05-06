@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="false" context="methodcomment_context" deleted="false" description="Comment for non-overriding methods" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.methodcomment" name="methodcomment">/** &#13;
+ * ${enclosing_method}:(这里用一句话描述这个方法的作用). &lt;br/&gt; &#13;
+ * ${todo}(这里描述这个方法适用条件 – 可选).&lt;br/&gt; &#13;
+ * ${todo}(这里描述这个方法的执行流程 – 可选).&lt;br/&gt; &#13;
+ * ${todo}(这里描述这个方法的使用方法 – 可选).&lt;br/&gt; &#13;
+ * ${todo}(这里描述这个方法的注意事项 – 可选).&lt;br/&gt; &#13;
+ * &#13;
+ * @author po.lu&#13;
+ * ${tags} &#13;
+ * @since JDK 1.8 &#13;
+ * @see&#13;
+ */  </template></templates>
