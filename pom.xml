@@ -21,6 +21,12 @@
 		<!-- 所用的 dependency的version -->
 		<hutool.version>4.0.10</hutool.version>
 		<druid.version>1.1.9</druid.version>
+		<tk.mybatis.version>2.0.2</tk.mybatis.version>
+		<pagehelper.version>1.2.5</pagehelper.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<boot.admin.version>1.5.7</boot.admin.version>
+		<servlet.version>4.0.1</servlet.version>
+		<spring.version>5.0.5.RELEASE</spring.version>
 	</properties>
 
 	<dependencyManagement>
@@ -32,19 +38,58 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- hutool -->
 			<dependency>
 				<groupId>cn.hutool</groupId>
 				<artifactId>hutool-all</artifactId>
 				<version>${hutool.version}</version>
 			</dependency>
+			<!-- 数据库驱动 -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid</artifactId>
 				<version>${druid.version}</version>
 			</dependency>
+			<!-- 通用mapper -->
+			<dependency>
+				<groupId>tk.mybatis</groupId>
+				<artifactId>mapper-spring-boot-starter</artifactId>
+				<version>${tk.mybatis.version}</version>
+			</dependency>
+			<!-- 分页 -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper-spring-boot-starter</artifactId>
+				<version>${pagehelper.version}</version>
+			</dependency>
+			<!-- jsonwebtoken -->
+			<dependency>
+				<groupId>io.jsonwebtoken</groupId>
+				<artifactId>jjwt</artifactId>
+				<version>${jjwt.version}</version>
+			</dependency>
+			<!-- admin-server -->
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server-ui-turbine</artifactId>
+				<version>${boot.admin.version}</version>
+			</dependency>
+			<!-- servlet -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -59,6 +104,58 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--mybatis generator -->
+				<plugin>
+					<groupId>org.mybatis.generator</groupId>
+					<artifactId>mybatis-generator-maven-plugin</artifactId>
+					<version>1.3.2</version>
+					<configuration>
+						<configurationFile>${basedir}/src/main/resources/builder/generatorConfig.xml</configurationFile>
+						<overwrite>true</overwrite>
+						<verbose>true</verbose>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<version>5.1.30</version>
+							<scope>runtime</scope>
+						</dependency>
+						<dependency>
+							<groupId>tk.mybatis</groupId>
+							<artifactId>mapper</artifactId>
+							<version>${mapper.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<!--部署复制到制定文件夹 -->
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+							<configuration>
+								<tasks>
+									<mkdir dir="${deploy.dir}/${project.version}" />
+									<copy todir="${deploy.dir}/${project.version}"
+										overwrite="true">
+										<fileset dir="${project.build.directory}"
+											erroronmissingdir="false">
+											<include name="*.jar" />
+										</fileset>
+									</copy>
+								</tasks>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 	<repositories>
 		<repository>
@@ -70,4 +167,8 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	<modules>
+		<module>business-base</module>
+		<module>wm-common</module>
+	</modules>
 </project>
