@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /** 
  * ClassName:GlobalExceptionHandler <br/><br/>  
- * Description: TODO <br/><br/>  
+ * Description: 全局异常处理类 <br/><br/>  
  * Date:     2018年5月6日 下午5:52:24 <br/> <br/> 
  * @author   po.lu 
  * @version  1.0.0

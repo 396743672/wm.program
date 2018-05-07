@@ -7,7 +7,7 @@
  * 
 */
 
-package org.github.ycg000344.weiming.businessbase.biz;
+package org.github.ycg000344.weiming.businessbase.service;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -36,7 +36,7 @@ import tk.mybatis.mapper.entity.Example;
  * @since JDK 1.8
  * @see
  */
-public abstract class BaseBiz<M extends Mapper<T>, T> {
+public abstract class BaseService<M extends Mapper<T>, T> {
 
 	@Autowired
 	protected M mapper;

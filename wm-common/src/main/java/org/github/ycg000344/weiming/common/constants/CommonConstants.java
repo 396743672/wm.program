@@ -10,7 +10,7 @@
 package org.github.ycg000344.weiming.common.constants;  
 /** 
  * ClassName:CommonConstants <br/><br/>  
- * Description: TODO <br/><br/>  
+ * Description: 公用常量类 <br/><br/>  
  * Date:     2018年5月6日 下午6:03:55 <br/> <br/> 
  * @author   po.lu 
  * @version  1.0.0

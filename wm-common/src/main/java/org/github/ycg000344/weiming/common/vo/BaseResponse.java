@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 
 /** 
  * ClassName:BaseResponse <br/><br/>  
- * Description: 自定义response对象 <br/><br/>  
+ * Description: 自定义自定义基础response对象 <br/><br/>  
  * Date:     2018年5月6日 下午5:16:43 <br/> <br/> 
  * @author   po.lu 
  * @version  1.0.0
