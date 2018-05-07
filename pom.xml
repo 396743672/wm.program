@@ -186,5 +186,6 @@
 	<modules>
 		<module>business-base</module>
 		<module>wm-common</module>
+		<module>wm-helloworld</module>
 	</modules>
 </project>
