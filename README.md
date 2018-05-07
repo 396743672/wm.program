@@ -2,8 +2,9 @@
 
 - [1. wm.program](#1-wmprogram)
     - [1.1. 目前的模块](#11)
-        - [1.1.1. wm-common](#111-wm-common)
-        - [1.1.2. business-base](#112-business-base)
+        - [1.1.1. hello-world](#111-hello-world)
+        - [1.1.2. wm-common](#112-wm-common)
+        - [1.1.3. business-base](#113-business-base)
 
 <!-- /TOC -->
 
@@ -33,7 +34,10 @@
 
 ## 1.1. 目前的模块
 
-### 1.1.1. wm-common
+### 1.1.1. hello-world
+关于学习一些新的知识所进行的代码记录集
+
+### 1.1.2. wm-common
 
 公共利用的基础包,其中包含的有：<b1>
 1. 公用常量类
@@ -41,7 +45,7 @@
 3. 全局异常处理类
 4. 自定义自定义基础response对象
 
-### 1.1.2. business-base
+### 1.1.3. business-base
 业务模块基础包,其中包含的有：<b1>
 1. base-service
 2. base-controller
