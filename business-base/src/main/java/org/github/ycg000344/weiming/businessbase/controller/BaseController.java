@@ -14,7 +14,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.github.ycg000344.weiming.businessbase.biz.BaseBiz;
+import org.github.ycg000344.weiming.businessbase.service.BaseService;
 import org.github.ycg000344.weiming.businessbase.util.Query;
 import org.github.ycg000344.weiming.businessbase.vo.ObjectRestResponse;
 import org.github.ycg000344.weiming.businessbase.vo.TableResultResponse;
@@ -41,46 +41,46 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @see
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class BaseController<Biz extends BaseBiz, Entity> {
+public class BaseController<Service extends BaseService, Entity> {
 
 	@Autowired
 	protected HttpServletRequest request;
 	@Autowired
-	protected Biz baseBiz;
+	protected Service baseService;
 
 	@PostMapping("")
 	public ObjectRestResponse<Entity> add(@RequestBody Entity entity) {
-		baseBiz.insertSelective(entity);
+		baseService.insertSelective(entity);
 		return new ObjectRestResponse<Entity>();
 	}
 
 	@GetMapping("/{id}")
 	public ObjectRestResponse<Entity> get(@PathVariable int id) {
-		return new ObjectRestResponse<Entity>().rel(true).data(baseBiz.selectById(id));
+		return new ObjectRestResponse<Entity>().rel(true).data(baseService.selectById(id));
 	}
 
 	@PutMapping("/{id}")
 	public ObjectRestResponse<Entity> update(@RequestBody Entity entity) {
-		baseBiz.updateSelectiveById(entity);
+		baseService.updateSelectiveById(entity);
 		return new ObjectRestResponse<Entity>();
 	}
 
 	@DeleteMapping("/{id}")
 	public ObjectRestResponse<Entity> remove(@PathVariable int id) {
-		baseBiz.deleteById(id);
+		baseService.deleteById(id);
 		return new ObjectRestResponse<Entity>();
 	}
 
 	@GetMapping("/all")
 	public List<Entity> all() {
-		return baseBiz.selectListAll();
+		return baseService.selectListAll();
 	}
 
 	@GetMapping("/page")
 	public TableResultResponse<Entity> list(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
 		Query query = new Query(params);
-		return baseBiz.selectByQuery(query);
+		return baseService.selectByQuery(query);
 	}
 
 }
