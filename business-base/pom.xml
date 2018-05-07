@@ -14,6 +14,7 @@
 		<dependency>
 			<groupId>org.github.ycg000344</groupId>
 			<artifactId>wm-common</artifactId>
+			<classifier>lib</classifier>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
@@ -37,36 +38,23 @@
 
 	</dependencies>
 
-	<build>
+		<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<classifier>exec</classifier>
-				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-jar-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>exec</id>
+						<id>lib</id>
 						<phase>package</phase>
 						<goals>
 							<goal>jar</goal>
 						</goals>
 						<configuration>
-							<classifier>exec</classifier>
-						</configuration>
-					</execution>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<!-- Need this to ensure application.yml is excluded -->
-							<forceCreation>true</forceCreation>
+							<classifier>lib</classifier>
 							<excludes>
 								<exclude>application.yml</exclude>
 							</excludes>
