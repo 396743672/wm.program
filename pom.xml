@@ -187,5 +187,6 @@
 		<module>business-base</module>
 		<module>wm-common</module>
 		<module>wm-helloworld</module>
+		<module>eureka-server</module>
 	</modules>
 </project>
