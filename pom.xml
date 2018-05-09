@@ -27,6 +27,7 @@
 		<boot.admin.version>1.5.7</boot.admin.version>
 		<servlet.version>4.0.1</servlet.version>
 		<spring.version>5.0.5.RELEASE</spring.version>
+		<lombok.version>1.16.18</lombok.version>
 	</properties>
 
 	<dependencyManagement>
@@ -87,7 +88,16 @@
 				<artifactId>spring-web</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
+
+			<!-- projectlombok -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
+
 	</dependencyManagement>
 
 	<dependencies>
