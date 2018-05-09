@@ -1,0 +1,23 @@
+# Server: 
+#  port: 0
+  
+Spring:
+  application:
+    name: emailsend-server
+  mail:
+    default-encoding: UTF-8
+    host: smtp-mail.outlook.com
+    password: weiming123
+    port: 25
+    protocol: smtp
+    test-connection: false
+    username: wm.root@outlook.com
+    properties: 
+      mail: 
+        smtp:
+          auth: true
+          startttls: 
+            enable: true
+          quitwait: false
+        transport:
+          protocol: smtps
