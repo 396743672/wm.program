@@ -80,7 +80,7 @@
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${servlet.version}</version>
-				<scope>provided</scope>
+				<scope>compile</scope>
 			</dependency>
 			<!-- spring -->
 			<dependency>
@@ -94,7 +94,6 @@
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
 				<version>${lombok.version}</version>
-				<scope>provided</scope>
 			</dependency>
 		</dependencies>
 
@@ -110,10 +109,15 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<!--  spring boot exec jar -->
+				<!-- 
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
+				 -->
+				 <!-- spring boot non-exec jar; -->
+				<!-- 
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<executions>
@@ -132,7 +136,9 @@
 						</execution>
 					</executions>
 				</plugin>
+				 -->
 				<!--mybatis generator -->
+				<!-- 
 				<plugin>
 					<groupId>org.mybatis.generator</groupId>
 					<artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -156,7 +162,9 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				<!--部署复制到制定文件夹 -->
+				 -->
+				<!--TODO 部署复制到制定文件夹 -->
+				<!-- 
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<executions>
@@ -179,7 +187,8 @@
 							</configuration>
 						</execution>
 					</executions>
-				</plugin>
+				</plugin> 
+				-->
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -198,5 +207,6 @@
 		<module>wm-common</module>
 		<module>wm-helloworld</module>
 		<module>eureka-server</module>
+		<module>wm-components</module>
 	</modules>
 </project>
