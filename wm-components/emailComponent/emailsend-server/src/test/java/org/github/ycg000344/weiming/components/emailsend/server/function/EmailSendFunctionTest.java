@@ -32,6 +32,7 @@ public class EmailSendFunctionTest extends EmailSendServerAppTest {
 	
 	@Autowired
 	private EmailSendFunction emailSendFunction;
+	
 	@Test
 	public void test() {
 		String text = "junit-text";
@@ -41,6 +42,7 @@ public class EmailSendFunctionTest extends EmailSendServerAppTest {
 		boolean send = emailSendFunction.send(emailInfo);
 		Assert.assertTrue(send);
 	}
+	
 
  }
   

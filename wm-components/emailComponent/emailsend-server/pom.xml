@@ -18,6 +18,10 @@
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<groupId>org.springframework.boot</groupId>
 			<scope>test</scope>
@@ -25,6 +29,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 	</dependencies>
 
