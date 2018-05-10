@@ -9,11 +9,15 @@
   
 package org.github.ycg000344.weiming.components.emailsend.server.function;
 
+import java.util.Date;
+
 import org.github.ycg000344.weiming.components.emailsend.api.bean.EmailInfo;
 import org.github.ycg000344.weiming.components.emailsend.server.EmailSendServerAppTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import cn.hutool.core.date.DateUtil;
 
 /** 
  * ClassName:EmailSendFunctionTest <br/><br/>  
@@ -31,7 +35,7 @@ public class EmailSendFunctionTest extends EmailSendServerAppTest {
 	@Test
 	public void test() {
 		String text = "junit-text";
-		String subject = "junit-subject";
+		String subject = "junit-subject" + DateUtil.formatDate(new Date());
 		String to = "lupo.f@outlook.com";
 		EmailInfo emailInfo = new EmailInfo( subject, text ,to);
 		boolean send = emailSendFunction.send(emailInfo);

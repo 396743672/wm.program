@@ -1,8 +1,4 @@
-# Server: 
-#  port: 0
-Spring:
-  application:
-    name: emailsend-server
+Spring: 
   mail:
     default-encoding: UTF-8
     host: smtp-mail.outlook.com
@@ -13,10 +9,10 @@ Spring:
     username: wm.root@outlook.com
     properties: 
       mail: 
-        smtp:
+        smtp: 
           auth: true
-          startttls: 
+          starttls: 
             enable: true
           quitwait: false
-        transport:
+        transport: 
           protocol: smtps

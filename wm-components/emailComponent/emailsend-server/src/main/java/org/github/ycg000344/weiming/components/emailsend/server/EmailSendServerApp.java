@@ -9,8 +9,9 @@
   
 package org.github.ycg000344.weiming.components.emailsend.server;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /** 
  * ClassName:EmailSendServerApp <br/><br/>  
@@ -25,7 +26,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class EmailSendServerApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EmailSendServerApp.class, args);
+		new SpringApplicationBuilder(EmailSendServerApp.class).web(WebApplicationType.NONE).run(args);
 	}
 
 }
