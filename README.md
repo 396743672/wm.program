@@ -64,6 +64,6 @@
 
 #### 邮件发送
 使用`freemarker`模板进行邮件的发送.<br>
->Tips:  [在线制作签名](https://si.gnatu.re/?utm_source=next.36kr.com)
+>Tips:  [在线制作签名](https://si.gnatu.re/?utm_source=next.36kr.com?_blank)
 
 
