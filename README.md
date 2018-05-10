@@ -1,14 +1,14 @@
 <!-- TOC -->
 
 - [1. wm.program](#1-wmprogram)
-    - [1.1. 模块](#11)
+    - [1.1. Modules](#11-modules)
         - [1.1.1. hello-world](#111-hello-world)
         - [1.1.2. wm-common](#112-wm-common)
         - [1.1.3. business-base](#113-business-base)
-    - [1.2. 组件](#12)
-        - [1.2.1. 邮件组件](#121)
-            - [1.2.1.1. 邮件信息 API](#1211--api)
-            - [1.2.1.2. 邮件发送](#1212)
+    - [1.2. Components](#12-components)
+        - [1.2.1. email-component](#121-email-component)
+            - [1.2.1.1. email API](#1211-email-api)
+            - [1.2.1.2. email send function](#1212-email-send-function)
 
 <!-- /TOC -->
 
@@ -36,7 +36,7 @@
 4. `maven-antrun-plugin`<br>
     将package的jar包copy到指定位置
 
-## 1.1. 模块
+## 1.1. Modules
 
 ### 1.1.1. hello-world
 关于学习一些新的知识所进行的代码记录集
@@ -55,14 +55,14 @@
 2. base-controller
 
 
-## 1.2. 组件
+## 1.2. Components
 
-### 1.2.1. 邮件组件
+### 1.2.1. email-component
 
-#### 1.2.1.1. 邮件信息 API
+#### 1.2.1.1. email API
 封装了邮件信息对象，即*收件人*、*主题*、*内容*
 
-#### 1.2.1.2. 邮件发送
+#### 1.2.1.2. email send function
 使用`freemarker`模板进行邮件的发送.<br>
 >Tips: <a href="https://si.gnatu.re/?utm_source=next.36kr.com" target="_blank">在线制作签名</a>
 
