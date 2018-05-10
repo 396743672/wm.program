@@ -3,6 +3,11 @@ server:
 spring:
   application:
     name: eureka-server
+  rabbitmq:
+    host: 111.230.220.114
+    port: 5672
+    username: admin
+    password: 123456
 eureka:
   instance:
     prefer-ip-address: true
@@ -14,3 +19,8 @@ eureka:
   server:
     enable-self-preservation: false #关闭自我保护
     eviction-interval-timer-in-ms: 20000  #缩小清理无效节点的时间间隔
+    
+################################
+config:
+  rabbitmq:
+    queue: email

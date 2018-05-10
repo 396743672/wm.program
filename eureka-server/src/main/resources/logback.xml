@@ -144,7 +144,7 @@
     <!--<logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>-->
     <!--<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />-->
     <!-- 修改 package name -->
-    <logger name="eureka.app" level="DEBUG" additivity="true">
+    <logger name="org.github.ycg000344.weiming" level="DEBUG" additivity="true">
         <appender-ref ref="STDOUT"/>
     </logger>
 
