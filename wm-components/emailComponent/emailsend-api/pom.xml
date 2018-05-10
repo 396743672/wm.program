@@ -16,8 +16,6 @@
 			<artifactId>wm-common</artifactId>
 			<groupId>org.github.ycg000344</groupId>
 			<version>1.0.0-SNAPSHOT</version>
-			<classifier>lib</classifier>
-			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -25,24 +23,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<artifactId>maven-jar-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>lib</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<classifier>lib</classifier>
-							<excludes>
-								<exclude>application.yml</exclude>
-							</excludes>
-						</configuration>
-					</execution>
-				</executions>
+				<configuration>
+					<classifier>exec</classifier>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

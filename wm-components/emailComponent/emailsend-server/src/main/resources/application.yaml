@@ -1,6 +1,5 @@
 # Server: 
 #  port: 0
-  
 Spring:
   application:
     name: emailsend-server

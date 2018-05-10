@@ -33,7 +33,7 @@ public class EmailSendFunctionTest extends EmailSendServerAppTest {
 		String text = "junit-text";
 		String subject = "junit-subject";
 		String to = "lupo.f@outlook.com";
-		EmailInfo emailInfo = new EmailInfo(to , subject, text);
+		EmailInfo emailInfo = new EmailInfo( subject, text ,to);
 		boolean send = emailSendFunction.send(emailInfo);
 		Assert.assertTrue(send);
 	}

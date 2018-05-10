@@ -39,7 +39,7 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
-	private SimpleMailMessage simpleMailMessage;
+	private static SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 	/** 发件人 **/
 	@Value("${Spring.mail.username}")
 	private String defalutFrom;
@@ -47,7 +47,7 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 	@Override
 	public boolean send(EmailInfo emailInfo) {
 		log.info("**********准备发送邮件**********");
-		log.info("邮件信息：\r\n接收人：{},\r\n主题：{}\r\n");
+		log.info("邮件信息：\r\n接收人：{},\r\n主题：{}\r\n",emailInfo.getTo(),emailInfo.getSubject());
 		boolean flag = false;
 		try {
 			BeanUtils.copyProperties(emailInfo, simpleMailMessage);
