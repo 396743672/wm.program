@@ -5,10 +5,10 @@
         - [1.1.1. hello-world](#111-hello-world)
         - [1.1.2. wm-common](#112-wm-common)
         - [1.1.3. business-base](#113-business-base)
-    - [组件](#)
-        - [邮件组件](#)
-            - [邮件信息 API](#api)
-            - [邮件发送](#)
+    - [1.2. 组件](#12)
+        - [1.2.1. 邮件组件](#121)
+            - [1.2.1.1. 邮件信息 API](#1211--api)
+            - [1.2.1.2. 邮件发送](#1212)
 
 <!-- /TOC -->
 
@@ -55,15 +55,15 @@
 2. base-controller
 
 
-## 组件
+## 1.2. 组件
 
-### 邮件组件
+### 1.2.1. 邮件组件
 
-#### 邮件信息 API
+#### 1.2.1.1. 邮件信息 API
 封装了邮件信息对象，即*收件人*、*主题*、*内容*
 
-#### 邮件发送
+#### 1.2.1.2. 邮件发送
 使用`freemarker`模板进行邮件的发送.<br>
->Tips:  [在线制作签名](https://si.gnatu.re/?utm_source=next.36kr.com?_blank)
+>Tips: <a href="https://si.gnatu.re/?utm_source=next.36kr.com" target="_blank">在线制作签名</a>
 
 
