@@ -9,15 +9,13 @@
 
 package org.github.ycg000344.weiming.components.emailsend.server.function.impl;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.EmailInfo;
+import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
 import org.github.ycg000344.weiming.components.emailsend.server.function.EmailSendFunction;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -26,7 +24,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
-import cn.hutool.core.date.DateUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import lombok.extern.slf4j.Slf4j;
@@ -66,7 +63,7 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 	private String defalutFrom;
 
 	@Override
-	public boolean send(EmailInfo emailInfo) {
+	public boolean send(BaseEmailInfo emailInfo) {
 		log.info("**********准备发送邮件**********");
 		log.info("邮件信息：\r\n接收人：{},\r\n主题：{}\r\n", emailInfo.getTo(), emailInfo.getSubject());
 		boolean flag = false;
@@ -88,7 +85,7 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 			mimeMessageHelper.setTo(emailInfo.getTo());
 			mimeMessageHelper.setText(content, true);
 			
-			javaMailSender.send(mimeMessage);
+			//javaMailSender.send(mimeMessage);
 			flag = true;
 			log.info("********邮件发送结果：成功********");
 		} catch (Exception e) {

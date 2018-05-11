@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.components.emailsend.server.function;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.EmailInfo;
+import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
 
 /** 
  * ClassName:EmailSendFunction <br/><br/>  
@@ -22,7 +22,7 @@ import org.github.ycg000344.weiming.components.emailsend.api.bean.EmailInfo;
  */
 public interface EmailSendFunction {
 	
-	boolean send(EmailInfo emailInfo);
+	boolean send(BaseEmailInfo emailInfo);
 
 }
   
