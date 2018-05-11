@@ -1,4 +1,4 @@
-Spring: 
+spring: 
   mail:
     default-encoding: UTF-8
     host: smtp-mail.outlook.com
@@ -16,3 +16,13 @@ Spring:
           quitwait: false
         transport: 
           protocol: smtps
+  rabbitmq: 
+    host: 111.230.220.114
+    username: admin
+    password: 123456
+    port: 5672
+  application:
+    name: email-send-server
+server:
+  port: 0
+  
