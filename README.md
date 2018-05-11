@@ -8,7 +8,10 @@
     - [1.2. Components](#12-components)
         - [1.2.1. email-component](#121-email-component)
             - [1.2.1.1. email API](#1211-email-api)
-            - [1.2.1.2. email send function](#1212-email-send-function)
+                - [1.2.1.1.1. email-templates-bean](#12111-email-templates-bean)
+            - [1.2.1.2. email send  server](#1212-email-send-server)
+    - [1.3. Application Server](#13-application-server)
+        - [1.3.1. Eureka Server](#131-eureka-server)
 
 <!-- /TOC -->
 
@@ -60,10 +63,22 @@
 ### 1.2.1. email-component
 
 #### 1.2.1.1. email API
-封装了邮件信息对象，即*收件人*、*主题*、*内容*
+封装了*对象基类*，即*收件人*、*主题*、*抄送人*
+##### 1.2.1.1.1. email-templates-bean
+目前已经实现的邮件信息字段bean：
 
-#### 1.2.1.2. email send function
+1. `EurekaInstanceCanceledEventEmailinfo` EurekaInstanceCanceledEvent 服务挂掉发送邮件的信息
+
+#### 1.2.1.2. email send  server
 使用`freemarker`模板进行邮件的发送.<br>
+从消息队列 `rabbitmq` 获取消息进行消费，即发送邮件，采用**异步**的方式进行邮件的发送。
 >Tips: <a href="https://si.gnatu.re/?utm_source=next.36kr.com" target="_blank">在线制作签名</a>
 
+
+
+
+## 1.3. Application Server
+
+### 1.3.1. Eureka Server
+服务注册中心，提供服务的注册、监听，当检测到已经注册的服务出现宕机的情况时自动向消息队列中间件 `rabbitmq` 采取**异步**的方式发送宕机的服务实例的信息，如服务名称、服务端口号等。
 
