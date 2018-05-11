@@ -10,7 +10,6 @@
 package org.github.ycg000344.weiming.eurekaserver.rabbitmq;
 
 import org.github.ycg000344.weiming.eurekaserver.EurekaServerAppTest;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /** 
  * ClassName:EmailSendTest <br/><br/>  
@@ -22,9 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @see       
  */
 public class EmailSendTest extends EurekaServerAppTest {
-
-	@Autowired
-	private EmailSend emailSend;
 	
 
 }

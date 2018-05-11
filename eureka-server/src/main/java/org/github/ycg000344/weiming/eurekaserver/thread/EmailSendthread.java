@@ -16,7 +16,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import org.github.ycg000344.weiming.components.emailsend.api.bean.impl.EurekaInstanceCanceledEventEmailinfo;
 import org.github.ycg000344.weiming.eurekaserver.rabbitmq.EmailSend;
-import org.springframework.beans.BeanUtils;
 
 import com.netflix.appinfo.InstanceInfo;
 
