@@ -9,6 +9,8 @@
 
 package org.github.ycg000344.weiming.components.emailsend.api.bean;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -28,8 +30,13 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public abstract class BaseEmailInfo {
+public abstract class BaseEmailInfo implements Serializable {
 
+	/** 
+	 * serialVersionUID:
+	 * @since JDK 1.8 
+	 */  
+	private static final long serialVersionUID = -973660148670950570L;
 	/* 收件人 */
 	@NonNull
 	protected String[] to;
