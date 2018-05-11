@@ -9,15 +9,14 @@
 
 package org.github.ycg000344.weiming.components.emailsend.api.bean;
 
-import java.io.Serializable;
-
-import lombok.Data;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
 /**
  * ClassName:EmailInfo <br/>
  * <br/>
- * Description: 邮件信息实体 <br/>
+ * Description: 邮件信息基类，只有接收人、抄送人、邮件主题 <br/>
  * <br/>
  * Date: 2018年5月9日 下午2:11:10 <br/>
  * <br/>
@@ -27,31 +26,19 @@ import lombok.NonNull;
  * @since JDK 1.8
  * @see
  */
-@Data
-public class EmailInfo implements Serializable {
-
-	public EmailInfo(String subject2, String text2, String... to2) {
-		super();
-		this.to =to2;
-		this.subject = subject2;
-		this.text = text2;
-	}
-	/**
-	 * serialVersionUID:TODO(用一句话描述这个变量表示什么).
-	 * 
-	 * @since JDK 1.8
-	 */
-	private static final long serialVersionUID = 692636637918749253L;
+@Getter
+@Setter
+public abstract class BaseEmailInfo {
 
 	/* 收件人 */
 	@NonNull
-	private String[] to;
+	protected String[] to;
 	/* 抄送 */
-	private String[] cc;
+	protected String[] cc;
 	/* 主题 */
 	@NonNull
-	private String subject;
-	/* 内容 */
-	@NonNull
-	private String text;
+	protected String subject;
+	
+	
+	
 }

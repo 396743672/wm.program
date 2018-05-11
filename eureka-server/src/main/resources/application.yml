@@ -21,6 +21,9 @@ eureka:
     eviction-interval-timer-in-ms: 20000  #缩小清理无效节点的时间间隔
     
 ################################
-config:
+config: 
   rabbitmq:
     queue: email
+  email: 
+    to: lupo.f@outlook.com, 64558986@qq.com
+    subject: 【加急】application err.

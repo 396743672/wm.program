@@ -9,13 +9,23 @@
 
 package org.github.ycg000344.weiming.eurekaserver.listener;
 
+import org.github.ycg000344.weiming.eurekaserver.rabbitmq.EmailSend;
+import org.github.ycg000344.weiming.eurekaserver.thread.EmailSendthread;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.eureka.server.event.EurekaInstanceCanceledEvent;
 import org.springframework.cloud.netflix.eureka.server.event.EurekaInstanceRegisteredEvent;
 import org.springframework.cloud.netflix.eureka.server.event.EurekaInstanceRenewedEvent;
 import org.springframework.cloud.netflix.eureka.server.event.EurekaRegistryAvailableEvent;
+import org.springframework.context.ApplicationEvent;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-import com.netflix.discovery.EurekaEvent;
-import com.netflix.discovery.EurekaEventListener;
+import com.netflix.discovery.shared.Applications;
+import com.netflix.eureka.EurekaServerContextHolder;
+import com.netflix.eureka.registry.PeerAwareInstanceRegistry;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ClassName:MyEurekaEventListener <br/>
@@ -30,27 +40,49 @@ import com.netflix.discovery.EurekaEventListener;
  * @since JDK 1.8
  * @see
  */
-public class MyEurekaEventListener implements EurekaEventListener {
+@SuppressWarnings("rawtypes")
+@Slf4j
+@Configuration
+@EnableScheduling
+public class MyEurekaEventListener implements ApplicationListener {
 
-	@Override
-	public void onEvent(EurekaEvent event) {
+	@Autowired
+	private EmailSend emailSend;
+
+	public void onApplicationEvent(ApplicationEvent applicationEvent) {
 		/** 服务下线事件 **/
-		if (event instanceof EurekaInstanceCanceledEvent) {
-
+		if (applicationEvent instanceof EurekaInstanceCanceledEvent) {
+			EurekaInstanceCanceledEvent event = (EurekaInstanceCanceledEvent) applicationEvent;
+			// 获取当前Eureka实例中的节点信息
+			PeerAwareInstanceRegistry registry = EurekaServerContextHolder.getInstance().getServerContext()
+					.getRegistry();
+			Applications applications = registry.getApplications();
+			// 遍历获取已注册节点中与当前失效节点ID一致的节点信息
+			applications.getRegisteredApplications().forEach((registeredApplication) -> {
+				registeredApplication.getInstances().forEach((instance) -> {
+					if (instance.getInstanceId().equals(event.getServerId())) {
+						log.error("***********************服务：{} 宕机**********************", instance.getAppName());
+						log.error("***********************服务实例的具体信息：{}**************", instance.toString());
+						EmailSendthread.getInstance().setEmailSend(emailSend);
+						EmailSendthread.getInstance().offerInstance(instance);
+					}
+				});
+			});
 		}
 		/** 服务注册事件 **/
-		if (event instanceof EurekaInstanceRegisteredEvent) {
-
+		if (applicationEvent instanceof EurekaInstanceRegisteredEvent) {
+			EurekaInstanceRegisteredEvent registeredEvent = (EurekaInstanceRegisteredEvent) applicationEvent;
+			log.info("******************服务注册成功：{}***************", registeredEvent.getInstanceInfo().getAppName());
 		}
 		/** 服务续约事件 **/
-		if (event instanceof EurekaInstanceRenewedEvent) {
-
+		if (applicationEvent instanceof EurekaInstanceRenewedEvent) {
+			EurekaInstanceRenewedEvent renewedEvent = (EurekaInstanceRenewedEvent) applicationEvent;
+			log.info("******************服务续约成功：{}***************", renewedEvent.getInstanceInfo().getAppName());
 		}
 		/** 服务注册检查可用事件 **/
-		if (event instanceof EurekaRegistryAvailableEvent) {
-
+		if (applicationEvent instanceof EurekaRegistryAvailableEvent) {
+			log.info("************************** 服务注册检查可用事件 ***********************");
 		}
-
 	}
 
 }

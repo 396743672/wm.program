@@ -9,10 +9,13 @@
   
 package org.github.ycg000344.weiming.eurekaserver;
 
+import org.github.ycg000344.weiming.eurekaserver.thread.EmailSendthread;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
+import lombok.extern.slf4j.Slf4j;
 
 /** 
  * ClassName:EurekaServerApp <br/><br/>  
@@ -25,9 +28,12 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  */
 @EnableEurekaServer
 @SpringBootApplication
+@Slf4j
 public class EurekaServerApp {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(EurekaServerApp.class).web(WebApplicationType.SERVLET).run(args);
+		EmailSendthread.getInstance().start();
+		log.info("EmailSendthread : {}",EmailSendthread.getInstance().getState().toString());
 	}
 }
   
