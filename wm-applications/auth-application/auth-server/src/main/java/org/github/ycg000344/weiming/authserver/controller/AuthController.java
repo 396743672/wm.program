@@ -9,7 +9,13 @@
   
 package org.github.ycg000344.weiming.authserver.controller;
 
+import org.github.ycg000344.weiming.authserver.bean.JwtAuthenticationRequest;
+import org.github.ycg000344.weiming.authserver.bean.JwtAuthenticationResponse;
+import org.github.ycg000344.weiming.authserver.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +35,16 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthController {
 	
+	@Autowired
+    private AuthService authService;
 
-
+	
+	@PostMapping("/token")
+	public ResponseEntity<?> createAuthenticationToken(
+            @RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
+        log.info(authenticationRequest.getUsername()+" require logging...");
+        final String token = authService.login(authenticationRequest);
+        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+    }
 }
   

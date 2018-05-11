@@ -7,7 +7,10 @@
  * 
 */  
   
-package org.github.ycg000344.weiming.authserver.service;  
+package org.github.ycg000344.weiming.authserver.service;
+
+import org.github.ycg000344.weiming.authserver.bean.JwtAuthenticationRequest;
+
 /** 
  * ClassName:AuthService <br/><br/>  
  * Description: 关于外部登录时获取Token <br/><br/>  
@@ -18,6 +21,18 @@ package org.github.ycg000344.weiming.authserver.service;
  * @see       
  */
 public interface AuthService {
+
+	/**
+	 * 
+	 * login:登录获取token. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param authenticationRequest
+	 * @return 
+	 * @since JDK 1.8 
+	 * @see
+	 */
+	String login(JwtAuthenticationRequest authenticationRequest);
 
 }
   
