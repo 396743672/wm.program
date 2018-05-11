@@ -16,6 +16,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import org.github.ycg000344.weiming.components.emailsend.api.bean.impl.EurekaInstanceCanceledEventEmailinfo;
 import org.github.ycg000344.weiming.eurekaserver.rabbitmq.EmailSend;
+import org.springframework.beans.BeanUtils;
 
 import com.netflix.appinfo.InstanceInfo;
 
@@ -62,7 +63,7 @@ public class EmailSendthread extends Thread {
 
 	public void offerInstance(InstanceInfo instance) {
 		try {
-			//BeanUtils.copyProperties(instance, emailinfo);
+			BeanUtils.copyProperties(instance, emailinfo);
 			emailQueue.offer(emailinfo);
 		} catch (Exception e) {
 			log.error("***********************邮件信息写入失败：{}************", e);

@@ -34,7 +34,7 @@ public class EmailSendthreadTest extends EurekaServerAppTest{
 		/** Junit中必须手动start */
 		instance.start();
 		instance.setEmailSend(emailSend);
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 3; i++) {
 			instance.offerInstance(null );
 		}
 		try {
