@@ -20,5 +20,9 @@ package org.github.ycg000344.weiming.common.constants;
 public class CommonConstants {
 
     public static final Integer EX_OTHER_CODE = 50000;
+    
+    /** jjwt */
+    public static final String JWT_KEY_ID = "id";
+    public static final String JWT_KEY_NAME = "name";
 }
   
