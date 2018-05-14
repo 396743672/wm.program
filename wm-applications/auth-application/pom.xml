@@ -11,5 +11,6 @@
   <modules>
   	<module>auth-server</module>
   	<module>auth-common</module>
+  	<module>auth-client</module>
   </modules>
 </project>
