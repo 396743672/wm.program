@@ -43,8 +43,6 @@ import io.jsonwebtoken.UnsupportedJwtException;
  */
 public class JWThelper {
 
-	private static RsaKeyHelper rsaKeyHelper = new RsaKeyHelper();
-
 	/**
 	 * 
 	 * generateToken:密钥加密token. <br/>
@@ -65,7 +63,7 @@ public class JWThelper {
 				.claim(CommonConstants.JWT_KEY_ID, jwtInfo.getId())
 				.claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getName())
 				.setExpiration(DateTime.now().offset(DateField.MINUTE, expire))
-				.signWith(SignatureAlgorithm.RS256, rsaKeyHelper.getPrivateKey(priKeyPath)).compact();
+				.signWith(SignatureAlgorithm.RS256, RsaKeyHelper.getInstance().getPrivateKey(priKeyPath)).compact();
 		return compactJws;
 	}
 
@@ -90,7 +88,7 @@ public class JWThelper {
 	private static Jws<Claims> parserToken(String token, String pubKeyPath)
 			throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException,
 			IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
-		Jws<Claims> claimsJws = Jwts.parser().setSigningKey(rsaKeyHelper.getPublicKey(pubKeyPath))
+		Jws<Claims> claimsJws = Jwts.parser().setSigningKey(RsaKeyHelper.getInstance().getPublicKey(pubKeyPath))
 				.parseClaimsJws(token);
 		return claimsJws;
 	}

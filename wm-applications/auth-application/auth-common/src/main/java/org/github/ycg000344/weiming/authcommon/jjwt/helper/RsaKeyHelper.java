@@ -42,42 +42,83 @@ import cn.hutool.core.io.file.FileWriter;
  */
 public class RsaKeyHelper {
 
+	private RsaKeyHelper() {
+	}
+
+	private static RsaKeyHelper rsaKeyHelper;
+
+	public static synchronized RsaKeyHelper getInstance() {
+		if (null == rsaKeyHelper) {
+			rsaKeyHelper = new RsaKeyHelper();
+		}
+		return rsaKeyHelper;
+	}
+
 	private static final String RSA = "RSA";
 	public static final String PUB = "pub";
 	public static final String PRI = "pri";
-	
+
 	/**
 	 * 
-	 * main:生成公钥、私钥文件. <br/> 
+	 * main:生成公钥、私钥文件. <br/>
 	 * 
 	 * @author po.lu
-	 * @param args 
-	 * @since JDK 1.8 
+	 * @param args
+	 * @since JDK 1.8
 	 * @see
 	 */
 	public static void main(String[] args) {
 		String publicKeyFilename = "C:\\Users\\Thinkive\\Desktop\\pub.key";
-        String privateKeyFilename = "C:\\Users\\Thinkive\\Desktop\\pri.key";
-        RsaKeyHelper helper = new RsaKeyHelper();
-        try {
-			helper.generateKey(publicKeyFilename,privateKeyFilename,"wm.weiming.org");
+		String privateKeyFilename = "C:\\Users\\Thinkive\\Desktop\\pri.key";
+		RsaKeyHelper helper = new RsaKeyHelper();
+		try {
+			helper.generateKey(publicKeyFilename, privateKeyFilename, "wm.weiming.org");
 		} catch (NoSuchAlgorithmException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
+	
+	/**
+	 * 
+	 * toHexString:字节数组转为字符. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param b
+	 * @return 
+	 * @since JDK 1.8 
+	 * @see
+	 */
+	public String toHexString(byte[] b) {
+        return Base64.encode(b);
+    }
 
 	/**
 	 * 
-	 * getPrivateKey:获取密钥. <br/> 
+	 * toBytes:字符转字节数组. <br/> 
 	 * 
 	 * @author po.lu
-	 * @param filename 私钥文件路径
+	 * @param s
+	 * @return
+	 * @throws IOException 
+	 * @since JDK 1.8 
+	 * @see
+	 */
+	public final byte[] toBytes(String s) throws IOException {
+        return Base64.decode(s);
+    }
+
+	/**
+	 * 
+	 * getPrivateKey:获取密钥. <br/>
+	 * 
+	 * @author po.lu
+	 * @param filename
+	 *            私钥文件路径
 	 * @return
 	 * @throws NoSuchAlgorithmException
-	 * @throws InvalidKeySpecException 
-	 * @since JDK 1.8 
+	 * @throws InvalidKeySpecException
+	 * @since JDK 1.8
 	 * @see
 	 */
 	public PrivateKey getPrivateKey(String filename) throws NoSuchAlgorithmException, InvalidKeySpecException {
@@ -86,28 +127,30 @@ public class RsaKeyHelper {
 
 	/**
 	 * 
-	 * getPrivateKey:获取密钥. <br/> 
+	 * getPrivateKey:获取密钥. <br/>
 	 * 
 	 * @author po.lu
-	 * @param privateKey byte[]
+	 * @param privateKey
+	 *            byte[]
 	 * @return
 	 * @throws NoSuchAlgorithmException
-	 * @throws InvalidKeySpecException 
-	 * @since JDK 1.8 
+	 * @throws InvalidKeySpecException
+	 * @since JDK 1.8
 	 * @see
 	 */
-	 public PrivateKey getPrivateKey(byte[] privateKey) throws NoSuchAlgorithmException, InvalidKeySpecException  {
-	        PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(privateKey);
-	        KeyFactory kf = KeyFactory.getInstance(RSA);
-	        return kf.generatePrivate(spec);
-	    }
-	
+	public PrivateKey getPrivateKey(byte[] privateKey) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(privateKey);
+		KeyFactory kf = KeyFactory.getInstance(RSA);
+		return kf.generatePrivate(spec);
+	}
+
 	/**
 	 * 
 	 * getPublicKey:获取公钥. <br/>
 	 * 
 	 * @author po.lu
-	 * @param filename 公钥文件路径
+	 * @param filename
+	 *            公钥文件路径
 	 * @return
 	 * @throws NoSuchAlgorithmException
 	 * @throws InvalidKeySpecException
@@ -117,25 +160,26 @@ public class RsaKeyHelper {
 	public PublicKey getPublicKey(String filename) throws NoSuchAlgorithmException, InvalidKeySpecException {
 		return getPublicKey(new FileReader(filename).readBytes());
 	}
-	
+
 	/**
 	 * 
-	 * getPublicKey:获取公钥. <br/> 
+	 * getPublicKey:获取公钥. <br/>
 	 * 
 	 * @author po.lu
-	 * @param publicKey byte[] 
+	 * @param publicKey
+	 *            byte[]
 	 * @return
-	 * @throws InvalidKeySpecException 
-	 * @throws NoSuchAlgorithmException 
-	 * @throws Exception 
-	 * @since JDK 1.8 
+	 * @throws InvalidKeySpecException
+	 * @throws NoSuchAlgorithmException
+	 * @throws Exception
+	 * @since JDK 1.8
 	 * @see
 	 */
-	public PublicKey getPublicKey(byte[] publicKey) throws InvalidKeySpecException, NoSuchAlgorithmException  {
-        X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKey);
-        KeyFactory kf = KeyFactory.getInstance(RSA);
-        return kf.generatePublic(spec);
-    }
+	public PublicKey getPublicKey(byte[] publicKey) throws InvalidKeySpecException, NoSuchAlgorithmException {
+		X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKey);
+		KeyFactory kf = KeyFactory.getInstance(RSA);
+		return kf.generatePublic(spec);
+	}
 
 	/**
 	 * 
@@ -165,31 +209,30 @@ public class RsaKeyHelper {
 		byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
 		new FileWriter(privateKeyFilename).write(privateKeyBytes, 0, privateKeyBytes.length);
 	}
-	
+
 	/**
 	 * 
-	 * generateKey:生成公钥、私钥存储于内存当中. <br/> 
+	 * generateKey:生成公钥、私钥存储于内存当中. <br/>
 	 * 
 	 * @author po.lu
 	 * @param password
 	 * @return
-	 * @throws NoSuchAlgorithmException 
-	 * @since JDK 1.8 
+	 * @throws NoSuchAlgorithmException
+	 * @since JDK 1.8
 	 * @see
 	 */
-	public Map<String, byte[]> generateKey(String password) throws NoSuchAlgorithmException{
+	public Map<String, byte[]> generateKey(String password) throws NoSuchAlgorithmException {
 		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(RSA);
 		password = Base64.encode(password);
-        SecureRandom secureRandom = new SecureRandom(password.getBytes());
-        keyPairGenerator.initialize(1024, secureRandom);
-        KeyPair keyPair = keyPairGenerator.genKeyPair();
-        byte[] publicKeyBytes = keyPair.getPublic().getEncoded();
-        byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
-        Map<String, byte[]> map = new HashMap<String, byte[]>();
-        map.put(PUB, publicKeyBytes);
-        map.put(PRI, privateKeyBytes);
-        return map;
+		SecureRandom secureRandom = new SecureRandom(password.getBytes());
+		keyPairGenerator.initialize(1024, secureRandom);
+		KeyPair keyPair = keyPairGenerator.genKeyPair();
+		byte[] publicKeyBytes = keyPair.getPublic().getEncoded();
+		byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
+		Map<String, byte[]> map = new HashMap<String, byte[]>();
+		map.put(PUB, publicKeyBytes);
+		map.put(PRI, privateKeyBytes);
+		return map;
 	}
-
 
 }
