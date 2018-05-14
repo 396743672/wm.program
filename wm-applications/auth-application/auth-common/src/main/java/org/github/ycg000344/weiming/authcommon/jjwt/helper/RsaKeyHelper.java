@@ -20,6 +20,8 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.HashMap;
+import java.util.Map;
 
 import cn.hutool.core.codec.Base64;
 import cn.hutool.core.io.file.FileReader;
@@ -40,23 +42,31 @@ import cn.hutool.core.io.file.FileWriter;
  */
 public class RsaKeyHelper {
 
+	private static final String RSA = "RSA";
+	public static final String PUB = "pub";
+	public static final String PRI = "pri";
+	
+	/**
+	 * 
+	 * main:生成公钥、私钥文件. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param args 
+	 * @since JDK 1.8 
+	 * @see
+	 */
 	public static void main(String[] args) {
 		String publicKeyFilename = "C:\\Users\\Thinkive\\Desktop\\pub.key";
         String privateKeyFilename = "C:\\Users\\Thinkive\\Desktop\\pri.key";
-        String password = Base64.encode("wm.weiming.org");
         RsaKeyHelper helper = new RsaKeyHelper();
         try {
-			helper.generateKey(publicKeyFilename,privateKeyFilename,password);
+			helper.generateKey(publicKeyFilename,privateKeyFilename,"wm.weiming.org");
 		} catch (NoSuchAlgorithmException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
-	
-	
-	
-	
 
 	/**
 	 * 
@@ -88,7 +98,7 @@ public class RsaKeyHelper {
 	 */
 	 public PrivateKey getPrivateKey(byte[] privateKey) throws NoSuchAlgorithmException, InvalidKeySpecException  {
 	        PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(privateKey);
-	        KeyFactory kf = KeyFactory.getInstance("RSA");
+	        KeyFactory kf = KeyFactory.getInstance(RSA);
 	        return kf.generatePrivate(spec);
 	    }
 	
@@ -123,7 +133,7 @@ public class RsaKeyHelper {
 	 */
 	public PublicKey getPublicKey(byte[] publicKey) throws InvalidKeySpecException, NoSuchAlgorithmException  {
         X509EncodedKeySpec spec = new X509EncodedKeySpec(publicKey);
-        KeyFactory kf = KeyFactory.getInstance("RSA");
+        KeyFactory kf = KeyFactory.getInstance(RSA);
         return kf.generatePublic(spec);
     }
 
@@ -145,7 +155,8 @@ public class RsaKeyHelper {
 	 */
 	public void generateKey(String publicKeyFilename, String privateKeyFilename, String password)
 			throws IOException, NoSuchAlgorithmException {
-		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(RSA);
+		password = Base64.encode(password);
 		SecureRandom secureRandom = new SecureRandom(password.getBytes());
 		keyPairGenerator.initialize(1024, secureRandom);
 		KeyPair keyPair = keyPairGenerator.genKeyPair();
@@ -154,5 +165,31 @@ public class RsaKeyHelper {
 		byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
 		new FileWriter(privateKeyFilename).write(privateKeyBytes, 0, privateKeyBytes.length);
 	}
+	
+	/**
+	 * 
+	 * generateKey:生成公钥、私钥存储于内存当中. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param password
+	 * @return
+	 * @throws NoSuchAlgorithmException 
+	 * @since JDK 1.8 
+	 * @see
+	 */
+	public Map<String, byte[]> generateKey(String password) throws NoSuchAlgorithmException{
+		KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(RSA);
+		password = Base64.encode(password);
+        SecureRandom secureRandom = new SecureRandom(password.getBytes());
+        keyPairGenerator.initialize(1024, secureRandom);
+        KeyPair keyPair = keyPairGenerator.genKeyPair();
+        byte[] publicKeyBytes = keyPair.getPublic().getEncoded();
+        byte[] privateKeyBytes = keyPair.getPrivate().getEncoded();
+        Map<String, byte[]> map = new HashMap<String, byte[]>();
+        map.put(PUB, publicKeyBytes);
+        map.put(PRI, privateKeyBytes);
+        return map;
+	}
+
 
 }
