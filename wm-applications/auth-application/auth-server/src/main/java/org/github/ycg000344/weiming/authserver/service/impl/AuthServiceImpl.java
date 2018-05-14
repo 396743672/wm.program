@@ -30,7 +30,8 @@ public class AuthServiceImpl implements AuthService  {
 
 	@Override
 	public String login(JwtAuthenticationRequest authenticationRequest) {
-		// TODO Auto-generated method stub
+		// TODO 人员进行登录，获取token
+		log.info("***************** 人员：{} 进行登录，获取token *********************",authenticationRequest.getUsername());
 		return null;
 	}
 	

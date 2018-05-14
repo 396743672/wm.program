@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: auth-server
+  redis:
+    host: 111.230.220.114
 eureka:
   client:
     service-url:
@@ -12,3 +14,16 @@ eureka:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.int(4000,10000)}}
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 20
+    
+
+
+
+
+############################################
+###########                  ###############
+###########    自定义配置项      ###############
+###########                  ###############
+############################################
+
+jwt: 
+  rsa-secret: weiming       ### 生成公钥、私钥的密码
