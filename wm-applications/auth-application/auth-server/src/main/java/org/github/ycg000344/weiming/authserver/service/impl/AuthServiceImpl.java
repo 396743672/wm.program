@@ -9,6 +9,12 @@
   
 package org.github.ycg000344.weiming.authserver.service.impl;
 
+import org.github.ycg000344.weiming.authcommon.jjwt.vo.JwtAuthenticationRequest;
+import org.github.ycg000344.weiming.authserver.service.AuthService;
+import org.springframework.stereotype.Service;
+
+import lombok.extern.slf4j.Slf4j;
+
 /** 
  * ClassName:AuthServiceImpl <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -18,9 +24,17 @@ package org.github.ycg000344.weiming.authserver.service.impl;
  * @since    JDK 1.8 
  * @see       
  */
-public class AuthServiceImpl  {
+@Service
+@Slf4j
+public class AuthServiceImpl implements AuthService  {
+
+	@Override
+	public String login(JwtAuthenticationRequest authenticationRequest) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	// implements AuthService
+	
 
 }
   

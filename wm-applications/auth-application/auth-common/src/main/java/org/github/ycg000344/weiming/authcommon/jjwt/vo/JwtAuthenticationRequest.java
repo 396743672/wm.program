@@ -7,7 +7,7 @@
  * 
 */  
   
-package org.github.ycg000344.weiming.authserver.bean;
+package org.github.ycg000344.weiming.authcommon.jjwt.vo;
 
 import java.io.Serializable;
 

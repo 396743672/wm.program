@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.authserver.service;
 
-import org.github.ycg000344.weiming.authserver.bean.JwtAuthenticationRequest;
+import org.github.ycg000344.weiming.authcommon.jjwt.vo.JwtAuthenticationRequest;
 
 /** 
  * ClassName:AuthService <br/><br/>  
