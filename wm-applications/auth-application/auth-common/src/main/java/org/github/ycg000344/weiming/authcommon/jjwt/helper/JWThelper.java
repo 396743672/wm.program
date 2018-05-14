@@ -47,19 +47,20 @@ public class JWThelper {
 
 	/**
 	 * 
-	 * generateToken:密钥加密token. <br/> 
+	 * generateToken:密钥加密token. <br/>
 	 * 
 	 * @author po.lu
 	 * @param jwtInfo
-	 * @param priKeyPath
-	 * @param expire
-	 * @return 
-	 * @throws InvalidKeySpecException 
-	 * @throws NoSuchAlgorithmException 
-	 * @since JDK 1.8 
+	 * @param priKeyPath 私钥文件路径
+	 * @param expire token有效期(min)
+	 * @return
+	 * @throws InvalidKeySpecException
+	 * @throws NoSuchAlgorithmException
+	 * @since JDK 1.8
 	 * @see
 	 */
-	public static String generateToken(IJWTinfo jwtInfo, String priKeyPath, int expire) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public static String generateToken(IJWTinfo jwtInfo, String priKeyPath, int expire)
+			throws NoSuchAlgorithmException, InvalidKeySpecException {
 		String compactJws = Jwts.builder().setSubject(jwtInfo.getUniqueName())
 				.claim(CommonConstants.JWT_KEY_ID, jwtInfo.getId())
 				.claim(CommonConstants.JWT_KEY_NAME, jwtInfo.getName())
@@ -67,10 +68,10 @@ public class JWThelper {
 				.signWith(SignatureAlgorithm.RS256, rsaKeyHelper.getPrivateKey(priKeyPath)).compact();
 		return compactJws;
 	}
-	
+
 	/**
 	 * 
-	 * parserToken:公钥解析token. <br/> 
+	 * parserToken:公钥解析token. <br/>
 	 * 
 	 * @author po.lu
 	 * @param token
@@ -82,19 +83,42 @@ public class JWThelper {
 	 * @throws SignatureException
 	 * @throws IllegalArgumentException
 	 * @throws NoSuchAlgorithmException
+	 * @throws InvalidKeySpecException
+	 * @since JDK 1.8
+	 * @see
+	 */
+	private static Jws<Claims> parserToken(String token, String pubKeyPath)
+			throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException,
+			IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
+		Jws<Claims> claimsJws = Jwts.parser().setSigningKey(rsaKeyHelper.getPublicKey(pubKeyPath))
+				.parseClaimsJws(token);
+		return claimsJws;
+	}
+
+	/**
+	 * 
+	 * getInfoFromToken:从公钥文件和token中获取封装的信息. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param token 
+	 * @param pubKeyPath 公钥文件路径
+	 * @return
 	 * @throws InvalidKeySpecException 
+	 * @throws NoSuchAlgorithmException 
+	 * @throws IllegalArgumentException 
+	 * @throws SignatureException 
+	 * @throws MalformedJwtException 
+	 * @throws UnsupportedJwtException 
+	 * @throws ExpiredJwtException 
+	 * @throws Exception 
 	 * @since JDK 1.8 
 	 * @see
 	 */
-	public static Jws<Claims> parserToken(String token, String pubKeyPath) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
-        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(rsaKeyHelper.getPublicKey(pubKeyPath)).parseClaimsJws(token);
-        return claimsJws;
-    }
-	
-	
-	 public static IJWTinfo getInfoFromToken(String token, String pubKeyPath) throws Exception {
-	        Jws<Claims> claimsJws = parserToken(token, pubKeyPath);
-	        Claims body = claimsJws.getBody();
-	        return new JJWTinfo(body.getSubject(), StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_ID),""), StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_NAME),""));
-	    }
+	public static IJWTinfo getInfoFromToken(String token, String pubKeyPath) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException, NoSuchAlgorithmException, InvalidKeySpecException {
+		Jws<Claims> claimsJws = parserToken(token, pubKeyPath);
+		Claims body = claimsJws.getBody();
+		return new JJWTinfo(body.getSubject(),
+				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_ID), ""),
+				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_NAME), ""));
+	}
 }
