@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.github.ycg000344.weiming.common.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.exception.BaseException;
 import org.github.ycg000344.weiming.common.vo.BaseResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import lombok.extern.slf4j.Slf4j;
 
 /** 
  * ClassName:GlobalExceptionHandler <br/><br/>  
@@ -27,17 +27,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * @since    JDK 1.8 
  * @see       
  */
+@Slf4j
 public class GlobalExceptionHandler {
-    private Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
     @ExceptionHandler(BaseException.class)
     public BaseResponse baseExceptionHandler(HttpServletResponse response, BaseException ex) {
-        logger.error(ex.getMessage(),ex);
+        log.error(ex.getMessage(),ex);
         return new BaseResponse(ex.getErrorCode(), ex.getErrorMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public BaseResponse otherExceptionHandler(HttpServletResponse response, Exception ex) {
-        logger.error(ex.getMessage(),ex);
+    	log.error(ex.getMessage(),ex);
         return new BaseResponse(CommonConstants.EX_OTHER_CODE, ex.getMessage());
     }
 
