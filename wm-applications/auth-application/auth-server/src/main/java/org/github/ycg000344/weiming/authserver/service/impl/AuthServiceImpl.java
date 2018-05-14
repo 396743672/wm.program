@@ -9,8 +9,6 @@
   
 package org.github.ycg000344.weiming.authserver.service.impl;
 
-import org.github.ycg000344.weiming.authserver.service.AuthService;
-
 /** 
  * ClassName:AuthServiceImpl <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -20,7 +18,9 @@ import org.github.ycg000344.weiming.authserver.service.AuthService;
  * @since    JDK 1.8 
  * @see       
  */
-public class AuthServiceImpl implements AuthService {
+public class AuthServiceImpl  {
+	
+	// implements AuthService
 
 }
   

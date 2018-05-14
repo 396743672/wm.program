@@ -9,12 +9,9 @@
 
 package org.github.ycg000344.weiming.components.emailsend.server;
 
-import org.github.ycg000344.weiming.components.emailsend.server.thread.EmailSendThread;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * ClassName:EmailSendServerApp <br/>
@@ -30,14 +27,10 @@ import lombok.extern.slf4j.Slf4j;
  * @see
  */
 @SpringBootApplication
-@Slf4j
 public class EmailSendServerApp {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(EmailSendServerApp.class).web(WebApplicationType.SERVLET).run(args);
-		EmailSendThread.getInstance().start();
-		log.info("***********************EmailSendThread.state:{}*******************",EmailSendThread.getInstance().getState().toString());
-		
 	}
 
 }
