@@ -17,6 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.github.ycg000344.weiming.authclient.configration.AutoConfiguration;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Import;
 
 /** 
@@ -33,6 +34,7 @@ import org.springframework.context.annotation.Import;
 @Import(AutoConfiguration.class)
 @Documented
 @Inherited
+@EnableFeignClients
 public @interface EnableAuthClient {
 
 }
