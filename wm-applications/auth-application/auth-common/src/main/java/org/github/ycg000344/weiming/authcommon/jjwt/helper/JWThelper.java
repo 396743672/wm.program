@@ -53,6 +53,7 @@ public class JWThelper {
 	 * @param expire token有效期(min)
 	 * @return
 	 * @throws InvalidKeySpecException
+	 * 
 	 * @throws NoSuchAlgorithmException
 	 * @since JDK 1.8
 	 * @see
@@ -118,5 +119,52 @@ public class JWThelper {
 		return new JJWTinfo(body.getSubject(),
 				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_ID), ""),
 				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_NAME), ""));
+	}
+
+	/** 
+	 * getInfoFromToken:公钥解析token. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param token 
+	 * @param pubKeyByte 内存中的公钥
+	 * @return 
+	 * @throws NoSuchAlgorithmException 
+	 * @throws InvalidKeySpecException 
+	 * @throws IllegalArgumentException 
+	 * @throws SignatureException 
+	 * @throws MalformedJwtException 
+	 * @throws UnsupportedJwtException 
+	 * @throws ExpiredJwtException 
+	 * @since JDK 1.8 
+	 * @see
+	 */  
+	public static IJWTinfo getInfoFromToken(String token, byte[] pubKeyByte) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException, InvalidKeySpecException, NoSuchAlgorithmException {
+		Jws<Claims> claimsJws = parserToken(token, pubKeyByte);
+        Claims body = claimsJws.getBody();
+        return new JJWTinfo(body.getSubject(),
+				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_ID), ""),
+				StrUtil.nullToDefault((CharSequence) body.get(CommonConstants.JWT_KEY_NAME), ""));
+	}
+
+	/** 
+	 * parserToken:公钥解析token. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param token
+	 * @param pubKeyByte
+	 * @return 
+	 * @throws NoSuchAlgorithmException 
+	 * @throws InvalidKeySpecException 
+	 * @throws IllegalArgumentException 
+	 * @throws SignatureException 
+	 * @throws MalformedJwtException 
+	 * @throws UnsupportedJwtException 
+	 * @throws ExpiredJwtException 
+	 * @since JDK 1.8 
+	 * @see
+	 */  
+	private static Jws<Claims> parserToken(String token, byte[] pubKeyByte) throws ExpiredJwtException, UnsupportedJwtException, MalformedJwtException, SignatureException, IllegalArgumentException, InvalidKeySpecException, NoSuchAlgorithmException {
+		Jws<Claims> claimsJws = Jwts.parser().setSigningKey(RsaKeyHelper.getInstance().getPublicKey(pubKeyByte)).parseClaimsJws(token);
+        return claimsJws;
 	}
 }
