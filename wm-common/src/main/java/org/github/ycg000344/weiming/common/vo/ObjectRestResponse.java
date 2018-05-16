@@ -7,9 +7,7 @@
  * 
 */  
   
-package org.github.ycg000344.weiming.businessbase.vo;
-
-import org.github.ycg000344.weiming.common.vo.BaseResponse;
+package org.github.ycg000344.weiming.common.vo;
 
 /** 
  * ClassName:ObjectRestResponse <br/><br/>  

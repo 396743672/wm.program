@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.github.ycg000344.weiming.businessbase.service.BaseService;
 import org.github.ycg000344.weiming.businessbase.util.Query;
-import org.github.ycg000344.weiming.businessbase.vo.ObjectRestResponse;
 import org.github.ycg000344.weiming.businessbase.vo.TableResultResponse;
+import org.github.ycg000344.weiming.common.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
