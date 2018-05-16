@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /** 
  * ClassName:ServiceAuthFeign <br/><br/>  
- * Description: TODO <br/><br/>  
+ * Description: 鉴权服务RPC <br/><br/>  
  * Date:     2018年5月16日 下午4:07:23 <br/> <br/> 
  * @author   po.lu 
  * @version  1.0.0
