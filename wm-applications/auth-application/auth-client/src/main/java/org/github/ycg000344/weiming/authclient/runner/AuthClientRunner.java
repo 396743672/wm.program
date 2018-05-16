@@ -56,6 +56,7 @@ public class AuthClientRunner implements CommandLineRunner {
 		log.info("*********************应用【{}】启动成功，准备获取公钥***************************************", name);
 		try {
 			refreshUserPubKey();
+			log.info("**************************成功从服务端获取到公钥：【{}】**************************************************",userAuthConfig.getPubKeyByte());
 		} catch (Exception e) {
 			log.error("初始化加载用户pubKey失败,1分钟后自动重试!", e);
 		}
