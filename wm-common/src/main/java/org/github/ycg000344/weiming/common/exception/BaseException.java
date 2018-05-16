@@ -48,6 +48,18 @@ public class BaseException extends RuntimeException {
 	public void setErrorMessage(String errorMessage) {
 		this.errorMessage = errorMessage;
 	}
+	
+
+	public BaseException(Integer errorCode) {
+		super();
+		this.errorCode = errorCode;
+	}
+	
+
+	public BaseException(String errorMessage) {
+		super();
+		this.errorMessage = errorMessage;
+	}
 
 	public BaseException(Integer errorCode, String errorMessage) {
 		super();
