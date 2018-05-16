@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Scheduled;
 
@@ -38,6 +39,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
+@Order(value = 1)
 public class AuthClientRunner implements CommandLineRunner {
 
 	@Value("${spring.application.name}")
@@ -59,6 +61,7 @@ public class AuthClientRunner implements CommandLineRunner {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Scheduled(cron = "0 0/1 * * * ?")
 	private void refreshUserPubKey() {
 		BaseResponse resp = serviceAuthFeign.getUserPublicKey(serviceAuthConfig.getClientId(),
