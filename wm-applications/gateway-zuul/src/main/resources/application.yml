@@ -1,0 +1,55 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-zuul
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.didispace.com/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.int(4000,10000)}}
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+    
+###                                              #######
+###                    _ooOoo_                   #######
+###                   o8888888o                  #######
+###                   88" . "88                  #######
+###                   (| -_- |)                  #######
+###                    O\ = /O                   #######
+###                ____/`---'\____               #######
+###              .   ' \\| |// `.                #######
+###               / \\||| 1 |||// \              #######
+###             / _||||| -9- |||||- \            #######
+###               | | \\\ 9 /// | |              #######
+###             | \_| ''\-8-/'' | |              #######
+###              \ .-\__ `0` ___/-. /            #######
+###           ___`. .' /--2--\ `. . __           #######
+###        ."" '< `.___\_<0>_/___.' >'"".        #######
+###       | | : `- \`.;`\ 2 /`;.`/ - ` : | |     #######
+###         \ \ `-. \_ __\ /__ _/ .-` / /        #######
+### ======`-.____`-.___\_____/___.-`____.-'======#######
+###                    `=---='                   #######
+###                                              #######
+###...............自定义配置项....................#######
+
+
+
+
+auth: 
+  client: 
+    secret: qqq123
+
+
+
+
+
+
+
+
+
+
