@@ -22,7 +22,29 @@ public class CommonConstants {
     public static final Integer EX_OTHER_CODE = 50000;
     
     /** jjwt */
+    /** 
+     * JWT_KEY_ID:TODO . 
+     * @since JDK 1.8 
+     */  
     public static final String JWT_KEY_ID = "id";
+    /** 
+     * JWT_KEY_NAME:TODO . 
+     * @since JDK 1.8 
+     */  
     public static final String JWT_KEY_NAME = "name";
+    
+    /** 鉴权服务 */
+    /** 
+     * AUTH_SERVER_NAME:鉴权服务应用名称</br>
+     * <p>spring.application.name.</p> 
+     * @since JDK 1.8 
+     */  
+    public static final String AUTH_SERVER_NAME = "auth-server";
+    
+    /** 
+     * AUTH_USER_TOKEN: user token header. 
+     * @since JDK 1.8 
+     */  
+    public static final String AUTH_USER_TOKEN = "X-USER-AUTHORIZATION";
 }
   
