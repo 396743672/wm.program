@@ -9,7 +9,6 @@
 
 package org.github.ycg000344.weiming.authclient.runner;
 
-import org.github.ycg000344.weiming.authclient.config.ServiceAuthConfig;
 import org.github.ycg000344.weiming.authclient.config.UserAuthConfig;
 import org.github.ycg000344.weiming.authclient.feign.ServiceAuthFeign;
 import org.github.ycg000344.weiming.common.vo.BaseResponse;
@@ -42,10 +41,10 @@ import lombok.extern.slf4j.Slf4j;
 @Order(value = 1)
 public class AuthClientRunner implements CommandLineRunner {
 
+	@Value("${auth.client.secret}")
+	private String clientSecret;
 	@Value("${spring.application.name}")
-	private String name;
-	@Autowired
-	private ServiceAuthConfig serviceAuthConfig;
+	private String applicationName;
 	@Autowired
 	private UserAuthConfig userAuthConfig;
 	@Autowired
@@ -53,7 +52,7 @@ public class AuthClientRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("*********************应用【{}】启动成功，准备获取公钥***************************************", name);
+		log.info("*********************应用【{}】启动成功，准备获取公钥***************************************", applicationName);
 		try {
 			refreshUserPubKey();
 			log.info("**************************成功从服务端获取到公钥：【{}】**************************************************",userAuthConfig.getPubKeyByte());
@@ -65,8 +64,8 @@ public class AuthClientRunner implements CommandLineRunner {
 	@SuppressWarnings("unchecked")
 	@Scheduled(cron = "0 0/1 * * * ?")
 	private void refreshUserPubKey() {
-		BaseResponse resp = serviceAuthFeign.getUserPublicKey(serviceAuthConfig.getClientId(),
-				serviceAuthConfig.getClientSecret());
+		BaseResponse resp = serviceAuthFeign.getUserPublicKey(applicationName,
+				clientSecret);
 		if (resp.getStatus() == HttpStatus.OK.value()) {
 			ObjectRestResponse<byte[]> userResponse = (ObjectRestResponse<byte[]>) resp;
 			this.userAuthConfig.setPubKeyByte(userResponse.getData());

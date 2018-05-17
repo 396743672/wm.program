@@ -9,7 +9,6 @@
   
 package org.github.ycg000344.weiming.authclient.configration;
 
-import org.github.ycg000344.weiming.authclient.config.ServiceAuthConfig;
 import org.github.ycg000344.weiming.authclient.config.UserAuthConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,9 +30,5 @@ public class AutoConfiguration {
         return new UserAuthConfig();
     }
 	
-	@Bean
-    ServiceAuthConfig getServiceAuthConfig(){
-        return new ServiceAuthConfig();
-    }
 }
   

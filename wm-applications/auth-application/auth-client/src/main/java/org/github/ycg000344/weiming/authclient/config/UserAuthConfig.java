@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.authclient.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import org.github.ycg000344.weiming.common.constants.CommonConstants;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -26,15 +26,14 @@ import lombok.Setter;
 @Setter
 @Getter
 public class UserAuthConfig {
-	
-	/** 
-	 * tokenHeader:
-	 * @since JDK 1.8 
-	 */  
-	@Value("${auth.user.token-header}")
-    private String tokenHeader;
 
     private byte[] pubKeyByte;
+
+	public String getTokenHeader() {
+		return CommonConstants.AUTH_USER_TOKEN;
+	}
+    
+    
 
 }
   

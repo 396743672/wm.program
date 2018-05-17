@@ -9,6 +9,7 @@
   
 package org.github.ycg000344.weiming.authclient.feign;
 
+import org.github.ycg000344.weiming.common.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.vo.ObjectRestResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @since    JDK 1.8 
  * @see       
  */
-@FeignClient(value = "${auth.serviceId}",configuration = {})
+@FeignClient(value = CommonConstants.AUTH_SERVER_NAME)
 public interface ServiceAuthFeign {
 	
 	@RequestMapping(value = "/client/userPubKey",method = RequestMethod.POST)
