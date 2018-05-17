@@ -15,6 +15,14 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 20
     
+
+zuul:
+  ignoredServices: '*'
+  prefix: /api
+
+
+
+    
 ###                                              #######
 ###                    _ooOoo_                   #######
 ###                   o8888888o                  #######
@@ -43,6 +51,10 @@ eureka:
 auth: 
   client: 
     secret: qqq123
+
+gate: 
+  ignore: 
+    startWith: /static,/jjwt/token
 
 
 
