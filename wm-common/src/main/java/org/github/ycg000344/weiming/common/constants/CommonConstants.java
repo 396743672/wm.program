@@ -21,6 +21,9 @@ public class CommonConstants {
 
     public static final Integer EX_OTHER_CODE = 50000;
     
+    
+    
+    
     /** jjwt */
     /** 
      * JWT_KEY_ID:TODO . 
@@ -32,6 +35,12 @@ public class CommonConstants {
      * @since JDK 1.8 
      */  
     public static final String JWT_KEY_NAME = "name";
+    
+    /** 
+     * JWT_KEY_UNIQUENAME:TODO . 
+     * @since JDK 1.8 
+     */  
+    public static final String JWT_KEY_UNIQUENAME = "uniqueName";
     
     /** 鉴权服务 */
     /** 
