@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 /** 
@@ -40,6 +42,8 @@ public class AuthController {
 
 	
 	@PostMapping("/token")
+	@ApiOperation(value="获取token",notes="登录获取token")
+	@ApiImplicitParam(value="封装登录请求对象",required=true, dataType = "JwtAuthenticationRequest", name = "authenticationRequest")
 	public ResponseEntity<?> createAuthenticationToken(
             @RequestBody JwtAuthenticationRequest authenticationRequest) throws Exception {
         log.info(authenticationRequest.getUsername()+" require logging...");

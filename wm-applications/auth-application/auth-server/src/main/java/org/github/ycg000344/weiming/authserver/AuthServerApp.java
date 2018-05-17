@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 /**
  * ClassName:AuthServerApp <br/>
  * <br/>
@@ -29,6 +31,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  */
 @SpringBootApplication
 @EnableEurekaClient
+@EnableSwagger2
 public class AuthServerApp {
 
 	public static void main(String[] args) {

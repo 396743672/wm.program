@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -53,6 +56,11 @@ public class ClientController {
 	 */
 	@SuppressWarnings("unchecked")
 	@PostMapping("/userPubKey")
+	@ApiOperation(value="提供公钥",notes="向client提供公钥接口")
+	@ApiImplicitParams({
+		@ApiImplicitParam(name="clientId",value="客户端id",required=true,dataType="String"),
+		@ApiImplicitParam(name="secret",value="客户端密码",required=true,dataType="String")
+	})
 	public ObjectRestResponse<byte[]> getUserPublicKey(@RequestParam("clientId") String clientId,
 			@RequestParam("secret") String secret) throws Exception {
 		log.info("***********************client:【{}】，secret:【{}】  ****************************", clientId, secret);
