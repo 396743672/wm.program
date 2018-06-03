@@ -13,6 +13,10 @@ spring:
     password: Average123!
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
+  cache:
+    type: redis
+        
+    
     
 eureka:
   client:
