@@ -4,11 +4,11 @@
 /*==============================================================*/
 
 
-drop index Index_dict_id on t_base_dict;
+/*drop index Index_dict_id on t_base_dict;*/
 
 drop table if exists t_base_dict;
 
-drop index Index_dict_item_id on t_base_dict_item;
+/*drop index Index_dict_item_id on t_base_dict_item;*/
 
 drop table if exists t_base_dict_item;
 
