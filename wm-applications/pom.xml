@@ -15,5 +15,6 @@
 		<module>eureka-server</module>
 		<module>auth-application</module>
 		<module>gateway-zuul</module>
+		<module>dict-application</module>
 	</modules>
 </project>
