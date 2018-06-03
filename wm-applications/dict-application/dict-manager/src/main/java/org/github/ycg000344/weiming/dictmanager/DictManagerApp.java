@@ -12,6 +12,7 @@ package org.github.ycg000344.weiming.dictmanager;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -30,6 +31,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableEurekaClient
 @EnableTransactionManagement
 @MapperScan(basePackages = "org.github.ycg000344.weiming.dictmanager.mapper")
+@EnableCaching
 public class DictManagerApp {
 
 	public static void main(String[] args) {
