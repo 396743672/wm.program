@@ -9,13 +9,10 @@
   
 package org.github.ycg000344.weiming.dictmanager.runner;
 
-import java.util.concurrent.TimeUnit;
-
-import org.github.ycg000344.weiming.dictmanager.service.DictService;
+import org.github.ycg000344.weiming.dictmanager.service.DictManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -34,10 +31,7 @@ import lombok.extern.slf4j.Slf4j;
 public class DictManagerRunning implements CommandLineRunner {
 	
 	@Autowired
-	private StringRedisTemplate redisTemplate;
-	
-	@Autowired
-	private DictService dictService;
+	private DictManagerService dictManagerService ;
 	
 	@Value("${spring.application.name}")
 	private String applicationName;
@@ -45,7 +39,8 @@ public class DictManagerRunning implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		try {
 			log.info("*****************项目：【{}】成功启动，操作redis****************开始***",applicationName);
-			dictionary2redis();
+			dictManagerService.dictionaryItem2Redis();
+			dictManagerService.dictionary2redis();
 			log.info("*****************项目：【{}】成功启动，操作redis****************成功***");
 		} catch (Exception e) {
 			log.error("*****************项目：【{}】操作redis失败******************************************",applicationName);
@@ -53,21 +48,7 @@ public class DictManagerRunning implements CommandLineRunner {
 		}
 	}
 	
-	/** 
-	 * dictionary2redis:. <br/> 
-	 * 
-	 * @author po.lu 
-	 * @since JDK 1.8 
-	 * @see
-	 */
-	private void dictionary2redis() {
-		
-		log.info("***************************数据字典加载redis****************************开始***");
-		dictService.selectListAll().parallelStream().forEach(d->{
-			redisTemplate.opsForValue().set(d.getDictKey(), d.getDictValue().toString(), 12, TimeUnit.HOURS);
-		});
-		log.info("***************************数据字典加载redis****************************成功***");
-	}
+	
 
 }
   
