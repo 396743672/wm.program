@@ -14,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 import org.github.ycg000344.weiming.dictmanager.entity.Dict;
 import org.github.ycg000344.weiming.dictmanager.entity.DictItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -46,10 +47,8 @@ public class DictManagerService {
 	@Autowired
 	private StringRedisTemplate redisTemplate;
 
-	private String status = "status";
-	private String inUsed = "1";
-	private String orderBy = "update_time";
-	private Integer keeped = 12;
+	@Value("${weiming.dictmanager.redis.keeped}")
+	private Integer keeped;
 	
 	/**
 	 * dictionaryItem2Redis:数据字典项目加载进入内存. <br/>
@@ -62,8 +61,8 @@ public class DictManagerService {
 	public void dictionaryItem2Redis() {
 		log.info("***************************数据字典项目加载redis****************************开始***");
 		Example example = new Example(DictItem.class);
-		example.selectProperties(status, inUsed);
-		example.setOrderByClause(orderBy);
+		example.createCriteria().andEqualTo("status", 1);
+		example.setOrderByClause("update_time");
 		dictItemService.selectByExample(example).parallelStream().forEach(d -> {
 			redisTemplate.opsForValue().set(d.getDictItemKey(), JSONObject.toJSONString(d), keeped, TimeUnit.HOURS);
 		});
@@ -81,8 +80,8 @@ public class DictManagerService {
 	public void dictionary2redis() {
 		log.info("***************************数据字典加载redis****************************开始***");
 		Example example = new Example(Dict.class);
-		example.selectProperties(status, inUsed);
-		example.setOrderByClause(orderBy);
+		example.createCriteria().andEqualTo("status", 1);
+		example.setOrderByClause("update_time");
 		dictService.selectByExample(example).parallelStream().forEach(d -> {
 			redisTemplate.opsForValue().set(d.getDictKey(), JSONObject.toJSONString(d), keeped, TimeUnit.HOURS);
 		});

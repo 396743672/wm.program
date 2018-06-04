@@ -41,7 +41,7 @@ public class DictManagerRunning implements CommandLineRunner {
 			log.info("*****************项目：【{}】成功启动，操作redis****************开始***",applicationName);
 			dictManagerService.dictionaryItem2Redis();
 			dictManagerService.dictionary2redis();
-			log.info("*****************项目：【{}】成功启动，操作redis****************成功***");
+			log.info("*****************项目：【{}】成功启动，操作redis****************成功***",applicationName);
 		} catch (Exception e) {
 			log.error("*****************项目：【{}】操作redis失败******************************************",applicationName);
 			e.printStackTrace();
