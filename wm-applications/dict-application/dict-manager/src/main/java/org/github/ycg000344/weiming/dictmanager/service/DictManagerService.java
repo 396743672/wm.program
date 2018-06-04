@@ -11,7 +11,6 @@ package org.github.ycg000344.weiming.dictmanager.service;
 
 import java.util.concurrent.TimeUnit;
 
-import org.github.ycg000344.dictapi.bean.DictionaryObject;
 import org.github.ycg000344.weiming.dictmanager.entity.Dict;
 import org.github.ycg000344.weiming.dictmanager.entity.DictItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 
-import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import tk.mybatis.mapper.entity.Example;
 
@@ -53,65 +51,6 @@ public class DictManagerService {
 	private String orderBy = "update_time";
 	private Integer keeped = 12;
 	
-	/**
-	 * getDictItem: 获取数据字典项目. <br/>
-	 * 1. 查redis 
-	 * 2. 查库
-	 * @author po.lu
-	 * @param dObject
-	 * @return
-	 * @since JDK 1.8
-	 * @see
-	 */
-	public DictionaryObject getDictItem(DictionaryObject dObject) {
-		DictItem dictItem = null;
-		if (StrUtil.isNotEmpty(dObject.getDictItemKey())) {
-			String string = redisTemplate.opsForValue().get(dObject.getDictItemKey());
-			if (StrUtil.isNotEmpty(string)) {
-				dictItem = JSONObject.parseObject(string, DictItem.class);
-			}
-		}
-		if (null == dictItem) {
-			dictItem = dictItemService.selectById(dObject.getDictItemId());
-		}
-		return object2DictionaryObject(dictItem);
-	}
-
-	/** 
-	 * object2DictionaryObject:对象属性转化. <br/> 
-	 * 
-	 * @author po.lu
-	 * @param objiect
-	 * @return 
-	 * @since JDK 1.8 
-	 * @see
-	 */  
-	private DictionaryObject object2DictionaryObject(Object objiect) {
-		DictionaryObject dObject = new DictionaryObject();
-		if (null != objiect) {
-			if (objiect instanceof DictItem) {
-				DictItem d = (DictItem) objiect;
-				dObject.setDictItemId(d.getDictItemId());
-				dObject.setDictItemCreateTime(d.getCreateTime());
-				dObject.setDictItemKey(d.getDictItemKey());
-				dObject.setDictItemStatus(d.getStatus());
-				dObject.setDictItemUpdateTime(d.getUpdateTime());
-				dObject.setDictItemValue(d.getDictItemValue());
-			}
-			if (objiect instanceof Dict) {
-				Dict d = (Dict) objiect;
-				dObject.setDictId(d.getDictId());
-				dObject.setDictItemId(d.getDictItemId());
-				dObject.setDictCreateTime(d.getCreateTime());
-				dObject.setDictKey(d.getDictKey());
-				dObject.setDictStatus(d.getStatus());
-				dObject.setDictUpdateTime(d.getUpdateTime());
-				dObject.setDictValue(d.getDictValue());
-			}
-		}
-		return dObject;
-	}
-
 	/**
 	 * dictionaryItem2Redis:数据字典项目加载进入内存. <br/>
 	 * 有效时间为12小时
