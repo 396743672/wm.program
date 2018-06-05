@@ -1,0 +1,6 @@
+server:
+  port: 8000
+  
+spring:
+  application:
+    name: wm-boot-admin-server-demo
