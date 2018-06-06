@@ -7,7 +7,7 @@
  * 
 */
 
-package org.github.ycg000344.weiming.helloworld.bootadmin;
+package org.github.ycg000344.weiming.helloworld.bootadminserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
