@@ -8,6 +8,11 @@ spring:
     port: 5672
     username: admin
     password: 123456
+  boot:
+    admin:
+      client:
+        url:
+        - "http://127.0.0.1:8000"
 eureka:
   instance:
     prefer-ip-address: true
@@ -19,6 +24,7 @@ eureka:
   server:
     enable-self-preservation: false #关闭自我保护
     eviction-interval-timer-in-ms: 20000  #缩小清理无效节点的时间间隔
+
     
 ################################
 config: 
