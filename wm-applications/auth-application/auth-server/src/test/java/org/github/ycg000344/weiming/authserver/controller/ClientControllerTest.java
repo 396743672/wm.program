@@ -10,8 +10,6 @@
   
 package org.github.ycg000344.weiming.authserver.controller;
 
-import static org.junit.Assert.*;
-
 import org.github.ycg000344.weiming.authserver.AuthServerAppTest;
 import org.github.ycg000344.weiming.common.vo.ObjectRestResponse;
 import org.junit.Test;
