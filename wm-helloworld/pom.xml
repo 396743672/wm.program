@@ -9,6 +9,6 @@
   <packaging>pom</packaging>
   <description>关于学习一些新的知识所进行的代码记录集</description>
   <modules>
-  	<module>bootadmin-demo</module>
+  	<module>demo-bootadmin</module>
   </modules>
 </project>
