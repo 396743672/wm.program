@@ -9,10 +9,11 @@
         - [1.2.1. email-component](#121-email-component)
             - [1.2.1.1. email API](#1211-email-api)
                 - [1.2.1.1.1. email-templates-bean](#12111-email-templates-bean)
-            - [1.2.1.2. email send server](#1212-email-send-server)
+            - [1.2.1.2. email send  server](#1212-email-send--server)
     - [1.3. Application Server](#13-application-server)
         - [1.3.1. Eureka Server](#131-eureka-server)
-        - [1.3.2. SBA server](#132-sba-server)
+        - [1.3.2. Zuul](#132-zuul)
+        - [1.3.3. SBA server](#133-sba-server)
 
 <!-- /TOC -->
 
@@ -26,13 +27,12 @@
 5. `tk.mybatis` 通用Mapper 2.0.2
 6. `pagehelper` 分页插件 1.2.5
 7. `jsonwebtoken` jjwt 0.9.0
-8. `boot.admin.ui` turbine 1.5.7
-9. `servlet` 4.0.1
-10. `spring-web`  5.0.5.RELEASE
-11. `spring-boot-admin` 2.0.1-SNAPSHOT
-12. `mysql-connector-java` 8.0.11
-13. `lombok` 1.16.18
-14. `swagger` 2.8.0
+8. `servlet` 4.0.1
+9. `spring-web`  5.0.5.RELEASE
+10. `spring-boot-admin` 2.0.1-SNAPSHOT
+11. `mysql-connector-java` 8.0.11
+12. `lombok` 1.16.18
+13. `swagger` 2.8.0
 
 目前使用的插件：<br>
 1. `spring-boot-maven-plugin` <br>
@@ -87,5 +87,10 @@
 ### 1.3.1. Eureka Server
 服务注册中心，提供服务的注册、监听，当检测到已经注册的服务出现宕机的情况时自动向消息队列中间件 `rabbitmq` 采取**异步**的方式发送宕机的服务实例的信息，如服务名称、服务端口号等。
 
-### 1.3.2. SBA server
+### 1.3.2. Zuul
+使用Zuul实现gateway路由网关功能<br>
+在作为路由转发请求前对请求头中的token进行校验，如果token合法则继续向下进行请求否则抛出异常。
+
+### 1.3.3. SBA server
 采用`spring boot admin server` 作为应用的监控中心<br>
+
