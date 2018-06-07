@@ -199,5 +199,6 @@
 		<module>wm-helloworld</module>
 		<module>wm-components</module>
 		<module>wm-applications</module>
+		<module>wm-servers</module>
 	</modules>
 </project>
