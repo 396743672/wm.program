@@ -11,11 +11,6 @@
 	<description>公共利用的基础包，其中包含全局异常处理等</description>
 
 	<dependencies>
-	<!-- spring-boot-admin-client -->
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-		</dependency>
 		<dependency>
 			<groupId>cn.hutool</groupId>
 			<artifactId>hutool-all</artifactId>
