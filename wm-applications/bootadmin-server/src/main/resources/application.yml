@@ -1,0 +1,28 @@
+server:
+  port: 8000
+  
+spring:
+  application:
+    name: wm-sba-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka.didispace.com/eureka/
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.int(4000,10000)}}
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+    health-check-url-path: /actuator/health
+
+management: 
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -16,5 +16,6 @@
 		<module>auth-application</module>
 		<module>gateway-zuul</module>
 		<module>dict-application</module>
+		<module>bootadmin-server</module>
 	</modules>
 </project>
