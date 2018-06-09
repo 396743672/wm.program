@@ -9,6 +9,6 @@
   <packaging>pom</packaging>
   <description>项目内部提供使用的组件集</description>
   <modules>
-  	<module>emailComponent</module>
+  	<module>component-emailsend</module>
   </modules>
 </project>

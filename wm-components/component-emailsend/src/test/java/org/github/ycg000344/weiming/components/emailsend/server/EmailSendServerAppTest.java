@@ -9,6 +9,7 @@
   
 package org.github.ycg000344.weiming.components.emailsend.server;
 
+import org.github.ycg000344.weiming.component.emailsend.EmailSendServerApp;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
