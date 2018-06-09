@@ -9,8 +9,8 @@
   <packaging>pom</packaging>
   <description>服务集合</description>
   <modules>
-		<module>eureka-server</module>
-		<module>bootadmin-server</module>
-		<module>gateway-server</module>
+		<module>server-eureka</module>
+		<module>server-bootadmin</module>
+		<module>server-gateway</module>
 	</modules>
 </project>
