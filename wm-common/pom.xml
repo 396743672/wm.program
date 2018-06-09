@@ -13,7 +13,7 @@
 
 	<modules>
 		<module>common-base</module>
-		<module>common-basebussiness</module>
+		<module>common-basebusiness</module>
 		<module>common-auth</module>
 		<module>common-emailsend</module>
 	</modules>
