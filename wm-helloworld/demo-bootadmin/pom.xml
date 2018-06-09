@@ -9,7 +9,7 @@
   <packaging>pom</packaging>
   <description>spring-boot-admin demo</description>
   <modules>
-  	<module>demo-admin-server</module>
-  	<module>demo-admin-client</module>
+  	<module>demo-bootadmin-server</module>
+  	<module>demo-bootadmin-client</module>
   </modules>
 </project>
