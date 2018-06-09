@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.authclient.config;
 
-import org.github.ycg000344.weiming.common.constants.CommonConstants;
+import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
 
 import lombok.Getter;
 import lombok.Setter;

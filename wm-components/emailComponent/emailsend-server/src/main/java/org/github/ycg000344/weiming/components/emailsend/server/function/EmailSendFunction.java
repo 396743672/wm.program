@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.components.emailsend.server.function;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
+import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 
 /** 
  * ClassName:EmailSendFunction <br/><br/>  

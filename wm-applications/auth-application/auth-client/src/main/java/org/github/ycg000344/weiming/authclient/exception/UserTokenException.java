@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.authclient.exception;
 
-import org.github.ycg000344.weiming.common.exception.BaseException;
+import org.github.ycg000344.weiming.common.base.exception.BaseException;
 
 /** 
  * ClassName:UserTokenException <br/><br/>  

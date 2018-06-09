@@ -9,9 +9,9 @@
   
 package org.github.ycg000344.weiming.authserver.controller;
 
-import org.github.ycg000344.weiming.authcommon.jjwt.vo.JwtAuthenticationRequest;
-import org.github.ycg000344.weiming.authcommon.jjwt.vo.JwtAuthenticationResponse;
 import org.github.ycg000344.weiming.authserver.service.AuthService;
+import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRequest;
+import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -13,7 +13,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.github.ycg000344</groupId>
-			<artifactId>wm-common</artifactId>
+			<artifactId>common-base</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

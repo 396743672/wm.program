@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.dictmanager.service;
 
-import org.github.ycg000344.weiming.businessbase.service.BaseService;
+import org.github.ycg000344.weiming.common.basebusiness.service.BaseService;
 import org.github.ycg000344.weiming.dictmanager.entity.Dict;
 import org.github.ycg000344.weiming.dictmanager.mapper.DictMapper;
 import org.springframework.stereotype.Service;

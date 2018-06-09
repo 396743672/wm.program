@@ -13,7 +13,7 @@
 
 	<dependencies>
 		<dependency>
-			<artifactId>emailsend-api</artifactId>
+			<artifactId>common-emailsend</artifactId>
 			<groupId>org.github.ycg000344</groupId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>

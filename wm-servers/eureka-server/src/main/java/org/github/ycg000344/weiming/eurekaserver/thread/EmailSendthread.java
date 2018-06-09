@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.impl.EurekaInstanceCanceledEventEmailinfo;
+import org.github.ycg000344.weiming.common.emailsend.bean.impl.EurekaInstanceCanceledEventEmailinfo;
 import org.github.ycg000344.weiming.eurekaserver.rabbitmq.EmailSend;
 import org.springframework.beans.BeanUtils;
 

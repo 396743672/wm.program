@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.dictmanager.controller;
 
-import org.github.ycg000344.weiming.businessbase.controller.BaseController;
+import org.github.ycg000344.weiming.common.basebusiness.controller.BaseController;
 import org.github.ycg000344.weiming.dictmanager.entity.Dict;
 import org.github.ycg000344.weiming.dictmanager.service.DictService;
 import org.springframework.web.bind.annotation.RequestMapping;

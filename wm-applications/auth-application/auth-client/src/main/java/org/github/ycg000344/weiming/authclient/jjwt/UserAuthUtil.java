@@ -11,8 +11,8 @@ package org.github.ycg000344.weiming.authclient.jjwt;
 
 import org.github.ycg000344.weiming.authclient.config.UserAuthConfig;
 import org.github.ycg000344.weiming.authclient.exception.UserTokenException;
-import org.github.ycg000344.weiming.authcommon.jjwt.bean.IJWTinfo;
-import org.github.ycg000344.weiming.authcommon.jjwt.helper.JWThelper;
+import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
+import org.github.ycg000344.weiming.common.auth.jjwt.helper.JWThelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -10,7 +10,7 @@
 package org.github.ycg000344.weiming.authserver.controller;
 
 import org.github.ycg000344.weiming.authserver.configuration.KeyConfiguration;
-import org.github.ycg000344.weiming.common.vo.ObjectRestResponse;
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

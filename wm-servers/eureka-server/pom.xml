@@ -21,7 +21,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.github.ycg000344</groupId>
-			<artifactId>emailsend-api</artifactId>
+			<artifactId>common-emailsend</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>

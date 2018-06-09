@@ -11,7 +11,7 @@ package org.github.ycg000344.weiming.eurekaserver.rabbitmq;
 
 import java.util.Arrays;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
+import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

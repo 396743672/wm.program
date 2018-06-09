@@ -14,7 +14,7 @@ import java.util.Map;
 
 import javax.mail.internet.MimeMessage;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
+import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 import org.github.ycg000344.weiming.components.emailsend.server.function.EmailSendFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

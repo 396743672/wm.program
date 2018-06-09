@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import org.github.ycg000344.weiming.components.emailsend.api.bean.BaseEmailInfo;
+import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 import org.github.ycg000344.weiming.components.emailsend.server.function.EmailSendFunction;
 
 import cn.hutool.core.collection.CollUtil;

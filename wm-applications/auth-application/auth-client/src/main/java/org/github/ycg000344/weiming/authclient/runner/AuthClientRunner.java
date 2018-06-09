@@ -11,8 +11,8 @@ package org.github.ycg000344.weiming.authclient.runner;
 
 import org.github.ycg000344.weiming.authclient.config.UserAuthConfig;
 import org.github.ycg000344.weiming.authclient.feign.ServiceAuthFeign;
-import org.github.ycg000344.weiming.common.vo.BaseResponse;
-import org.github.ycg000344.weiming.common.vo.ObjectRestResponse;
+import org.github.ycg000344.weiming.common.base.vo.BaseResponse;
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

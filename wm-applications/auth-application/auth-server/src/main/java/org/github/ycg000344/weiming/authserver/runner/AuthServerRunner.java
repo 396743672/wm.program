@@ -12,8 +12,8 @@ package org.github.ycg000344.weiming.authserver.runner;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import org.github.ycg000344.weiming.authcommon.jjwt.helper.RsaKeyHelper;
 import org.github.ycg000344.weiming.authserver.configuration.KeyConfiguration;
+import org.github.ycg000344.weiming.common.auth.jjwt.helper.RsaKeyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
