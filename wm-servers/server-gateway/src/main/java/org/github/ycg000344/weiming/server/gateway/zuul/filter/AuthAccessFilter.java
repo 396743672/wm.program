@@ -11,9 +11,9 @@ package org.github.ycg000344.weiming.server.gateway.zuul.filter;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.github.ycg000344.weiming.authclient.config.UserAuthConfig;
-import org.github.ycg000344.weiming.authclient.exception.UserTokenException;
-import org.github.ycg000344.weiming.authclient.jjwt.UserAuthUtil;
+import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
+import org.github.ycg000344.weiming.application.authclient.exception.UserTokenException;
+import org.github.ycg000344.weiming.application.authclient.jjwt.UserAuthUtil;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.base.context.BaseContextHandler;
 import org.springframework.beans.factory.annotation.Autowired;

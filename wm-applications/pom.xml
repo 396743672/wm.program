@@ -12,7 +12,8 @@
 	<description>应用集</description>
 
 	<modules>
-		<module>auth-application</module>
-		<module>dict-application</module>
+		<module>application-dictmanager</module>
+		<module>application-auth-server</module>
+		<module>application-auth-client</module>
 	</modules>
 </project>

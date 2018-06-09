@@ -9,7 +9,7 @@
   
 package org.github.ycg000344.weiming.server.gateway.zuul;
 
-import org.github.ycg000344.weiming.authclient.EnableAuthClient;
+import org.github.ycg000344.weiming.application.authclient.EnableAuthClient;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
