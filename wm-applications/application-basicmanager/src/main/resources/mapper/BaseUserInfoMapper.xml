@@ -6,7 +6,7 @@
       WARNING - @mbg.generated
     -->
     <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <id column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />

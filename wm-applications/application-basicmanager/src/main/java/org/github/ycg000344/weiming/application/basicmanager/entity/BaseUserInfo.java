@@ -16,7 +16,6 @@ public class BaseUserInfo {
     /**
      * 登录名
      */
-    @Id
     @Column(name = "login_name")
     private String loginName;
 

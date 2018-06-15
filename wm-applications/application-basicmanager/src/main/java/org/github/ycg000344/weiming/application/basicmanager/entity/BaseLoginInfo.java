@@ -12,7 +12,7 @@ public class BaseLoginInfo {
     private Integer loginId;
 
     /**
-     * 登录名称，取自用户信息表的login_name
+     * 登录名
      */
     @Column(name = "login_name")
     private String loginName;
@@ -58,18 +58,18 @@ public class BaseLoginInfo {
     }
 
     /**
-     * 获取登录名称，取自用户信息表的login_name
+     * 获取登录名
      *
-     * @return login_name - 登录名称，取自用户信息表的login_name
+     * @return login_name - 登录名
      */
     public String getLoginName() {
         return loginName;
     }
 
     /**
-     * 设置登录名称，取自用户信息表的login_name
+     * 设置登录名
      *
-     * @param loginName 登录名称，取自用户信息表的login_name
+     * @param loginName 登录名
      */
     public void setLoginName(String loginName) {
         this.loginName = loginName;
