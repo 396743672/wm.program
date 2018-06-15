@@ -11,6 +11,8 @@ package org.github.ycg000344.weiming.common.auth.jjwt.bean.impl;
 
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 
+import lombok.Data;
+
 /** 
  * ClassName:JJWTinfo <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -20,6 +22,7 @@ import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
  * @since    JDK 1.8 
  * @see IJWTinfo       
  */
+@Data
 public class JJWTinfo implements IJWTinfo {
 	
 	private String id;
