@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: wm-basic-manager
+    name: wm-app-basicmanager
   redis:
     host: 111.230.220.114
   datasource:

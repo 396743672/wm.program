@@ -3,7 +3,7 @@ server:
   
 spring:
   application:
-    name: wm-boot-admin-server-demo
+    name: wm-demo-bootadmin-server
     
 eureka:   
   instance:

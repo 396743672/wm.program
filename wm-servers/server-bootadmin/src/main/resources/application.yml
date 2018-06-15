@@ -3,7 +3,7 @@ server:
   
 spring:
   application:
-    name: wm-sba-server
+    name: wm-svr-sbaserver
 
 eureka:
   client:

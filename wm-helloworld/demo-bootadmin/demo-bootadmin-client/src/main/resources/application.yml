@@ -2,12 +2,7 @@ server:
   port: 8001
 spring: 
   application:
-    name: wm-boot-admin-client-demo
-#  boot: 
-#    admin:
-#      client:
-#        url:
-#        - "http://localhost:8000"
+    name: wm-demo-bootadmin-client
 
 eureka:   
   instance:

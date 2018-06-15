@@ -2,7 +2,7 @@ server:
   port: 0
 spring:
   application:
-    name: auth-server
+    name: wm-app-authserver
   redis:
     host: 111.230.220.114
 eureka:

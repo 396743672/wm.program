@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: gateway-zuul
+    name: wm-svr-gateway
     
 eureka:
   client:
@@ -19,7 +19,11 @@ eureka:
 zuul:
   ignoredServices: '*'
   prefix: /api
-
+  routes:
+    auth: 
+      path: /auth/**
+      service-id: wm-authserver
+    
 
 
     

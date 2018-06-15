@@ -12,8 +12,8 @@
 	<description>应用集</description>
 
 	<modules>
-		<module>application-auth-server</module>
-		<module>application-auth-client</module>
+		<module>application-authserver</module>
+		<module>application-authclient</module>
 		<module>application-basicmanager</module>
 	</modules>
 </project>
