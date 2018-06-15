@@ -13,6 +13,7 @@ import org.github.ycg000344.weiming.application.basicmanager.entity.BaseLoginInf
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseLoginInfoService;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseUserInfoService;
+import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.impl.JJWTinfo;
 import org.github.ycg000344.weiming.common.basebusiness.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,13 +57,13 @@ public class BaseLoginInfoController extends BaseController<BaseLoginInfoService
 		@ApiImplicitParam(value = "账户", required = true, dataType = "String", name = "loginname"),
 		@ApiImplicitParam(value = "密码", required = true, dataType = "String", name = "password")
 	})
-	public JJWTinfo login(@RequestParam("loginname")String loginname,@RequestParam("password") String password) {
+	public IJWTinfo login(@RequestParam("loginname")String loginname,@RequestParam("password") String password) {
 		BaseLoginInfo entity = new BaseLoginInfo();
 		entity.setLoginName(loginname);
 		entity = loginInfoService.selectOne(entity);
 		if (null != entity && entity.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))) {
 			BaseUserInfo userInfo = userInfoService.selectById(entity.getLoginId());
-			JJWTinfo iTinfo = new JJWTinfo(entity.getLoginName(), String.valueOf(entity.getLoginId()), userInfo.getUserName());
+			IJWTinfo iTinfo = new JJWTinfo(entity.getLoginName(), String.valueOf(entity.getLoginId()), userInfo.getUserName());
 			log.info("***********************用户：【{}】校验密码成功*********************************************************",loginname);
 			return iTinfo;
 		}

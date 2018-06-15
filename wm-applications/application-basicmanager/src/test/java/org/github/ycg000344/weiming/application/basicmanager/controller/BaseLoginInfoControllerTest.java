@@ -10,7 +10,7 @@
 package org.github.ycg000344.weiming.application.basicmanager.controller;
 
 import org.github.ycg000344.weiming.application.basicmanager.BasicManagerAppTest;
-import org.github.ycg000344.weiming.common.auth.jjwt.bean.impl.JJWTinfo;
+import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,8 +34,8 @@ public class BaseLoginInfoControllerTest extends BasicManagerAppTest {
 	public void test() {
 		String password = "qqq123";
 		String loginname = "admin";
-		JJWTinfo login = controller.login(loginname, password);
-		log.info("**********************【{}】******************",login.toString());
+		IJWTinfo login = controller.login(loginname, password);
+		log.info("**********************【id:{},loginname:{},name:{}】******************",login.getId(),login.getUniqueName(),login.getName()	);
 		
 	}
 
