@@ -22,7 +22,10 @@ zuul:
   routes:
     auth: 
       path: /auth/**
-      service-id: wm-authserver
+      service-id: wm-app-authserver
+    basicmanager:
+      path: /basic/**
+      service-id: wm-app-basicmanager
     
 
 
