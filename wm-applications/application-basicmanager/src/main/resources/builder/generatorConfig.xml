@@ -4,32 +4,44 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <!--<properties resource="dev.properties"/>-->
+	<!--<properties resource="dev.properties"/> -->
 
-    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
-        <property name="beginningDelimiter" value="`"/>
-        <property name="endingDelimiter" value="`"/>
-        <property name="mergeable" value="false"></property>
-        <property name="javaFileEncoding" value="UTF-8"/>
-        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
-        </plugin>
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<property name="mergeable" value="false"></property>
+		<property name="javaFileEncoding" value="UTF-8" />
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers"
+				value="tk.mybatis.mapper.common.Mapper" />
+		</plugin>
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://111.230.220.114:3306/weiming?useUnicode=true&amp;characterEncoding=UTF8"
-                        userId="average"
-                        password="Average123!">
-        </jdbcConnection>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://111.230.220.114:3306/weiming?useUnicode=true&amp;characterEncoding=UTF8"
+			userId="average" password="Average123!">
+		</jdbcConnection>
 
-        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+		<javaModelGenerator
+			targetPackage="${targetModelPackage}"
+			targetProject="${targetJavaProject}" />
 
-        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+		<sqlMapGenerator targetPackage="${targetXMLPackage}"
+			targetProject="${targetResourcesProject}" />
 
-        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
-                             type="XMLMAPPER"/>
+		<javaClientGenerator
+			targetPackage="${targetMapperPackage}"
+			targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
-        <table tableName="t_base_dict" domainObjectName="DataDictionary">
-            <generatedKey column="dict_id" identity="false" sqlStatement="myql"/>
-        </table>
-    </context>
+		<table tableName="t_base_dict" domainObjectName="BaseDictInfo">
+			<generatedKey column="dict_id" identity="true"
+				sqlStatement="MySql" />
+		</table>
+		<table tableName="t_base_user" domainObjectName="BaseUserInfo">
+			<generatedKey column="user_id" identity="true"
+				sqlStatement="MySql" />
+		</table>
+		<table tableName="t_base_login" domainObjectName="BaseLoginInfo">
+		</table>
+	</context>
 </generatorConfiguration>

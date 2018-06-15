@@ -80,6 +80,7 @@ weiming:
     druid: 
       loginname: admin
       password: admin
+    defaultPwd: qqq123
 
 
 

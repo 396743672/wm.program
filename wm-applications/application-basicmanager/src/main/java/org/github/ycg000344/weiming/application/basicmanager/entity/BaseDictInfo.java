@@ -3,23 +3,14 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-/** 
- * ClassName: DataDictionary <br/> 
- * Description: 数据字典 <br/><br/>  
- * Date: 2018年6月15日 上午11:04:19 <br/><br/>  
- * 
- * @author po.lu
- * @version 1.0.0
- * @since JDK 1.8
- */  
 @Table(name = "t_base_dict")
-public class DataDictionary {
+public class BaseDictInfo {
     /**
      * 字典ID
      */
     @Id
     @Column(name = "dict_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "myql")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer dictId;
 
     /**
