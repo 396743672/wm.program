@@ -48,7 +48,7 @@ public class CommonConstants {
      * <p>spring.application.name.</p> 
      * @since JDK 1.8 
      */  
-    public static final String AUTH_SERVER_NAME = "auth-server";
+    public static final String AUTH_SERVER_NAME = "wm-app-authserver";
     
     /** 
      * AUTH_USER_TOKEN: user token header. 
