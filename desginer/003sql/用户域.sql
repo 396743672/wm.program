@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/6/15 18:19:32                           */
+/* Created on:     2018/6/15 18:25:50                           */
 /*==============================================================*/
 
 
@@ -14,10 +14,12 @@ drop table if exists t_base_user;
 create table t_base_login
 (
    login_id             int comment '登录id，取自用户信息表的user_id',
+   login_name           varchar(60) comment '登录名',
    password             varchar(60) comment '登录密码',
    create_date          datetime default CURRENT_TIMESTAMP comment '创建时间',
    update_date          datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
-   status               int default 1 comment '是否可用'
+   status               int default 1 comment '是否可用',
+   unique key AK_Key_1 (login_name)
 );
 
 alter table t_base_login comment '登录表';
