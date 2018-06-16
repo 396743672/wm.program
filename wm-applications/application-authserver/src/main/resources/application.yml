@@ -15,8 +15,13 @@ eureka:
     lease-renewal-interval-in-seconds: 10
     lease-expiration-duration-in-seconds: 20
     
-
-
+feign: 
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+        loggerLevel: basic
 
 ###                                              #######
 ###                    _ooOoo_                   #######
