@@ -34,7 +34,7 @@ import lombok.Setter;
 public class KeyConfiguration {
 
 	/** 用来生成公钥、密钥的密码 */
-	@Value("${jwt.rsa-secret}")
+	@Value("${authserver.jwt.rsa-secret}")
 	private String userSecret;
 	/** 存储于内存中的公钥 */
 	private byte[] userPubKey;
