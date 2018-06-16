@@ -28,6 +28,9 @@ public class JJWTinfo implements IJWTinfo {
 	private String id;
 	private String uniqueName;
 	private String name;
+	
+	
+	
 
     public JJWTinfo(String uniqueName,String id,  String name) {
         this.uniqueName = uniqueName;
@@ -48,6 +51,10 @@ public class JJWTinfo implements IJWTinfo {
 	@Override
 	public String getName() {
 		return name;
+	}
+
+	public JJWTinfo() {
+		super();
 	}
 
 }
