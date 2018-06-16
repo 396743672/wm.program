@@ -35,7 +35,7 @@ public class AuthControllerTest extends AuthServerAppTest {
 	@Test
 	public void test() {
 		JwtAuthenticationRequest authenticationRequest = new JwtAuthenticationRequest();
-		authenticationRequest.setUsername("admin");
+		authenticationRequest.setLoginname("admin");
 		authenticationRequest.setPassword("qqq123");
 		try {
 			ResponseEntity<JwtAuthenticationResponse> responseEntity = controller.createAuthenticationToken(authenticationRequest );

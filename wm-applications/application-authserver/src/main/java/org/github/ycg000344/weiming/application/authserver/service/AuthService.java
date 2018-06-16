@@ -12,8 +12,10 @@ package org.github.ycg000344.weiming.application.authserver.service;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+
 import org.github.ycg000344.weiming.application.authserver.rpc.LoginFeign;
 import org.github.ycg000344.weiming.application.authserver.utils.JwtTokenUtil;
+import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,16 +52,19 @@ public class AuthService {
 	 * @return 
 	 * @throws InvalidKeySpecException 
 	 * @throws NoSuchAlgorithmException 
+	 * @throws AuthException 
 	 * @since JDK 1.8 
 	 * @see
 	 */
-	public String login(JwtAuthenticationRequest authenticationRequest) throws NoSuchAlgorithmException, InvalidKeySpecException {
+	public String login(JwtAuthenticationRequest authenticationRequest) throws NoSuchAlgorithmException, InvalidKeySpecException, AuthException {
 		// TODO 人员进行登录，获取token
-		log.info("***************** 人员：{} 进行登录，获取token *********************",authenticationRequest.getUsername());
+		log.info("***************** 人员：{} 进行登录，获取token *********************",authenticationRequest.getLoginname());
 		String token = null;
-		IJWTinfo jwtInfo = loginFeign.login(authenticationRequest.getUsername(),authenticationRequest.getPassword());
+		IJWTinfo jwtInfo = loginFeign.login(authenticationRequest.getLoginname(),authenticationRequest.getPassword());
 		if (null!= jwtInfo && StrUtil.isNotEmpty(jwtInfo.getId())) {
 			token = jwtTokenUtil.generateToken(jwtInfo);
+		}else {
+			throw new AuthException("login fail");
 		}
 		return token;
 	}
