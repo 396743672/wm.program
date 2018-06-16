@@ -12,8 +12,8 @@ package org.github.ycg000344.weiming.server.gateway.zuul.filter;
 import javax.servlet.http.HttpServletRequest;
 
 import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
-import org.github.ycg000344.weiming.application.authclient.exception.UserTokenException;
 import org.github.ycg000344.weiming.application.authclient.jjwt.UserAuthUtil;
+import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.base.context.BaseContextHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,7 +75,7 @@ public class AuthAccessFilter extends ZuulFilter {
 		try {
 			user = getJWTUser(request, ctx);
 		} catch (Exception e) {
-			setFailedRequest(JSON.toJSONString(new UserTokenException(e.getMessage())), 500);
+			setFailedRequest(JSON.toJSONString(new AuthException(e.getMessage())), 500);
 		}
 		return null;
 	}

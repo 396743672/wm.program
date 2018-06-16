@@ -44,6 +44,14 @@ public class CommonConstants {
     
     /** 鉴权服务 */
     /** 
+     * AUTH_EXCEPTION_CODE: 鉴权异常代码.
+     * 
+     * @author po.lu
+     * @version 1.0.0
+     * @since JDK 1.8
+     */  
+    public static final Integer AUTH_EXCEPTION_CODE = 110010 ;
+    /** 
      * AUTH_SERVER_NAME:鉴权服务应用名称</br>
      * <p>spring.application.name.</p> 
      * @since JDK 1.8 

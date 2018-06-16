@@ -10,7 +10,7 @@
 package org.github.ycg000344.weiming.application.authclient.jjwt;
 
 import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
-import org.github.ycg000344.weiming.application.authclient.exception.UserTokenException;
+import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.auth.jjwt.helper.JWThelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,11 +41,11 @@ public class UserAuthUtil {
 		try {
 			return JWThelper.getInfoFromToken(token, userAuthConfig.getPubKeyByte());
 		} catch (ExpiredJwtException ex) {
-			throw new UserTokenException("User token expired!");
+			throw new AuthException("User token expired!");
 		} catch (SignatureException ex) {
-			throw new UserTokenException("User token signature error!");
+			throw new AuthException("User token signature error!");
 		} catch (IllegalArgumentException ex) {
-			throw new UserTokenException("User token is null or empty!");
+			throw new AuthException("User token is null or empty!");
 		}
 	}
 }
