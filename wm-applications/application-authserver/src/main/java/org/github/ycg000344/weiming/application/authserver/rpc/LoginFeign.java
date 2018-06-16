@@ -9,11 +9,11 @@
   
 package org.github.ycg000344.weiming.application.authserver.rpc;
 
-import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
+import org.github.ycg000344.weiming.common.auth.jjwt.bean.impl.JJWTinfo;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /** 
  * ClassName:LoginFeign <br/><br/>  
@@ -24,11 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @since    JDK 1.8 
  * @see       
  */
-@FeignClient("wm-app-basicmanager")
-@Configuration
+@FeignClient(name = "wm-app-basicmanager")
 public interface LoginFeign {
 	
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	IJWTinfo login(String loginname, String password);
+	@RequestMapping(value = "/login/validate", method = RequestMethod.POST)
+	JJWTinfo login(@RequestParam("loginname") String loginname, @RequestParam("password") String password );
 }
   
