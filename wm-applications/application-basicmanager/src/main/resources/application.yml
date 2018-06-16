@@ -8,7 +8,7 @@ spring:
     host: 111.230.220.114
   datasource:
     name: weiming
-    url: jdbc:mysql://111.230.220.114:3306/weiming?useUnicode=true&characterEncoding=UTF8&useSSL=false
+    url: jdbc:mysql://111.230.220.114:3306/weiming?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Hongkong
     username: average
     password: Average123!
     type: com.alibaba.druid.pool.DruidDataSource
@@ -36,6 +36,7 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+      
       
 
     
