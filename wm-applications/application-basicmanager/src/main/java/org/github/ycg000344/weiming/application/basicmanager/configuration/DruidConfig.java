@@ -38,9 +38,9 @@ import com.alibaba.druid.support.http.WebStatFilter;
 @Configuration
 public class DruidConfig {
 	
-	@Value("${weiming.basicmanager.druid.loginname}")
+	@Value("${basicmanager.druid.loginname}")
 	private String loginName;
-	@Value("${weiming.basicmanager.druid.password}")
+	@Value("${basicmanager.druid.password}")
 	private String password;
 	
 	@ConfigurationProperties(prefix = "spring.datasource")

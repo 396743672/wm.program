@@ -82,12 +82,11 @@ logging:
 ###...............自定义配置项....................#######
  
 
-weiming: 
-  basicmanager: 
-    druid: 
-      loginname: admin
-      password: admin
-    defaultPwd: qqq123
+basicmanager: 
+  druid: 
+    loginname: admin
+    password: admin
+  defaultPwd: qqq123
 
 
 

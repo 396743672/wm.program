@@ -48,7 +48,7 @@ public class AuthAccessFilter extends ZuulFilter {
 
 	@Value("${zuul.prefix}")
 	private String prefix;
-	@Value("${gate.ignore.startWith}")
+	@Value("${gateway.ignore.startWith}")
 	private String startWith;
 
 	@Autowired

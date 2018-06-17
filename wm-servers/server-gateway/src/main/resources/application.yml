@@ -52,7 +52,7 @@ zuul:
 ###                                              #######
 ###...............自定义配置项....................#######
 
-gate: 
+gateway: 
   ignore: 
     startWith: /static,/jjwt/token
 
