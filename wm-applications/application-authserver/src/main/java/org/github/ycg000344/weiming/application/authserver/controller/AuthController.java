@@ -41,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
  * @see
  */
 @RestController
-@RequestMapping("/jjwt")
+@RequestMapping("/user")
 @Slf4j
 public class AuthController {
 
