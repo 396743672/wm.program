@@ -63,5 +63,14 @@ public class CommonConstants {
      * @since JDK 1.8 
      */  
     public static final String AUTH_USER_TOKEN = "X-USER-AUTHORIZATION";
+    
+    /** 
+     * AUTH_CLIENT_SECRET: 
+     * 
+     * @author po.lu
+     * @version 1.0.0
+     * @since JDK 1.8
+     */  
+    public static final String AUTH_CLIENT_SECRET = "QQQ123";
 }
   
