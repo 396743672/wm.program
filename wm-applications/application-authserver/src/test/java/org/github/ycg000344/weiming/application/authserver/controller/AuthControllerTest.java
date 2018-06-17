@@ -12,6 +12,7 @@ package org.github.ycg000344.weiming.application.authserver.controller;
 import org.github.ycg000344.weiming.authserver.AuthServerAppTest;
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRequest;
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationResponse;
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,9 @@ public class AuthControllerTest extends AuthServerAppTest {
 		authenticationRequest.setLoginname("admin");
 		authenticationRequest.setPassword("qqq123");
 		try {
-			ResponseEntity<JwtAuthenticationResponse> responseEntity = controller.createAuthenticationToken(authenticationRequest );
-			String token = responseEntity.getBody().getToken();
-			log.info("************token:【{}】************",token);
+			ObjectRestResponse<JwtAuthenticationResponse> responseEntity = controller.createAuthenticationToken(authenticationRequest );
+			JwtAuthenticationResponse token = responseEntity.getData();
+			log.info("************token:【{}】************",token.getToken());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

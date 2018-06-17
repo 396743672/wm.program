@@ -16,6 +16,7 @@ import org.github.ycg000344.weiming.application.authserver.service.AuthService;
 import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRequest;
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationResponse;
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,11 +52,11 @@ public class AuthController {
 	@PostMapping("/token")
 	@ApiOperation(value = "获取token", notes = "登录获取token")
 	@ApiImplicitParam(value = "封装登录请求对象", required = true, dataType = "JwtAuthenticationRequest", name = "authenticationRequest")
-	public ResponseEntity<JwtAuthenticationResponse> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) {
+	public ObjectRestResponse<JwtAuthenticationResponse> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) {
 		try {
 			log.info("***weiming专用日志打印语句：***用户：【{}】进行登录***", authenticationRequest.getLoginname());
 			String token = authService.login(authenticationRequest);
-			return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+			return  new ObjectRestResponse<JwtAuthenticationResponse>().data(new JwtAuthenticationResponse(token));
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
 			log.error("***weiming专用日志打印语句：***错误信息：【{}】***",e);
 			throw new AuthException("login fail");

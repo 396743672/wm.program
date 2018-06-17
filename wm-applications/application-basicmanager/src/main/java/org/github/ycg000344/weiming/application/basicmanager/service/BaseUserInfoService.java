@@ -36,7 +36,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUserInfo> {
 
-	@Value("${weiming.basicmanager.defaultpwd}")
+	@Value("${basicmanager.defaultpwd}")
 	private String defaultPwd;
 	@Autowired
 	private BaseLoginInfoMapper  loginInfoMapper ;

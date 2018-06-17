@@ -54,7 +54,7 @@ zuul:
 
 gateway: 
   ignore: 
-    startWith: /static,/jjwt/token
+    startWith: /static,/auth/user/token
 
 
 
