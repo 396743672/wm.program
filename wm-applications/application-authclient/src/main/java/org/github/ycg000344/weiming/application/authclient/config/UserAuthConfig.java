@@ -10,6 +10,7 @@
 package org.github.ycg000344.weiming.application.authclient.config;
 
 import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
+import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,6 +26,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@Component
 public class UserAuthConfig {
 
     private byte[] pubKeyByte;
