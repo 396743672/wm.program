@@ -9,8 +9,7 @@
   
 package org.github.ycg000344.weiming.application.authclient.configration;
 
-import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
-import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /** 
@@ -23,12 +22,18 @@ import org.springframework.context.annotation.Configuration;
  * @see       
  */
 @Configuration
+@ComponentScan(basePackages = {"org.github.ycg000344.weiming.application.authclient"})
 public class AutoConfiguration {
 
-	@Bean
+/*	@Bean
     UserAuthConfig getUserAuthConfig(){
         return new UserAuthConfig();
     }
+	
+	@Bean
+	UserAuthUtil getUserAuthUtil() {
+		return new UserAuthUtil();
+	}*/
 	
 }
   
