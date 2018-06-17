@@ -51,18 +51,28 @@ public class AuthServerRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("******************** 应用程序:{}启动成功，准备向内存和Redis中写入密钥 ***************************",name);
-        if (redisTemplate.hasKey(REDIS_USER_PRI_KEY)&&redisTemplate.hasKey(REDIS_USER_PUB_KEY)) {
-            keyConfiguration.setUserPriKey(RsaKeyHelper.getInstance().toBytes(redisTemplate.opsForValue().get(REDIS_USER_PRI_KEY).toString()));
-            keyConfiguration.setUserPubKey(RsaKeyHelper.getInstance().toBytes(redisTemplate.opsForValue().get(REDIS_USER_PUB_KEY).toString()));
-        } else {
-            Map<String, byte[]> keyMap = RsaKeyHelper.getInstance().generateKey(keyConfiguration.getUserSecret());
-            keyConfiguration.setUserPriKey(keyMap.get(RsaKeyHelper.PRI));
-            keyConfiguration.setUserPubKey(keyMap.get(RsaKeyHelper.PUB));
-            redisTemplate.opsForValue().set(REDIS_USER_PRI_KEY, RsaKeyHelper.getInstance().toHexString(keyMap.get(RsaKeyHelper.PRI)),30,TimeUnit.MINUTES);
-            redisTemplate.opsForValue().set(REDIS_USER_PUB_KEY, RsaKeyHelper.getInstance().toHexString(keyMap.get(RsaKeyHelper.PUB)),30,TimeUnit.MINUTES);
-        }
-        log.info("**************************************成功向内存和Redis中写入密钥******************************************");
-    }
+		log.info("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***start***", name);
+		/*
+		 * if (redisTemplate.hasKey(REDIS_USER_PRI_KEY)&&redisTemplate.hasKey(
+		 * REDIS_USER_PUB_KEY)) {
+		 * keyConfiguration.setUserPriKey(RsaKeyHelper.getInstance().toBytes(
+		 * redisTemplate.opsForValue().get(REDIS_USER_PRI_KEY).toString()));
+		 * keyConfiguration.setUserPubKey(RsaKeyHelper.getInstance().toBytes(
+		 * redisTemplate.opsForValue().get(REDIS_USER_PUB_KEY).toString())); } else {
+		 * Map<String, byte[]> keyMap =
+		 * RsaKeyHelper.getInstance().generateKey(keyConfiguration.getUserSecret());
+		 * keyConfiguration.setUserPriKey(keyMap.get(RsaKeyHelper.PRI));
+		 * keyConfiguration.setUserPubKey(keyMap.get(RsaKeyHelper.PUB));
+		 * redisTemplate.opsForValue().set(REDIS_USER_PRI_KEY,
+		 * RsaKeyHelper.getInstance().toHexString(keyMap.get(RsaKeyHelper.PRI)),30,
+		 * TimeUnit.MINUTES); redisTemplate.opsForValue().set(REDIS_USER_PUB_KEY,
+		 * RsaKeyHelper.getInstance().toHexString(keyMap.get(RsaKeyHelper.PUB)),30,
+		 * TimeUnit.MINUTES); }
+		 */
+		Map<String, byte[]> keyMap = RsaKeyHelper.getInstance().generateKey(keyConfiguration.getUserSecret());
+		keyConfiguration.setUserPriKey(keyMap.get(RsaKeyHelper.PRI));
+		keyConfiguration.setUserPubKey(keyMap.get(RsaKeyHelper.PUB));
+		log.info("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***successful***", name);
+	}
 
 }
