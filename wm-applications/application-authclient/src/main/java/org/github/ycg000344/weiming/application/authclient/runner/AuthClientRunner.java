@@ -52,10 +52,10 @@ public class AuthClientRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("*********************应用【{}】启动成功，准备获取公钥***************************************", applicationName);
+		log.info("***weiming专用log***应用【{}】启动成功，准备获取公钥***", applicationName);
 		try {
 			refreshUserPubKey();
-			log.info("**************************成功从服务端获取到公钥：【{}】**************************************************",userAuthConfig.getPubKeyByte());
+			log.info("***weiming专用log***应用【{}】成功从服务端获取到公钥***",applicationName);
 		} catch (Exception e) {
 			log.error("初始化加载用户pubKey失败,1分钟后自动重试!", e);
 		}
