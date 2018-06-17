@@ -11,6 +11,7 @@ package org.github.ycg000344.weiming.application.authclient.runner;
 
 import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
 import org.github.ycg000344.weiming.application.authclient.feign.ServiceAuthFeign;
+import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.base.vo.BaseResponse;
 import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,6 @@ import lombok.extern.slf4j.Slf4j;
 @Order(value = 1)
 public class AuthClientRunner implements CommandLineRunner {
 
-	@Value("${auth.client.secret}")
-	private String clientSecret;
 	@Value("${spring.application.name}")
 	private String applicationName;
 	@Autowired
@@ -65,7 +64,7 @@ public class AuthClientRunner implements CommandLineRunner {
 	@Scheduled(cron = "0 0/1 * * * ?")
 	private void refreshUserPubKey() {
 		BaseResponse resp = serviceAuthFeign.getUserPublicKey(applicationName,
-				clientSecret);
+				CommonConstants.AUTH_CLIENT_SECRET);
 		if (resp.getStatus() == HttpStatus.OK.value()) {
 			ObjectRestResponse<byte[]> userResponse = (ObjectRestResponse<byte[]>) resp;
 			this.userAuthConfig.setPubKeyByte(userResponse.getData());
