@@ -52,13 +52,6 @@ zuul:
 ###                                              #######
 ###...............自定义配置项....................#######
 
-
-
-
-auth: 
-  client: 
-    secret: qqq123
-
 gate: 
   ignore: 
     startWith: /static,/jjwt/token
