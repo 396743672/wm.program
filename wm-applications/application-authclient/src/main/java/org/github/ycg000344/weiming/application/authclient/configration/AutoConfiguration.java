@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
  * @see       
  */
 @Configuration
-@ComponentScan(basePackages = {"org.github.ycg000344.weiming.application.authclient"})
+@ComponentScan(basePackages = {"org.github.ycg000344.weiming.application.authclient","org.github.ycg000344.weiming.common.base.aspect"})
 public class AutoConfiguration {
 
 /*	@Bean
