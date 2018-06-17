@@ -32,7 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * ClassName:AuthAccessFilter <br/>
  * <br/>
- * Description: TODO <br/>
+ * Description: 鉴权过滤器 <br/>
+ * 判断请求是否属于白名单， <br/>
+ * 请求中是否含有token， <br/>
+ * 验证token合法性 <br/>
  * <br/>
  * Date: 2018年5月17日 下午4:52:07 <br/>
  * <br/>
@@ -59,7 +62,7 @@ public class AuthAccessFilter extends ZuulFilter {
 	@SuppressWarnings("unused")
 	@Override
 	public Object run() throws ZuulException {
-		log.info("***************************路由网关过滤器开启************************************");
+		log.info("***weiming专用log***路由网关鉴权过滤器***start***");
 		BaseContextHandler.remove();
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
@@ -68,13 +71,17 @@ public class AuthAccessFilter extends ZuulFilter {
 		String method = request.getMethod();
 
 		if (isStartWith(requestURI)) {
+			log.info("***weiming专用log***路由网关鉴权过滤器***本次请求：【{}】属于请求白名单***",requestURI);
 			return null;
 		}
 
 		IJWTinfo user = null;
 		try {
 			user = getJWTUser(request, ctx);
+			log.info("***weiming专用log***路由网关鉴权过滤器***token信息为：标识id：【{}】，名称：【{}】***",user.getUniqueName(),user.getName());
+			log.info("***weiming专用log***路由网关鉴权过滤器***successful***");
 		} catch (Exception e) {
+			log.error("***weiming专用log***路由网关鉴权过滤器***error***请求token非法***");
 			setFailedRequest(JSON.toJSONString(new AuthException(e.getMessage())), 500);
 		}
 		return null;
@@ -90,7 +97,7 @@ public class AuthAccessFilter extends ZuulFilter {
 	 * @see
 	 */
 	private void setFailedRequest(String body, int code) {
-		log.debug("Reporting error ({}): {}", code, body);
+		log.error("***weiming专用log***路由网关鉴权过滤器***Reporting error ({}): {}***",code, body);
 		RequestContext ctx = RequestContext.getCurrentContext();
 		ctx.setResponseStatusCode(code);
 		if (ctx.getResponseBody() == null) {
