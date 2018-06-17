@@ -29,7 +29,7 @@ public class JwtAuthenticationRequest implements Serializable {
 	 * @since JDK 1.8 
 	 */  
 	private static final long serialVersionUID = 8707163730220576650L;
-	private String username;
+	private String loginname;
     private String password;
 }
   
