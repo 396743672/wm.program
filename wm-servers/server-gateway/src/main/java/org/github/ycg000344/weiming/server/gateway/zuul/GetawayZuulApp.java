@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /** 
  * ClassName:GetawayZuulApp <br/><br/>  
@@ -25,6 +26,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
  * @since    JDK 1.8 
  * @see       
  */
+@EnableFeignClients(value = {"org.github.ycg000344.weiming.server.gateway.zuul","org.github.ycg000344.weiming.application.authclient.feign"})
 @SpringBootApplication
 @EnableEurekaClient
 @EnableAuthClient
