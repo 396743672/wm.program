@@ -25,14 +25,14 @@ public class BaseLoginInfo {
     /**
      * 创建时间
      */
-    @Column(name = "create_date")
-    private Date createDate;
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * 更新时间
      */
-    @Column(name = "update_date")
-    private Date updateDate;
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
      * 是否可用
@@ -96,37 +96,37 @@ public class BaseLoginInfo {
     /**
      * 获取创建时间
      *
-     * @return create_date - 创建时间
+     * @return create_time - 创建时间
      */
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreateTime() {
+        return createTime;
     }
 
     /**
      * 设置创建时间
      *
-     * @param createDate 创建时间
+     * @param createTime 创建时间
      */
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     /**
      * 获取更新时间
      *
-     * @return update_date - 更新时间
+     * @return update_time - 更新时间
      */
-    public Date getUpdateDate() {
-        return updateDate;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
     /**
      * 设置更新时间
      *
-     * @param updateDate 更新时间
+     * @param updateTime 更新时间
      */
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     /**

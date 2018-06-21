@@ -3,27 +3,21 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "t_base_user")
-public class BaseUserInfo {
+@Table(name = "t_base_role")
+public class BaseRoleInfo {
     /**
-     * 用户id
+     * 角色id，自增，从600000
      */
     @Id
-    @Column(name = "user_id")
+    @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer roleId;
 
     /**
-     * 登录名
+     * 角色名称
      */
-    @Column(name = "login_name")
-    private String loginName;
-
-    /**
-     * 用户名
-     */
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "role_name")
+    private String roleName;
 
     /**
      * 创建时间
@@ -38,62 +32,44 @@ public class BaseUserInfo {
     private Date updateTime;
 
     /**
-     * 是否可用
+     * 状态
      */
     private Integer status;
 
     /**
-     * 获取用户id
+     * 获取角色id，自增，从600000
      *
-     * @return user_id - 用户id
+     * @return role_id - 角色id，自增，从600000
      */
-    public Integer getUserId() {
-        return userId;
+    public Integer getRoleId() {
+        return roleId;
     }
 
     /**
-     * 设置用户id
+     * 设置角色id，自增，从600000
      *
-     * @param userId 用户id
+     * @param roleId 角色id，自增，从600000
      */
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     /**
-     * 获取登录名
+     * 获取角色名称
      *
-     * @return login_name - 登录名
+     * @return role_name - 角色名称
      */
-    public String getLoginName() {
-        return loginName;
+    public String getRoleName() {
+        return roleName;
     }
 
     /**
-     * 设置登录名
+     * 设置角色名称
      *
-     * @param loginName 登录名
+     * @param roleName 角色名称
      */
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    /**
-     * 获取用户名
-     *
-     * @return user_name - 用户名
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * 设置用户名
-     *
-     * @param userName 用户名
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     /**
@@ -133,18 +109,18 @@ public class BaseUserInfo {
     }
 
     /**
-     * 获取是否可用
+     * 获取状态
      *
-     * @return status - 是否可用
+     * @return status - 状态
      */
     public Integer getStatus() {
         return status;
     }
 
     /**
-     * 设置是否可用
+     * 设置状态
      *
-     * @param status 是否可用
+     * @param status 状态
      */
     public void setStatus(Integer status) {
         this.status = status;

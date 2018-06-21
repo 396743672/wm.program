@@ -33,15 +33,42 @@
 			targetPackage="${targetMapperPackage}"
 			targetProject="${targetJavaProject}" type="XMLMAPPER" />
 
+		<!-- 数据字典 -->
 		<table tableName="t_base_dict" domainObjectName="BaseDictInfo">
 			<generatedKey column="dict_id" identity="true"
 				sqlStatement="MySql" />
 		</table>
+
+		<!-- 用户信息 -->
 		<table tableName="t_base_user" domainObjectName="BaseUserInfo">
 			<generatedKey column="user_id" identity="true"
 				sqlStatement="MySql" />
 		</table>
+
+		<!-- 登录 -->
 		<table tableName="t_base_login" domainObjectName="BaseLoginInfo">
+		</table>
+
+		<!-- 菜单路由 -->
+		<table tableName="t_base_router"
+			domainObjectName="BaseRouterInfo">
+			<generatedKey column="router_id" identity="true"
+				sqlStatement="MySql" />
+		</table>
+
+		<!-- 角色 -->
+		<table tableName="t_base_role" domainObjectName="BaseRoleInfo">
+			<generatedKey column="role_id" identity="true"
+				sqlStatement="MySql" />
+		</table>
+
+		<!-- 用户角色 -->
+		<table tableName="t_base_user_roles"
+			domainObjectName="BaseUserRolesInfo">
+		</table>
+		<!-- 用户菜单路由 -->
+		<table tableName="t_base_user_routers"
+			domainObjectName="BaseUserRoutersInfo">
 		</table>
 	</context>
 </generatorConfiguration>

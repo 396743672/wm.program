@@ -3,27 +3,19 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-@Table(name = "t_base_user")
-public class BaseUserInfo {
+@Table(name = "t_base_user_routers")
+public class BaseUserRoutersInfo {
     /**
      * 用户id
      */
-    @Id
     @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     /**
-     * 登录名
+     * 路由ids,使用,分割
      */
-    @Column(name = "login_name")
-    private String loginName;
-
-    /**
-     * 用户名
-     */
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "router_ids")
+    private String routerIds;
 
     /**
      * 创建时间
@@ -38,7 +30,7 @@ public class BaseUserInfo {
     private Date updateTime;
 
     /**
-     * 是否可用
+     * 状态
      */
     private Integer status;
 
@@ -61,39 +53,21 @@ public class BaseUserInfo {
     }
 
     /**
-     * 获取登录名
+     * 获取路由ids,使用,分割
      *
-     * @return login_name - 登录名
+     * @return router_ids - 路由ids,使用,分割
      */
-    public String getLoginName() {
-        return loginName;
+    public String getRouterIds() {
+        return routerIds;
     }
 
     /**
-     * 设置登录名
+     * 设置路由ids,使用,分割
      *
-     * @param loginName 登录名
+     * @param routerIds 路由ids,使用,分割
      */
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    /**
-     * 获取用户名
-     *
-     * @return user_name - 用户名
-     */
-    public String getUserName() {
-        return userName;
-    }
-
-    /**
-     * 设置用户名
-     *
-     * @param userName 用户名
-     */
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setRouterIds(String routerIds) {
+        this.routerIds = routerIds;
     }
 
     /**
@@ -133,18 +107,18 @@ public class BaseUserInfo {
     }
 
     /**
-     * 获取是否可用
+     * 获取状态
      *
-     * @return status - 是否可用
+     * @return status - 状态
      */
     public Integer getStatus() {
         return status;
     }
 
     /**
-     * 设置是否可用
+     * 设置状态
      *
-     * @param status 是否可用
+     * @param status 状态
      */
     public void setStatus(Integer status) {
         this.status = status;
