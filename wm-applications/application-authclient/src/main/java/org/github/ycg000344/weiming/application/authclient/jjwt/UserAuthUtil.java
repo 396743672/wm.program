@@ -9,6 +9,9 @@
 
 package org.github.ycg000344.weiming.application.authclient.jjwt;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+
 import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
 import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
@@ -17,7 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 
 /**
  * ClassName:UserAuthUtil <br/>
@@ -37,15 +42,23 @@ public class UserAuthUtil {
 	@Autowired
 	private UserAuthConfig userAuthConfig;
 
-	public IJWTinfo getInfoFromToken(String token) throws Exception {
+	public IJWTinfo getInfoFromToken(String token) {
 		try {
 			return JWThelper.getInfoFromToken(token, userAuthConfig.getPubKeyByte());
 		} catch (ExpiredJwtException ex) {
-			throw new AuthException("User token expired!");
+			throw new AuthException("User token ExpiredJwtException!");
 		} catch (SignatureException ex) {
-			throw new AuthException("User token signature error!");
+			throw new AuthException("User token SignatureException!");
 		} catch (IllegalArgumentException ex) {
-			throw new AuthException("User token is null or empty!");
+			throw new AuthException("User token IllegalArgumentException!");
+		} catch (UnsupportedJwtException e) {
+			throw new AuthException("User token UnsupportedJwtException!");
+		} catch (MalformedJwtException e) {
+			throw new AuthException("User token MalformedJwtException!");
+		} catch (InvalidKeySpecException e) {
+			throw new AuthException("User token InvalidKeySpecException!");
+		} catch (NoSuchAlgorithmException e) {
+			throw new AuthException("User token NoSuchAlgorithmException!");
 		}
 	}
 }
