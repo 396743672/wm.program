@@ -31,9 +31,9 @@ public class BaseRoleInfoControllerTest extends BasicManagerAppTest {
 	public void test() {
 		BaseRoleInfo entity =null;
 		// 增
-//		entity = new BaseRoleInfo();
-//		entity.setRoleName("add");
-//		controller.add(entity);
+		entity = new BaseRoleInfo();
+		entity.setRoleName("add");
+		controller.add(entity);
 		// 删
 		entity = new BaseRoleInfo();
 		entity.setRoleName("del");
