@@ -32,22 +32,21 @@
 	<select id="selectByUserId" resultType="String"
 		resultMap="UserInfoVO">
 		SELECT
-		t1.user_id,
-		t1.login_name,
-		t1.user_name,
-		t1.create_time,
-		t1.update_time,
-		t1.status,
-		IFNULL( t2.role_ids, '' ) as role_ids,
-		IFNULL( t3.router_ids, '' ) as router_ids,
-		( SELECT GROUP_CONCAT( t4.role_name )
-		FROM t_base_role t4
-		WHERE EXISTS ( SELECT t5.role_ids FROM t_base_user_roles t5 WHERE t5.user_id = #{userId} ) ) AS roles
+			v1.user_id,
+			v1.login_name,
+			v1.user_name,
+			v1.create_time,
+			v1.update_time,
+			v1.status,
+			v1.router_ids ,
+			v1.role_ids,
+			( SELECT GROUP_CONCAT( t1.role_name )
+			FROM t_base_role t1
+			WHERE EXISTS ( SELECT v2.role_ids FROM v_user_roles_routers v2 WHERE v2.user_id = #{userId} )
+			) AS roles
 		FROM
-		t_base_user t1
-		LEFT JOIN t_base_user_roles t2 ON t1.user_id = t2.user_id AND t2.status = 1
-		LEFT JOIN t_base_user_routers t3 ON t1.user_id = t3.user_id AND t3.status = 1
+			v_user_roles_routers v1
 		WHERE
-		t1.user_id = #{userId}
+			v1.user_id = #{userId}
 	</select>
 </mapper>
