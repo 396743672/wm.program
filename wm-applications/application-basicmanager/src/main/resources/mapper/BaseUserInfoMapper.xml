@@ -29,7 +29,7 @@
 			resultMap="BaseResultMap"></association>
 	</resultMap>
 
-	<select id="selectByUserId" resultType="String"
+	<select id="selectUserInfoVOByUserId" resultType="String"
 		resultMap="UserInfoVO">
 		SELECT
 			v1.user_id,
