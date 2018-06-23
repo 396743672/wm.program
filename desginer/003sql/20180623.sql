@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/6/23 11:06:20                           */
+/* Created on:     2018/6/23 16:43:56                           */
 /*==============================================================*/
 
 
@@ -131,7 +131,7 @@ alter table t_base_user_roles comment '用户角色表';
 create table t_base_user_routers
 (
    user_id              int comment '用户id',
-   router_parent_ids    varchar(60) comment '父路由皮ids，使用，分割',
+   router_parent_id     int comment '父路由id',
    router_ids           varchar(60) comment '路由ids,使用，分割',
    create_time          datetime default CURRENT_TIMESTAMP comment '创建时间',
    update_time          datetime default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
