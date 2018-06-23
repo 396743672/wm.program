@@ -66,7 +66,7 @@ public class BaseController<Service extends BaseService, Entity> {
 	}
 
 	@DeleteMapping("/{id}")
-	public ObjectRestResponse<Entity> remove(@PathVariable int id) {
+	public ObjectRestResponse<Entity> delete(@PathVariable int id) {
 		baseService.deleteById(id);
 		return new ObjectRestResponse<Entity>();
 	}
@@ -77,7 +77,7 @@ public class BaseController<Service extends BaseService, Entity> {
 	}
 
 	@GetMapping("/page")
-	public TableResultResponse<Entity> list(@RequestParam Map<String, Object> params) {
+	public TableResultResponse<Entity> page(@RequestParam Map<String, Object> params) {
 		// 查询列表数据
 		Query query = new Query(params);
 		return baseService.selectByQuery(query);
