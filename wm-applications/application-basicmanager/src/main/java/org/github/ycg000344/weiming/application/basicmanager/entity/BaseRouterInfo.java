@@ -29,6 +29,11 @@ public class BaseRouterInfo {
     private String redirect;
 
     /**
+     * 路由名称
+     */
+    private String name;
+
+    /**
      * 当设置 true 的时候该路由不会再侧边栏出现 如401，login等页面(默认 false)
      */
     private Integer hidden;
@@ -52,7 +57,7 @@ public class BaseRouterInfo {
     /**
      * 角色数组
      */
-    private String role;
+    private String roles;
 
     /**
      * 如果设置为true ,则不会被 <keep-alive> 缓存(默认 false)
@@ -156,6 +161,24 @@ public class BaseRouterInfo {
     }
 
     /**
+     * 获取路由名称
+     *
+     * @return name - 路由名称
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * 设置路由名称
+     *
+     * @param name 路由名称
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
      * 获取当设置 true 的时候该路由不会再侧边栏出现 如401，login等页面(默认 false)
      *
      * @return hidden - 当设置 true 的时候该路由不会再侧边栏出现 如401，login等页面(默认 false)
@@ -230,19 +253,19 @@ public class BaseRouterInfo {
     /**
      * 获取角色数组
      *
-     * @return role - 角色数组
+     * @return roles - 角色数组
      */
-    public String getRole() {
-        return role;
+    public String getRoles() {
+        return roles;
     }
 
     /**
      * 设置角色数组
      *
-     * @param role 角色数组
+     * @param roles 角色数组
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
     }
 
     /**

@@ -72,5 +72,17 @@ public class CommonConstants {
      * @since JDK 1.8
      */  
     public static final String AUTH_CLIENT_SECRET = "QQQ123";
+    
+    
+    /** basic manager 模块  */
+    
+    /** 
+     * ROUTER_PARENT_ID_DEFAULT:一级路由的父路由id.
+     * 
+     * @author po.lu
+     * @version 1.0.0
+     * @since JDK 1.8
+     */  
+    public static final Integer ROUTER_PARENT_ID_DEFAULT = -1;
 }
   
