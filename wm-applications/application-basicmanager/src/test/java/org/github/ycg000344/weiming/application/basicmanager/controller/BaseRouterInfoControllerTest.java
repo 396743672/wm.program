@@ -57,17 +57,24 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 		 * 	2.7	router_parent_id		必填	
 		 */
 		
-		
-		BaseRouterInfo entity = null;
 		// 父级路由
+		
 		// Example
-		entity = new BaseRouterInfo();
+		 BaseRouterInfo entity = new BaseRouterInfo();
 		entity.setPath("/example");
 		entity.setName("Example");
 		entity.setTitle("Example");
 		entity.setIcon("example");
 		entity.setRouterParentId(CommonConstants.ROUTER_PARENT_ID_DEFAULT);
 		controller.add(entity);
+		// Form
+		BaseRouterInfo routerInfo3 = new BaseRouterInfo();
+		routerInfo3.setPath("/form");
+		routerInfo3.setName("Form");
+		routerInfo3.setTitle("Form");
+		routerInfo3.setIcon("form");
+		routerInfo3.setRouterParentId(CommonConstants.ROUTER_PARENT_ID_DEFAULT);
+		controller.add(routerInfo3);
 		
 		// 子路由
 		Integer routerId = entity.getRouterId();
@@ -92,16 +99,6 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 		routerInfo2.setRoles("600000,600001,600002,600003");
 		routerInfo2.setRouterParentId(routerId);
 		controller.add(routerInfo2);
-		
-		// 父级路由
-		// Form
-		BaseRouterInfo routerInfo3 = new BaseRouterInfo();
-		routerInfo3.setPath("/form");
-		routerInfo3.setName("Form");
-		routerInfo3.setTitle("Form");
-		routerInfo3.setIcon("form");
-		routerInfo3.setRouterParentId(CommonConstants.ROUTER_PARENT_ID_DEFAULT);
-		controller.add(routerInfo3);
 		
 		// 子路由
 		Integer routerId2 = routerInfo3.getRouterId();
