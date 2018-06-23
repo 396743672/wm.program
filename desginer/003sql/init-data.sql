@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- 创建用户
 insert into t_base_user(login_name,user_name) values('admin','管理员');
 
@@ -32,9 +31,6 @@ values('tree','@/views/tree/index','Tree','tree',1,'600000,600001,600002,600003'
 insert into t_base_router(path,component,name,title,icon,router_parent_id) 
 values('index','@/views/form/index','Form','form',2);
 
-
--- 提交
-=======
 -- 创建用户
 insert into t_base_user(login_name,user_name) values('admin','管理员');
 
@@ -51,5 +47,4 @@ insert into t_base_role(role_name) values('get');
 insert into t_base_user_roles(user_id,roles_ids) values(600000,'600000,600001,600002,600003');
 
 -- 提交
->>>>>>> 122c7aefd8b935ffd50606cefc68a3c1708f866b
 commit;
