@@ -37,20 +37,57 @@ public class UserInfoVO implements Serializable {
 	 */  
 	private static final long serialVersionUID = 7374853084371966676L;
 
+	/** 
+	 * baseUserInfo:用户基本信息.
+	 * 
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
 	private BaseUserInfo baseUserInfo;
 	
-	private String role_ids;
+	/** 
+	 * roleIds:角色ids.
+	 * 600000,600001,600002,600003
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
+	private String roleIds;
 	
+	/** 
+	 * roles:角色名称.
+	 * add,del,update,get
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
 	private String roles;
 	
-	private String router_ids;
+	/** 
+	 * routerIds:路由ids.
+	 * 
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
+	private String routerIds;
+	
+	/** 
+	 * routerParentIds:父路由ids.
+	 * 
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
+	private String routerParentIds;
 	
 	public List<String> getRoles() {
 		return StrUtil.split(this.roles, StrUtil.C_COMMA);
 	}
 	
 	public List<String> getRouterIds(){
-		return StrUtil.split(router_ids, StrUtil.C_COMMA);
+		return StrUtil.split(routerIds, StrUtil.C_COMMA);
 	}
 	
 	

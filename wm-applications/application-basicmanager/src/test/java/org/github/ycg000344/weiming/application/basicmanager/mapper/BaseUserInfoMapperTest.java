@@ -30,13 +30,13 @@ public class BaseUserInfoMapperTest extends BasicManagerAppTest {
 
 	@Autowired
 	private BaseUserInfoMapper  mapper;
-	
+	/*
 	@Test
 	public void test() {
 		String userId = "600000";
 		UserInfoVO selectByUserId = mapper.selectUserInfoVOByUserId(userId );
 		log.info("***【{}】***",selectByUserId.getRoles().get(0));
 	}
-
+*/
 }
   
