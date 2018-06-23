@@ -6,11 +6,9 @@ import org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO;
 import tk.mybatis.mapper.common.Mapper;
 
 public interface BaseUserInfoMapper extends Mapper<BaseUserInfo> {
-	
-	
 
 	/** 
-	 * selectUserInfoVOByUserId: 根据用户id查询出用户信息以及关联的角色ids和路由ids.. <br/> 
+	 * selectUserInfoVOByUserId:根据用户id查询出用户信息以及关联的角色ids和路由ids. <br/> 
 	 * 
 	 * @author po.lu
 	 * @param userId
@@ -19,5 +17,4 @@ public interface BaseUserInfoMapper extends Mapper<BaseUserInfo> {
 	 * @see
 	 */  
 	UserInfoVO selectUserInfoVOByUserId(String userId);
-	
 }
