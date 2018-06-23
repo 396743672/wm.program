@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 
+import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -66,6 +67,7 @@ public class UserInfoVO implements Serializable {
 	
 	/** 
 	 * routerIds:路由ids.
+	 * 父:子,子&父:子,子...
 	 * 
 	 * @author po.lu
 	 * @version 1.0.0
@@ -73,21 +75,12 @@ public class UserInfoVO implements Serializable {
 	 */  
 	private String routerIds;
 	
-	/** 
-	 * routerParentIds:父路由ids.
-	 * 
-	 * @author po.lu
-	 * @version 1.0.0
-	 * @since JDK 1.8
-	 */  
-	private String routerParentIds;
-	
 	public List<String> getRoles() {
 		return StrUtil.split(this.roles, StrUtil.C_COMMA);
 	}
 	
 	public List<String> getRouterIds(){
-		return StrUtil.split(routerIds, StrUtil.C_COMMA);
+		return StrUtil.split(routerIds, CharUtil.AMP);
 	}
 	
 	

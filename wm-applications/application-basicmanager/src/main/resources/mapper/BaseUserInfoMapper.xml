@@ -1,15 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserInfoMapper" >
-  <resultMap id="BaseResultMap" type="org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserInfoMapper">
+  <resultMap id="BaseResultMap" type="org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo">
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
+  
+  <resultMap id="UserInfoVO" type="org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO">
+	<result column="role_ids" jdbcType="VARCHAR" property="roleIds" />
+	<result column="roles" jdbcType="VARCHAR" property="roles" />
+	<result column="router_ids" jdbcType="VARCHAR" property="routerIds" />
+	<association property="baseUserInfo" resultMap="BaseResultMap"></association>
+  </resultMap>
+
+	<select id="selectUserInfoVOByUserId" parameterType="String" resultMap="UserInfoVO">
+		SELECT v.* FROM v_user_roles_routers v WHERE v.user_id = #{userId}
+	</select>
 </mapper>
