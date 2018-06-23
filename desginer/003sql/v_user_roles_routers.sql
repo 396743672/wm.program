@@ -19,7 +19,7 @@ SELECT
 	t1.create_time AS create_time,
 	t1.update_time AS update_time,
 	t1.status AS status,
-	group_concat( concat( t2.router_parent_id, ':', t2.router_ids ) SEPARATOR '#' ) AS router_ids -- 子路由之间使用，相连，将父路由id与子路由id使用:连接，将多个父子配套的路由使用#连接
+	group_concat( concat( t2.router_parent_id, ':', t2.router_ids ) SEPARATOR '&' ) AS router_ids -- 子路由之间使用，相连，将父路由id与子路由id使用连接，将多个父子配套的路由使用&连接
 FROM
 	(
 	t_base_user t1
