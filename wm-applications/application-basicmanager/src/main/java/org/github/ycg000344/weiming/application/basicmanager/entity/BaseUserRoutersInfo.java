@@ -12,7 +12,13 @@ public class BaseUserRoutersInfo {
     private Integer userId;
 
     /**
-     * 路由ids,使用,分割
+     * 父路由皮ids，使用，分割
+     */
+    @Column(name = "router_parent_ids")
+    private String routerParentIds;
+
+    /**
+     * 路由ids,使用，分割
      */
     @Column(name = "router_ids")
     private String routerIds;
@@ -53,18 +59,36 @@ public class BaseUserRoutersInfo {
     }
 
     /**
-     * 获取路由ids,使用,分割
+     * 获取父路由皮ids，使用，分割
      *
-     * @return router_ids - 路由ids,使用,分割
+     * @return router_parent_ids - 父路由皮ids，使用，分割
+     */
+    public String getRouterParentIds() {
+        return routerParentIds;
+    }
+
+    /**
+     * 设置父路由皮ids，使用，分割
+     *
+     * @param routerParentIds 父路由皮ids，使用，分割
+     */
+    public void setRouterParentIds(String routerParentIds) {
+        this.routerParentIds = routerParentIds;
+    }
+
+    /**
+     * 获取路由ids,使用，分割
+     *
+     * @return router_ids - 路由ids,使用，分割
      */
     public String getRouterIds() {
         return routerIds;
     }
 
     /**
-     * 设置路由ids,使用,分割
+     * 设置路由ids,使用，分割
      *
-     * @param routerIds 路由ids,使用,分割
+     * @param routerIds 路由ids,使用，分割
      */
     public void setRouterIds(String routerIds) {
         this.routerIds = routerIds;
