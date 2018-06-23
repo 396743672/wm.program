@@ -38,8 +38,11 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 
 	@Value("${basicmanager.defaultpwd}")
 	private String defaultPwd;
+	
 	@Autowired
 	private BaseLoginInfoMapper  loginInfoMapper ;
+	
+	
 	/** 
 	 * 创建用户的时候自动新增登录记录，登录密码使用默认值并加密. 
 	 * @see org.github.ycg000344.weiming.common.basebusiness.service.BaseService#insert(java.lang.Object) 
@@ -47,18 +50,15 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 	@Override
 	public void insertSelective(BaseUserInfo entity) {
 		/**保存用户信息*/ 
-		log.info("***************创建新用户，用户名:{}************************开始***", entity.getUserName());
+		log.info("***weiminmg专用log***创建新用户，用户名:【{}】***开始***", entity.getUserName());
 		super.insertSelective(entity);
 		BaseLoginInfo loginInfo = new BaseLoginInfo();
 		loginInfo.setLoginId(entity.getUserId());
 		loginInfo.setLoginName(entity.getLoginName());
 		loginInfo.setPassword(DigestUtils.md5DigestAsHex(defaultPwd.getBytes()));
 		loginInfoMapper.insertSelective(loginInfo);
-		log.info("***************创建新用户，用户名:{}************************完成***", entity.getUserName());
+		log.info("***weiminmg专用log***创建新用户，用户名:【{}】***完成***", entity.getUserName());
 	}
-	
-	
-	
 
 }
   
