@@ -15,6 +15,8 @@
 	</parent>
 
 	<properties>
+		<!-- deploy -->
+		<deploy.dir>/root/webapp</deploy.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
@@ -167,12 +169,46 @@
 		</dependency> </dependencies> </plugin> -->
 
 	<!--TODO 部署复制到制定文件夹 -->
-	<!-- <plugin> <artifactId>maven-antrun-plugin</artifactId> <executions> 
-		<execution> <phase>package</phase> <goals> <goal>run</goal> </goals> <configuration> 
-		<tasks> <mkdir dir="${deploy.dir}/${project.version}" /> <copy todir="${deploy.dir}/${project.version}" 
-		overwrite="true"> <fileset dir="${project.build.directory}" erroronmissingdir="false"> 
-		<include name="*.jar" /> </fileset> </copy> </tasks> </configuration> </execution> 
-		</executions> </plugin> -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<mkdir dir="${deploy.dir}/${project.version}" />
+								<copy todir="${deploy.dir}/${project.version}"
+									overwrite="true">
+									<fileset dir="${project.build.directory}"
+										erroronmissingdir="false">
+										<include name="*.jar" />
+									</fileset>
+								</copy>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+	</build>
+	<!-- -->
 
 
 	<repositories>
