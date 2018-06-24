@@ -21,4 +21,35 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
+  
+  
+  <select id="getRouterInfoByIds" parameterType="String" resultMap="BaseResultMap" >
+	  	SELECT
+		t1.router_id,
+		t1.path,
+		t1.component,
+		t1.redirect,
+		t1.name,
+		t1.hidden,
+		t1.always_show,
+		t1.title,
+		t1.icon,
+		t1.no_cache,
+		t1.router_parent_id,
+		t1.create_time,
+		t1.update_time,
+		t1.status 
+		,IFNULL((SELECT GROUP_CONCAT(t2.role_name) FROM t_base_role t2 WHERE t2.status = 1 AND FIND_IN_SET(t2.role_id,t1.roles)),'') AS roles
+	FROM
+		t_base_router t1 
+	WHERE
+		t1.status = 1 
+		AND t1.router_parent_id = #{routerParnetId} 
+		AND FIND_IN_SET( t1.router_id, #{routerIds} )
+  </select>
+  
+  
+  
+  
+  
 </mapper>
