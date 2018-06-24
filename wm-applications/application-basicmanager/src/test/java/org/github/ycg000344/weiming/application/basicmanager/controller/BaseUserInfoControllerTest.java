@@ -34,8 +34,8 @@ public class BaseUserInfoControllerTest extends BasicManagerAppTest {
 	@Test
 	public void test() {
 		BaseUserInfo entity = new BaseUserInfo();
-		entity.setUserName("管理员");
-		entity.setLoginName("admin");
+		entity.setUserName("普通");
+		entity.setLoginName("average");
 		ObjectRestResponse<BaseUserInfo> response = userInfoController.add(entity);
 		log.info(response.toString());
 	}

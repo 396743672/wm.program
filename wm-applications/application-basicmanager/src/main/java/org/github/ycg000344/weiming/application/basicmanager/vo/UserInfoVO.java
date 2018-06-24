@@ -22,7 +22,7 @@ import lombok.ToString;
 
 /** 
  * ClassName:UserInfo <br/><br/>  
- * Description: TODO <br/><br/>  
+ * Description: 用户角色路由信息VO <br/><br/>  
  * Date:     2018年6月22日 下午3:42:56 <br/> <br/> 
  * @author   po.lu 
  * @version  1.0.0
@@ -76,6 +76,16 @@ public class UserInfoVO implements Serializable {
 	 * @since JDK 1.8
 	 */  
 	private String routerIds;
+	
+	
+	/** 
+	 * asyncRouterMap:用户路由集合.
+	 * 
+	 * @author po.lu
+	 * @version 1.0.0
+	 * @since JDK 1.8
+	 */  
+	private List<RouterInfoVO> asyncRouterMap;
 	
 	public List<String> getRoles() {
 		return StrUtil.split(this.roles, StrUtil.C_COMMA);

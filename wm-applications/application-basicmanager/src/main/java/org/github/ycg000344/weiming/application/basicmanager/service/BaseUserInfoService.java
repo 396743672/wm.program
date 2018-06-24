@@ -76,7 +76,7 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 	 * @see
 	 */  
 	public Optional<UserInfoVO> getUserInfoVOByUserId(String userId){
-		return userInfoMapper.getUserInfoVOByUserId(userId);
+		return Optional.ofNullable(userInfoMapper.getUserInfoVOByUserId(userId));
 	}
 	
 

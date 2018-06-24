@@ -1,7 +1,5 @@
 package org.github.ycg000344.weiming.application.basicmanager.mapper;
 
-import java.util.Optional;
-
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 import org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO;
 
@@ -18,5 +16,5 @@ public interface BaseUserInfoMapper extends Mapper<BaseUserInfo> {
 	 * @since JDK 1.8 
 	 * @see
 	 */  
-	Optional<UserInfoVO>  getUserInfoVOByUserId(String userId);
+	UserInfoVO getUserInfoVOByUserId(String userId);
 }
