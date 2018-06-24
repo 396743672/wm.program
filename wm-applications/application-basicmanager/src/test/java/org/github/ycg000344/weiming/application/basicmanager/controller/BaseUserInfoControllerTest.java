@@ -37,14 +37,14 @@ public class BaseUserInfoControllerTest extends BasicManagerAppTest {
 		entity.setUserName("普通");
 		entity.setLoginName("average");
 		ObjectRestResponse<BaseUserInfo> response = userInfoController.add(entity);
-		log.info(response.toString());
+		log.debug(response.toString());
 	}
 	
 	
 	@Test
 	public void testGet() {
 		ObjectRestResponse<BaseUserInfo> response = userInfoController.get(1);
-		log.info(response.toString());
+		log.debug(response.toString());
 	}
 
 }

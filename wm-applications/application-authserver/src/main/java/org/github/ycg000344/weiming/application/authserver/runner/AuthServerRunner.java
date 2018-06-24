@@ -51,7 +51,7 @@ public class AuthServerRunner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***start***", name);
+		log.debug("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***start***", name);
 		/*
 		 * if (redisTemplate.hasKey(REDIS_USER_PRI_KEY)&&redisTemplate.hasKey(
 		 * REDIS_USER_PUB_KEY)) {
@@ -72,7 +72,7 @@ public class AuthServerRunner implements CommandLineRunner {
 		Map<String, byte[]> keyMap = RsaKeyHelper.getInstance().generateKey(keyConfiguration.getUserSecret());
 		keyConfiguration.setUserPriKey(keyMap.get(RsaKeyHelper.PRI));
 		keyConfiguration.setUserPubKey(keyMap.get(RsaKeyHelper.PUB));
-		log.info("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***successful***", name);
+		log.debug("***weiming专用log****应用程序:【{}】启动成功，向内存中写入密钥***successful***", name);
 	}
 
 }

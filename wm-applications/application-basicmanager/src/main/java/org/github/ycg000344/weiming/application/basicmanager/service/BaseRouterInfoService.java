@@ -55,12 +55,12 @@ public class BaseRouterInfoService extends BaseService<BaseRouterInfoMapper, Bas
 	 * @see
 	 */  
 	public List<RouterInfoVO> getRouterInfoVOByRouterIds(List<String> routerIds){
-		log.info("***weiming专用log***查询用户的菜单路由集合【{}】***start***",routerIds);
+		log.debug("***weiming专用log***查询用户的菜单路由集合【{}】***start***",routerIds);
 		List<RouterInfoVO> emptyList = new ArrayList<>();
 		routerIds.parallelStream().forEach(r->{
 			getRouter(r,emptyList);
 		});
-		log.info("***weiming专用log***查询用户的菜单路由集合【{}】***success***",routerIds);
+		log.debug("***weiming专用log***查询用户的菜单路由集合【{}】***success***",routerIds);
 		return emptyList;
 	}
 
@@ -76,7 +76,7 @@ public class BaseRouterInfoService extends BaseService<BaseRouterInfoMapper, Bas
 	 * @see
 	 */  
 	private List<RouterInfoVO> getRouter(String ids, List<RouterInfoVO> emptyList) {
-		log.info("***weiming***专用log***从DB中获取路由对象：【{}】***start***",ids);
+		log.debug("***weiming***专用log***从DB中获取路由对象：【{}】***start***",ids);
 		String[] strings = StrUtil.split(ids, StrUtil.COLON);
 		/** 父级路由DB对象 */
 		Optional<BaseRouterInfo> optional = this.selectById(strings[0]);
@@ -92,7 +92,7 @@ public class BaseRouterInfoService extends BaseService<BaseRouterInfoMapper, Bas
 			routerInfoVO.setChildren(infoVOs);
 			emptyList.add(routerInfoVO);
 		}
-		log.info("***weiming***专用log***从DB中获取路由对象：【{}】***success***",ids);
+		log.debug("***weiming***专用log***从DB中获取路由对象：【{}】***success***",ids);
 		return emptyList;
 	}
 
@@ -108,11 +108,11 @@ public class BaseRouterInfoService extends BaseService<BaseRouterInfoMapper, Bas
 	 * @see
 	 */  
 	private RouterInfoVO routerDB2VO(BaseRouterInfo baseRouterInfo) {
-		log.info("***weiming专用log***将路由对象进行转化为VO：【{}】***start***",baseRouterInfo.toString());
+		log.debug("***weiming专用log***将路由对象进行转化为VO：【{}】***start***",baseRouterInfo.toString());
 		ConverterRegistry converterRegistry = ConverterRegistry.getInstance();
 		converterRegistry.putCustom(RouterInfoVO.class, RouterInfoVO.class);
 		RouterInfoVO convert = converterRegistry.convert(RouterInfoVO.class, baseRouterInfo);
-		log.info("***weiming专用log***将路由对象进行转化为VO：【{}】***success***",convert.toString());
+		log.debug("***weiming专用log***将路由对象进行转化为VO：【{}】***success***",convert.toString());
 		return convert;
 	}
 	

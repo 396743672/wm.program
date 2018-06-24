@@ -38,7 +38,7 @@ public class EmailInfoReceive {
 	
 	@RabbitHandler
     public void process(BaseEmailInfo emailInfo) {
-		log.info("********************接收到rabbitmq：111.230.220.114的消息：{}", emailInfo.toString());
+		log.debug("********************接收到rabbitmq：111.230.220.114的消息：{}", emailInfo.toString());
 		EmailSendThread.getInstance().setEmailSendFunction(emailSendFunction);
 		EmailSendThread.getInstance().offerEmailInfo(emailInfo);
     }

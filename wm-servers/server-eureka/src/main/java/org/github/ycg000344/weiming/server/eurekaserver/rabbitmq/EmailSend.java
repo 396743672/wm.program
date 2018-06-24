@@ -49,17 +49,16 @@ public class EmailSend {
 		log.info("********************准备向 rabbitmq:111.230.220.114 发送 email信息****************");
 		emailInfo.setSubject(subject);
 		emailInfo.setTo(to);
-		log.info("******************** email的收件人如下：{}" ,Arrays.asList(emailInfo.getTo()));
-		log.info("******************** email的主题如下：{}" ,emailInfo.getSubject());
-		log.info("******************** email具体信息如下：{}" ,emailInfo.toString());
+		log.debug("******************** email的收件人如下：{}" ,Arrays.asList(emailInfo.getTo()));
+		log.debug("******************** email的主题如下：{}" ,emailInfo.getSubject());
+		log.debug("******************** email具体信息如下：{}" ,emailInfo.toString());
 		boolean flag =false;
 		try {
 			amqpTemplate.convertAndSend(queue, emailInfo);
 			flag = true;
-			log.info("***************** 向 rabbitmq发送信息：发送成功 ");
+			log.debug("***************** 向 rabbitmq发送信息：发送成功 ");
 		} catch (Exception ex) {
-			log.error("***************** 向 rabbitmq发送信息：发送失败 ");
-			ex.printStackTrace();
+			log.error("***************** 向 rabbitmq发送信息：发送失败***,【{}】 ",ex);
 		}
 		
 		return flag;

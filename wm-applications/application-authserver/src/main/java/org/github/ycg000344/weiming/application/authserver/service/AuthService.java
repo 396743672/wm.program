@@ -58,7 +58,7 @@ public class AuthService {
 	 */
 	public String login(JwtAuthenticationRequest authenticationRequest) throws NoSuchAlgorithmException, InvalidKeySpecException, AuthException {
 		// TODO 人员进行登录，获取token
-		log.info("***************** 人员：{} 进行登录，获取token *********************",authenticationRequest.getLoginname());
+		log.debug("***************** 人员：{} 进行登录，获取token *********************",authenticationRequest.getLoginname());
 		String token = null;
 		IJWTinfo jwtInfo = loginFeign.login(authenticationRequest.getLoginname(),authenticationRequest.getPassword());
 		if (null!= jwtInfo && StrUtil.isNotEmpty(jwtInfo.getId())) {

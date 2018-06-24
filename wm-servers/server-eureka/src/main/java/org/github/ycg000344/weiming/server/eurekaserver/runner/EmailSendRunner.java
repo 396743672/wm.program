@@ -34,9 +34,9 @@ public class EmailSendRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		log.info("**********************应用：{} 启动成功，开启邮件发送的异步线程*************************************",name);
+		log.debug("**********************应用：{} 启动成功，开启邮件发送的异步线程*************************************",name);
 		EmailSendthread.getInstance().start();
-		log.info("邮件发送的异步线程状态为: {}",EmailSendthread.getInstance().getState().toString());
+		log.debug("邮件发送的异步线程状态为: {}",EmailSendthread.getInstance().getState().toString());
 	
 
 	}

@@ -37,7 +37,7 @@ public class BaseRouterInfoMapperTest extends BasicManagerAppTest {
 		String routerIds = "3,4";
 		String routerParnetId = "1";
 		List<BaseRouterInfo> routerInfoByIds = routerInfoMapper.getRouterInfoByIds(routerParnetId, routerIds);
-		routerInfoByIds.parallelStream().forEach(r->log.info(r.toString()));
+		routerInfoByIds.parallelStream().forEach(r->log.debug(r.toString()));
 	}
 
 }

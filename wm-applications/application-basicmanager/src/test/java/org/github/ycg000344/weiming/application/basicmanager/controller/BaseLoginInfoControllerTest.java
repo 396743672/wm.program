@@ -35,7 +35,7 @@ public class BaseLoginInfoControllerTest extends BasicManagerAppTest {
 		String password = "qqq123";
 		String loginname = "admin";
 		IJWTinfo login = controller.login(loginname, password);
-		log.info("**********************【id:{},loginname:{},name:{}】******************",login.getId(),login.getUniqueName(),login.getName()	);
+		log.debug("**********************【id:{},loginname:{},name:{}】******************",login.getId(),login.getUniqueName(),login.getName()	);
 		
 	}
 

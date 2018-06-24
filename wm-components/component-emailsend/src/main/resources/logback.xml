@@ -10,7 +10,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
     <!-- 定义日志文件 输入位置 -->
     <!--使用 spring.application.name  -->
-    <property name="log_dir" value="logs/wm-svr-eurekaserver" />
+    <property name="log_dir" value="logs/wm-cpt-emailsend" />
     <!-- 日志最大的历史 30天 -->
     <property name="maxHistory" value="30"/>
 

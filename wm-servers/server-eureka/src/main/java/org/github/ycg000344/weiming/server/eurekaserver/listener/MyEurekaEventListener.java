@@ -72,16 +72,16 @@ public class MyEurekaEventListener implements ApplicationListener {
 		/** 服务注册事件 **/
 		if (applicationEvent instanceof EurekaInstanceRegisteredEvent) {
 			EurekaInstanceRegisteredEvent registeredEvent = (EurekaInstanceRegisteredEvent) applicationEvent;
-			log.info("******************服务注册成功：{}***************", registeredEvent.getInstanceInfo().getAppName());
+			log.debug("******************服务注册成功：{}***************", registeredEvent.getInstanceInfo().getAppName());
 		}
 		/** 服务续约事件 **/
 		if (applicationEvent instanceof EurekaInstanceRenewedEvent) {
 			EurekaInstanceRenewedEvent renewedEvent = (EurekaInstanceRenewedEvent) applicationEvent;
-			log.info("******************服务续约成功：{}***************", renewedEvent.getInstanceInfo().getAppName());
+			log.debug("******************服务续约成功：{}***************", renewedEvent.getInstanceInfo().getAppName());
 		}
 		/** 服务注册检查可用事件 **/
 		if (applicationEvent instanceof EurekaRegistryAvailableEvent) {
-			log.info("************************** 服务注册检查可用事件 ***********************");
+			log.debug("************************** 服务注册检查可用事件 ***********************");
 		}
 	}
 

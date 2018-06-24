@@ -63,7 +63,7 @@ public class ClientController {
 	})
 	public ObjectRestResponse<byte[]> getUserPublicKey(@RequestParam("clientId") String clientId,
 			@RequestParam("secret") String secret) throws Exception {
-		log.info("***********************client:【{}】，secret:【{}】  ****************************", clientId, secret);
+		log.debug("***********************client:【{}】，secret:【{}】  ****************************", clientId, secret);
 		return new ObjectRestResponse<byte[]>().data(keyConfiguration.getUserPubKey());
 	}
 

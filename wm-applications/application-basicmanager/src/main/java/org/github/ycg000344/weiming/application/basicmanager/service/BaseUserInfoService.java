@@ -55,14 +55,14 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 	@Override
 	public void insertSelective(BaseUserInfo entity) {
 		/**保存用户信息*/ 
-		log.info("***weiminmg专用log***创建新用户，用户名:【{}】***开始***", entity.getUserName());
+		log.debug("***weiminmg专用log***创建新用户，用户名:【{}】***开始***", entity.getUserName());
 		super.insertSelective(entity);
 		BaseLoginInfo loginInfo = new BaseLoginInfo();
 		loginInfo.setLoginId(entity.getUserId());
 		loginInfo.setLoginName(entity.getLoginName());
 		loginInfo.setPassword(DigestUtils.md5DigestAsHex(defaultPwd.getBytes()));
 		loginInfoMapper.insertSelective(loginInfo);
-		log.info("***weiminmg专用log***创建新用户，用户名:【{}】***完成***", entity.getUserName());
+		log.debug("***weiminmg专用log***创建新用户，用户名:【{}】***完成***", entity.getUserName());
 	}
 	
 	

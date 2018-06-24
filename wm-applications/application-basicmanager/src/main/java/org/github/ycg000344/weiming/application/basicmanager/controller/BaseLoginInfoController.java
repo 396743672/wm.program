@@ -68,7 +68,7 @@ public class BaseLoginInfoController extends BaseController<BaseLoginInfoService
 			if (oUser.isPresent()) {
 				BaseUserInfo userInfo = oUser.get();
 				JJWTinfo iTinfo = new JJWTinfo(userInfo.getLoginName(), String.valueOf(userInfo.getUserId()), userInfo.getUserName());
-				log.info("***********************用户：【{}】校验密码成功*********************************************************",loginname);
+				log.debug("***********************用户：【{}】校验密码成功*********************************************************",loginname);
 				return iTinfo;
 			}else {
 				throw new AuthException("user not exits.");

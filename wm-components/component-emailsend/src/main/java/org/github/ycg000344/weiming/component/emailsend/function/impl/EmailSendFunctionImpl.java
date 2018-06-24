@@ -64,8 +64,8 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 
 	@Override
 	public boolean send(BaseEmailInfo emailInfo) {
-		log.info("**********准备发送邮件**********");
-		log.info("邮件信息：\r\n接收人：{},\r\n主题：{}\r\n", emailInfo.getTo(), emailInfo.getSubject());
+		log.debug("**********准备发送邮件**********");
+		log.debug("邮件信息：\r\n接收人：{},\r\n主题：{}\r\n", emailInfo.getTo(), emailInfo.getSubject());
 		boolean flag = false;
 		mimeMessage = javaMailSender.createMimeMessage();
 		try {
@@ -87,10 +87,9 @@ public class EmailSendFunctionImpl implements EmailSendFunction {
 			
 			//javaMailSender.send(mimeMessage);
 			flag = true;
-			log.info("********邮件发送结果：成功********");
+			log.debug("********邮件发送结果：成功********");
 		} catch (Exception e) {
-			log.error("********邮件发送结果：失败********");
-			e.printStackTrace();
+			log.error("********邮件发送结果：失败********【{}】***",e);
 		}
 		return flag;
 	}

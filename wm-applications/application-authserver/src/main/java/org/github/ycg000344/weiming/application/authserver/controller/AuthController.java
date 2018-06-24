@@ -49,12 +49,13 @@ public class AuthController {
 	@Autowired
 	private AuthService authService;
 
+	@SuppressWarnings("unchecked")
 	@PostMapping("/token")
 	@ApiOperation(value = "获取token", notes = "登录获取token")
 	@ApiImplicitParam(value = "封装登录请求对象", required = true, dataType = "JwtAuthenticationRequest", name = "authenticationRequest")
 	public ObjectRestResponse<JwtAuthenticationResponse> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) {
 		try {
-			log.info("***weiming专用日志打印语句：***用户：【{}】进行登录***", authenticationRequest.getLoginname());
+			log.debug("***weiming专用日志打印语句：***用户：【{}】进行登录***", authenticationRequest.getLoginname());
 			String token = authService.login(authenticationRequest);
 			return  new ObjectRestResponse<JwtAuthenticationResponse>().data(new JwtAuthenticationResponse(token));
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

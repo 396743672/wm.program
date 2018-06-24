@@ -47,7 +47,7 @@ public class BaseUserInfoServiceTest extends BasicManagerAppTest {
 			UserInfoVO userInfoVO = optional.get();
 			log.info(userInfoVO.toString());
 			List<RouterInfoVO> routerIds = routerInfoService.getRouterInfoVOByRouterIds(userInfoVO.getRouterIds());
-			routerIds.forEach(r-> log.info(r.toString()));
+			routerIds.forEach(r-> log.debug(r.toString()));
 		}
 	}
 

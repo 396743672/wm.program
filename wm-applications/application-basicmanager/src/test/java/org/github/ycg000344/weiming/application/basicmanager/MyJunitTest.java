@@ -32,7 +32,7 @@ public class MyJunitTest {
 	public void test() {
 		List<String> emptyList = Collections.emptyList();
 		emptyList.add("123");
-		log.info(emptyList.size()+"");
+		log.debug(emptyList.size()+"");
 	}
 
 }

@@ -36,7 +36,7 @@ public class BaseUserInfoMapperTest extends BasicManagerAppTest {
 	public void test() {
 		String userId = "600000";
 		UserInfoVO UserInfoVO = mapper.getUserInfoVOByUserId(userId );
-		log.info(UserInfoVO.toString());
+		log.debug(UserInfoVO.toString());
 	}
 }
   
