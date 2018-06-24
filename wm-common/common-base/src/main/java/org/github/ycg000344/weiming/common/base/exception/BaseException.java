@@ -30,8 +30,8 @@ public class BaseException extends RuntimeException {
 	 * @since JDK 1.8
 	 */
 	private static final long serialVersionUID = 500447966994982256L;
-	private Integer errorCode;
-	private String errorMessage;
+	protected Integer errorCode;
+	protected String errorMessage;
 
 	public Integer getErrorCode() {
 		return errorCode;

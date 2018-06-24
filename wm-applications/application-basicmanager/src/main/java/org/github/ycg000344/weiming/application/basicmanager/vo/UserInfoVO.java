@@ -18,6 +18,7 @@ import cn.hutool.core.util.CharUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /** 
  * ClassName:UserInfo <br/><br/>  
@@ -30,6 +31,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class UserInfoVO implements Serializable {
 
 	/** 

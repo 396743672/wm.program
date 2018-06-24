@@ -9,10 +9,13 @@
 
 package org.github.ycg000344.weiming.application.basicmanager.controller;
 
+import java.util.Optional;
+
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseLoginInfo;
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseLoginInfoService;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseUserInfoService;
+import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.impl.JJWTinfo;
 import org.github.ycg000344.weiming.common.basebusiness.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,14 +62,20 @@ public class BaseLoginInfoController extends BaseController<BaseLoginInfoService
 	public JJWTinfo login(@RequestParam("loginname")String loginname,@RequestParam("password") String password) {
 		BaseLoginInfo entity = new BaseLoginInfo();
 		entity.setLoginName(loginname);
-		entity = loginInfoService.selectOne(entity);
-		if (null != entity && entity.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))) {
-			BaseUserInfo userInfo = userInfoService.selectById(entity.getLoginId());
-			JJWTinfo iTinfo = new JJWTinfo(entity.getLoginName(), String.valueOf(entity.getLoginId()), userInfo.getUserName());
-			log.info("***********************用户：【{}】校验密码成功*********************************************************",loginname);
-			return iTinfo;
+		Optional<BaseLoginInfo> oLogin = loginInfoService.selectOne(entity);
+		if (oLogin.map(o -> o.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))).orElse(false)) {
+			Optional<BaseUserInfo> oUser = userInfoService.selectById(oLogin.get().getLoginId());
+			if (oUser.isPresent()) {
+				BaseUserInfo userInfo = oUser.get();
+				JJWTinfo iTinfo = new JJWTinfo(userInfo.getLoginName(), String.valueOf(userInfo.getUserId()), userInfo.getUserName());
+				log.info("***********************用户：【{}】校验密码成功*********************************************************",loginname);
+				return iTinfo;
+			}else {
+				throw new AuthException("user not exits.");
+			}
+		}else {
+			throw new AuthException("loginname or password error.");
 		}
-		return null;
 	}
 
 }

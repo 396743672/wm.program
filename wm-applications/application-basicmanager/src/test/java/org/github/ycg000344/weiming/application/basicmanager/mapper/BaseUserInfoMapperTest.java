@@ -9,6 +9,8 @@
   
 package org.github.ycg000344.weiming.application.basicmanager.mapper;
 
+import java.util.Optional;
+
 import org.github.ycg000344.weiming.application.basicmanager.BasicManagerAppTest;
 import org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO;
 import org.junit.Test;
@@ -34,10 +36,9 @@ public class BaseUserInfoMapperTest extends BasicManagerAppTest {
 	
 	@Test
 	public void test() {
-		String userId = "600000";
-		UserInfoVO selectByUserId = mapper.selectUserInfoVOByUserId(userId );
-		log.info("***【{}】***",selectByUserId.getRoles().get(0));
-		log.info(selectByUserId.getRouterIds().get(0));
+		String userId = "1";
+		Optional<UserInfoVO> UserInfoVO = mapper.selectUserInfoVOByUserId(userId );
+		log.info(UserInfoVO.map(u -> u.getRoles().get(0)).orElse(null));
 	}
 }
   

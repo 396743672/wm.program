@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /** 
  * ClassName:UserAuthConfig <br/><br/>  
@@ -27,6 +28,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Component
+@ToString
 public class UserAuthConfig {
 
     private byte[] pubKeyByte;

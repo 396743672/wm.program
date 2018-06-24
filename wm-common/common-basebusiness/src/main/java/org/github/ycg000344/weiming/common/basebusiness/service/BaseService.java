@@ -12,6 +12,7 @@ package org.github.ycg000344.weiming.common.basebusiness.service;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.github.ycg000344.weiming.common.basebusiness.util.Query;
 import org.github.ycg000344.weiming.common.basebusiness.vo.TableResultResponse;
@@ -45,12 +46,12 @@ public abstract class BaseService<M extends Mapper<T>, T> {
 		this.mapper = mapper;
 	}
 
-	public T selectOne(T entity) {
-		return mapper.selectOne(entity);
+	public Optional<T> selectOne(T entity) {
+		return Optional.ofNullable(mapper.selectOne(entity));
 	}
 
-	public T selectById(Object id) {
-		return mapper.selectByPrimaryKey(id);
+	public Optional<T> selectById(Object id) {
+		return Optional.ofNullable(mapper.selectByPrimaryKey(id));
 	}
 
 	public List<T> selectList(T entity) {

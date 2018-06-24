@@ -12,6 +12,8 @@ package org.github.ycg000344.weiming.common.auth.exception;
 import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.base.exception.BaseException;
 
+import lombok.ToString;
+
 /** 
  * ClassName:AuthException <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -21,6 +23,7 @@ import org.github.ycg000344.weiming.common.base.exception.BaseException;
  * @since    JDK 1.8 
  * @see       
  */
+@ToString
 public class AuthException extends BaseException {
 
 	/** 

@@ -11,6 +11,8 @@ package org.github.ycg000344.weiming.common.base.vo;
 
 import org.springframework.http.HttpStatus;
 
+import lombok.ToString;
+
 /** 
  * ClassName:BaseResponse <br/><br/>  
  * Description: 自定义自定义基础response对象 <br/><br/>  
@@ -20,10 +22,11 @@ import org.springframework.http.HttpStatus;
  * @since    JDK 1.8 
  * @see       
  */
+@ToString
 public class BaseResponse {
 	
-    private Integer status = HttpStatus.OK.value();
-    private String message = HttpStatus.OK.getReasonPhrase();
+    protected Integer status = HttpStatus.OK.value();
+    protected String message = HttpStatus.OK.getReasonPhrase();
 
     public BaseResponse(Integer status, String message) {
         this.status = status;

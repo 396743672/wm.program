@@ -3,7 +3,10 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
+import lombok.ToString;
+
 @Table(name = "t_base_role")
+@ToString
 public class BaseRoleInfo {
     /**
      * 角色id，自增，从600000

@@ -9,6 +9,8 @@
   
 package org.github.ycg000344.weiming.common.base.vo;
 
+import lombok.ToString;
+
 /** 
  * ClassName:ObjectRestResponse <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -19,10 +21,11 @@ package org.github.ycg000344.weiming.common.base.vo;
  * @see       
  */
 @SuppressWarnings("rawtypes")
+@ToString
 public class ObjectRestResponse<T> extends BaseResponse {
 
-	T data;
-    boolean rel;
+	private T data;
+	private boolean rel;
 
     public boolean isRel() {
         return rel;
@@ -31,8 +34,6 @@ public class ObjectRestResponse<T> extends BaseResponse {
     public void setRel(boolean rel) {
         this.rel = rel;
     }
-
-
     
 	public ObjectRestResponse rel(boolean rel) {
         this.setRel(rel);

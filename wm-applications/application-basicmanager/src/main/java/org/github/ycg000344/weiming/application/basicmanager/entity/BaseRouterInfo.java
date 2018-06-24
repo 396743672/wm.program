@@ -3,7 +3,10 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
+import lombok.ToString;
+
 @Table(name = "t_base_router")
+@ToString
 public class BaseRouterInfo {
     /**
      * 路由id，自增主键

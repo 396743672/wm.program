@@ -15,6 +15,7 @@ import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * ClassName:CanceledEmailInfo <br/>
@@ -31,6 +32,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 public class EurekaInstanceCanceledEventEmailinfo extends BaseEmailInfo {
 
 	/**
