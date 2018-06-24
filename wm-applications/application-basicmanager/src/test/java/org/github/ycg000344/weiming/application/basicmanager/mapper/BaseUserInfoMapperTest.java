@@ -31,13 +31,13 @@ import lombok.extern.slf4j.Slf4j;
 public class BaseUserInfoMapperTest extends BasicManagerAppTest {
 
 	@Autowired
-	private BaseUserInfoMapper  mapper;
+	private BaseUserInfoMapper mapper;
 	
 	
 	@Test
 	public void test() {
 		String userId = "1";
-		Optional<UserInfoVO> UserInfoVO = mapper.selectUserInfoVOByUserId(userId );
+		Optional<UserInfoVO> UserInfoVO = mapper.getUserInfoVOByUserId(userId );
 		log.info(UserInfoVO.map(u -> u.getRoles().get(0)).orElse(null));
 	}
 }

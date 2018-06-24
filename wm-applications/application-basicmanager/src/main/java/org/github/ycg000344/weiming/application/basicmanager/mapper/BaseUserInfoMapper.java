@@ -18,5 +18,5 @@ public interface BaseUserInfoMapper extends Mapper<BaseUserInfo> {
 	 * @since JDK 1.8 
 	 * @see
 	 */  
-	Optional<UserInfoVO>  selectUserInfoVOByUserId(String userId);
+	Optional<UserInfoVO>  getUserInfoVOByUserId(String userId);
 }

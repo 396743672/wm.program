@@ -20,7 +20,7 @@
 	<association property="baseUserInfo" resultMap="BaseResultMap"></association>
   </resultMap>
 
-	<select id="selectUserInfoVOByUserId" parameterType="String" resultMap="UserInfoVO">
+	<select id="getUserInfoVOByUserId" parameterType="String" resultMap="UserInfoVO">
 		SELECT v.* FROM v_user_roles_routers v WHERE v.user_id = #{userId}
 	</select>
 </mapper>

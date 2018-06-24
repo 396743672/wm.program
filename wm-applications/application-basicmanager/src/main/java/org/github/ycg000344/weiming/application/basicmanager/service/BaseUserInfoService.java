@@ -9,10 +9,13 @@
   
 package org.github.ycg000344.weiming.application.basicmanager.service;
 
+import java.util.Optional;
+
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseLoginInfo;
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 import org.github.ycg000344.weiming.application.basicmanager.mapper.BaseLoginInfoMapper;
 import org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserInfoMapper;
+import org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO;
 import org.github.ycg000344.weiming.common.basebusiness.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,6 +45,8 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 	@Autowired
 	private BaseLoginInfoMapper  loginInfoMapper ;
 	
+	@Autowired
+	private BaseUserInfoMapper userInfoMapper ;
 	
 	/** 
 	 * 创建用户的时候自动新增登录记录，登录密码使用默认值并加密. 
@@ -59,6 +64,21 @@ public class BaseUserInfoService extends BaseService<BaseUserInfoMapper, BaseUse
 		loginInfoMapper.insertSelective(loginInfo);
 		log.info("***weiminmg专用log***创建新用户，用户名:【{}】***完成***", entity.getUserName());
 	}
+	
+	
+	/** 
+	 * selectUserInfoVOByUserId: 根据用户id查询出用户信息以及关联的角色ids和路由ids. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param userId
+	 * @return 
+	 * @since JDK 1.8 
+	 * @see
+	 */  
+	public Optional<UserInfoVO> getUserInfoVOByUserId(String userId){
+		return userInfoMapper.getUserInfoVOByUserId(userId);
+	}
+	
 
 }
   
