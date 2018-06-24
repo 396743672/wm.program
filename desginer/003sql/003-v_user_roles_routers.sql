@@ -5,9 +5,9 @@ SELECT
 	t3.create_time AS create_time,
 	t3.update_time AS update_time,
 	t3.status AS status,
-	t4.role_ids AS role_ids,
-	( SELECT group_concat( t1.role_name SEPARATOR ',' ) FROM t_base_role t1 WHERE EXISTS ( SELECT t4.role_ids ) ) AS roles, -- 将角色名称使用,进行连接
-	t3.router_ids AS router_ids 
+	IFNULL(t4.role_ids,'') AS role_ids,
+	IFNULL((SELECT group_concat( t1.role_name SEPARATOR ',' ) FROM t_base_role t1 WHERE FIND_IN_SET(t1.role_id,t4.role_ids)),'') AS roles, -- 将角色名称使用,进行连接
+	IFNULL(t3.router_ids,'') AS router_ids 
 FROM
 	(
 	(
