@@ -19,6 +19,7 @@ import java.lang.annotation.Target;
 import org.github.ycg000344.weiming.application.authclient.configration.AutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Import;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /** 
  * ClassName:EnableAuthClient <br/><br/>  
@@ -35,6 +36,7 @@ import org.springframework.context.annotation.Import;
 @Documented
 @Inherited
 @EnableFeignClients
+@EnableScheduling
 public @interface EnableAuthClient {
 
 }
