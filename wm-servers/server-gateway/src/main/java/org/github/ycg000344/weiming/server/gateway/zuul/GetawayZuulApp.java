@@ -5,8 +5,8 @@
  * Date:2018年5月16日下午5:13:49 
  * Copyright (c) 2018, lupo.f@outlook.com All Rights Reserved. 
  * 
-*/  
-  
+*/
+
 package org.github.ycg000344.weiming.server.gateway.zuul;
 
 import org.github.ycg000344.weiming.application.authclient.EnableAuthClient;
@@ -21,16 +21,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/** 
- * ClassName:GetawayZuulApp <br/><br/>  
- * Description: TODO <br/><br/>  
- * Date:     2018年5月16日 下午5:13:49 <br/> <br/> 
- * @author   po.lu 
- * @version  1.0.0
- * @since    JDK 1.8 
- * @see       
+/**
+ * ClassName:GetawayZuulApp <br/>
+ * <br/>
+ * Description: TODO <br/>
+ * <br/>
+ * Date: 2018年5月16日 下午5:13:49 <br/>
+ * <br/>
+ * 
+ * @author po.lu
+ * @version 1.0.0
+ * @since JDK 1.8
+ * @see
  */
-@EnableFeignClients(value = {"org.github.ycg000344.weiming.server.gateway.zuul","org.github.ycg000344.weiming.application.authclient.feign"})
+@EnableFeignClients(value = { "org.github.ycg000344.weiming.server.gateway.zuul",
+		"org.github.ycg000344.weiming.application.authclient.feign" })
 @SpringBootApplication
 @EnableEurekaClient
 @EnableAuthClient
@@ -40,7 +45,7 @@ public class GetawayZuulApp {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(GetawayZuulApp.class).web(WebApplicationType.SERVLET).run(args);
 	}
-	
+
 	@Configuration
 	public class MyConfiguration {
 
@@ -49,11 +54,10 @@ public class GetawayZuulApp {
 			return new WebMvcConfigurer() {
 				@Override
 				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/**");
+					registry.addMapping("/api/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*");
 				}
 			};
 		}
 	}
 
 }
-  
