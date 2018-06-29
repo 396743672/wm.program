@@ -9,8 +9,11 @@
   
 package org.github.ycg000344.weiming.application.authclient.configration;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /** 
  * ClassName:AutoConfiguration <br/><br/>  
@@ -35,5 +38,23 @@ public class AutoConfiguration {
 		return new UserAuthUtil();
 	}*/
 	
+	/** 
+	 * corsConfigurer:开启CORS SUPPORT. <br/> 
+	 * 
+	 * @author po.lu
+	 * @return 
+	 * @since JDK 1.8 
+	 * @see
+	 */  
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*");
+			}
+		};
+	}
+
 }
   
