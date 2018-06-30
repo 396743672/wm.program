@@ -22,7 +22,14 @@ feign:
         connectTimeout: 10000
         readTimeout: 10000
         loggerLevel: basic
-
+        
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        isolation: 
+          thread: 
+            timeoutInMilliseconds: 6000
 ###                                              #######
 ###                    _ooOoo_                   #######
 ###                   o8888888o                  #######

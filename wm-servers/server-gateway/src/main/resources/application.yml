@@ -26,8 +26,14 @@ zuul:
     basicmanager:
       path: /basic/**
       service-id: wm-app-basicmanager
-    
-
+      
+hystrix: 
+  command: 
+    default: 
+      execution: 
+        isolation: 
+          thread: 
+            timeoutInMilliseconds: 6000
 
     
 ###                                              #######
