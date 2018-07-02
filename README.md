@@ -1,35 +1,8 @@
-<!-- TOC -->
-
-- [wm.program](#wmprogram)
-    - [模块说明](#%E6%A8%A1%E5%9D%97%E8%AF%B4%E6%98%8E)
-    - [目前项目中的依赖](#%E7%9B%AE%E5%89%8D%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96)
-    - [Modules](#modules)
-        - [helloworld](#helloworld)
-            - [spring-boot-admin](#spring-boot-admin)
-        - [common](#common)
-            - [base](#base)
-            - [business](#business)
-            - [auth](#auth)
-            - [email](#email)
-                - [email-templates-bean](#email-templates-bean)
-    - [Components](#components)
-        - [email-send](#email-send)
-    - [Server](#server)
-        - [Eureka Server](#eureka-server)
-        - [Zuul](#zuul)
-        - [SBA server](#sba-server)
-    - [Application](#application)
-        - [auth-server](#auth-server)
-        - [basic-manager](#basic-manager)
-
-<!-- /TOC -->
-
 # wm.program
 
 **前排致谢[老A](https://github.com/wxiaoqi/Spring-Cloud-Admin.git)**
 
 基于Spring Cloud的开发平台，具有统一授权、认证后台管理系统。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件。配套前端代码git地址：https://github.com/ycg000344/vueAdmin-template.git
-
 
 ## 模块说明
 
