@@ -1,27 +1,46 @@
 <!-- TOC -->
 
-- [1. wm.program](#1-wmprogram)
-    - [1.1. Modules](#11-modules)
-        - [1.1.1. hello-world](#111-hello-world)
-        - [1.1.2. wm-common](#112-wm-common)
-        - [1.1.3. business-base](#113-business-base)
-    - [1.2. Components](#12-components)
-        - [1.2.1. email-component](#121-email-component)
-            - [1.2.1.1. email API](#1211-email-api)
-                - [1.2.1.1.1. email-templates-bean](#12111-email-templates-bean)
-            - [1.2.1.2. email send  server](#1212-email-send--server)
-    - [1.3. Application Server](#13-application-server)
-        - [1.3.1. Eureka Server](#131-eureka-server)
-        - [1.3.2. Zuul](#132-zuul)
-        - [1.3.3. SBA server](#133-sba-server)
+- [wm.program](#wmprogram)
+    - [模块说明](#%E6%A8%A1%E5%9D%97%E8%AF%B4%E6%98%8E)
+    - [目前项目中的依赖](#%E7%9B%AE%E5%89%8D%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BE%9D%E8%B5%96)
+    - [Modules](#modules)
+        - [helloworld](#helloworld)
+            - [spring-boot-admin](#spring-boot-admin)
+        - [common](#common)
+            - [base](#base)
+            - [business](#business)
+            - [auth](#auth)
+            - [email](#email)
+                - [email-templates-bean](#email-templates-bean)
+    - [Components](#components)
+        - [email-send](#email-send)
+    - [Server](#server)
+        - [Eureka Server](#eureka-server)
+        - [Zuul](#zuul)
+        - [SBA server](#sba-server)
+    - [Application](#application)
+        - [auth-server](#auth-server)
+        - [basic-manager](#basic-manager)
 
 <!-- /TOC -->
 
-# 1. wm.program
+# wm.program
+
+**前排致谢[老A](https://github.com/wxiaoqi/Spring-Cloud-Admin.git)**
+
+基于Spring Cloud的开发平台，具有统一授权、认证后台管理系统。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件。配套前端代码git地址：https://github.com/ycg000344/vueAdmin-template.git
+
+
+## 模块说明
+
+![引用老A](https://camo.githubusercontent.com/fa090fc7a58baacfca946c1c0524c11fbf9b0e02/687474703a2f2f75706c6f61642d696d616765732e6a69616e7368752e696f2f75706c6f61645f696d616765732f353730303333352d386436396634653838356134656338352e706e673f696d6167654d6f6772322f6175746f2d6f7269656e742f7374726970253743696d61676556696577322f322f772f31323430)
+
+## 目前项目中的依赖
+
 对所有引用的dependency进行版本和使用的插件进行控制。<br>
 对目前的dependency有：<b1>
 1. `Spring Boot` 2.0.1.RELEASE
-2. `spring cloud` Finchley.RC2
+2. `spring cloud` Finchley.RELEASE
 3. `druid` 数据源 1.1.10
 4. `hutool` 工具类 4.0.10
 5. `tk.mybatis` 通用Mapper 2.0.2
@@ -44,12 +63,21 @@
 4. `maven-antrun-plugin`<br>
     将package的jar包copy到指定位置
 
-## 1.1. Modules
+## Modules
 
-### 1.1.1. hello-world
+### helloworld
+
 关于学习一些新的知识所进行的代码记录集
 
-### 1.1.2. wm-common
+#### spring-boot-admin
+
+采用Spring Boot Admin作为监控，监控注册在eureka上面各个应用服务的进程状态。
+
+![springbootadmin](https://github.com/codecentric/spring-boot-admin/raw/master/images/screenshot.png)
+
+### common
+
+#### base
 
 公共利用的基础包,其中包含的有：<b1>
 1. 公用常量类
@@ -57,40 +85,59 @@
 3. 全局异常处理类
 4. 自定义自定义基础response对象
 
-### 1.1.3. business-base
+#### business
+
 业务模块基础包,其中包含的有：<b1>
 1. base-service
 2. base-controller
 
+#### auth
 
-## 1.2. Components
+鉴权服务通用工具包，包含生成RSA公钥、私钥文件，生成Token、解析Token等功能
 
-### 1.2.1. email-component
+#### email
 
-#### 1.2.1.1. email API
+邮件发送功能提供的API
+
 封装了*对象基类*，即*收件人*、*主题*、*抄送人*
-##### 1.2.1.1.1. email-templates-bean
+
+##### email-templates-bean
+
 目前已经实现的邮件信息字段bean：
 
 1. `EurekaInstanceCanceledEventEmailinfo` EurekaInstanceCanceledEvent 服务挂掉发送邮件的信息
 
-#### 1.2.1.2. email send  server
+## Components
+
+### email-send
 使用`freemarker`模板进行邮件的发送.<br>
 从消息队列 `rabbitmq` 获取消息进行消费，即发送邮件，采用**异步**的方式进行邮件的发送。
 >Tips: <a href="https://si.gnatu.re/?utm_source=next.36kr.com" target="_blank">在线制作签名</a>
 
+## Server
 
+### Eureka Server
 
-
-## 1.3. Application Server
-
-### 1.3.1. Eureka Server
 服务注册中心，提供服务的注册、监听，当检测到已经注册的服务出现宕机的情况时自动向消息队列中间件 `rabbitmq` 采取**异步**的方式发送宕机的服务实例的信息，如服务名称、服务端口号等。
 
-### 1.3.2. Zuul
+### Zuul
+
 使用Zuul实现gateway路由网关功能<br>
 在作为路由转发请求前对请求头中的token进行校验，如果token合法则继续向下进行请求否则抛出异常。
 
-### 1.3.3. SBA server
+### SBA server
+
 采用`spring boot admin server` 作为应用的监控中心<br>
+
+## Application
+
+### auth-server
+
+鉴权服务应用
+
+### basic-manager
+
+基础管理应用
+
+
 
