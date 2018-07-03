@@ -1,6 +1,6 @@
 # wm.program
 
-**前排致谢[老A](https://github.com/wxiaoqi) @wxiaoqi、[潘大](https://github.com/PanJiaChen) @PanJiaChen **
+**前排致谢@[老A](https://github.com/wxiaoqi) 、@[潘大](https://github.com/PanJiaChen)  **
 
 基于Spring Cloud的开发平台，具有统一授权、认证后台管理系统。核心技术采用Eureka、Fegin、Ribbon、Zuul、Hystrix、JWT Token、Mybatis等主要框架和中间件。配套前端代码git地址：https://github.com/ycg000344/vueAdmin-template.git
 
