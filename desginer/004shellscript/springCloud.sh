@@ -31,3 +31,4 @@ echo "后台启动basicmanage："$basicmanager_start
 gateway_start=$(nohup java -jar server-gateway-1.0.0-SNAPSHOT.jar >> /webapp/nohuplog/gateway.log 2>&1 &)
 echo "后台启动gateway:"$gateway_start
 
+
