@@ -16,7 +16,6 @@ import org.github.ycg000344.weiming.application.authclient.jjwt.UserAuthUtil;
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserInfo;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseRouterInfoService;
 import org.github.ycg000344.weiming.application.basicmanager.service.BaseUserInfoService;
-import org.github.ycg000344.weiming.application.basicmanager.vo.RouterInfoVO;
 import org.github.ycg000344.weiming.application.basicmanager.vo.UserInfoVO;
 import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
