@@ -22,7 +22,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.ConverterRegistry;
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +56,7 @@ public class BaseRouterInfoService extends BaseService<BaseRouterInfoMapper, Bas
 	public List<RouterInfoVO> getRouterInfoVOByRouterIds(List<String> routerIds){
 		log.debug("***weiming专用log***查询用户的菜单路由集合【{}】***start***",routerIds);
 		List<RouterInfoVO> emptyList = new ArrayList<>();
-		routerIds.parallelStream().forEach(r->{
+		routerIds.parallelStream().forEachOrdered(r->{
 			getRouter(r,emptyList);
 		});
 		log.debug("***weiming专用log***查询用户的菜单路由集合【{}】***success***",routerIds);
