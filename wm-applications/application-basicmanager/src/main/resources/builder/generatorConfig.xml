@@ -18,7 +18,7 @@
 		</plugin>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://111.230.220.114:3306/weiming?useUnicode=true&amp;characterEncoding=UTF8"
+			connectionURL="jdbc:mysql://www.wm.org:3306/weiming?useUnicode=true&amp;characterEncoding=UTF8"
 			userId="average" password="Average123!">
 		</jdbcConnection>
 
