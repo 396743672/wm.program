@@ -16,6 +16,9 @@ import org.github.ycg000344.weiming.application.authclient.jjwt.UserAuthUtil;
 import org.github.ycg000344.weiming.common.auth.exception.AuthException;
 import org.github.ycg000344.weiming.common.auth.jjwt.bean.IJWTinfo;
 import org.github.ycg000344.weiming.common.base.context.BaseContextHandler;
+import org.github.ycg000344.weiming.server.gateway.zuul.rpc.LogFeign;
+import org.github.ycg000344.weiming.server.gateway.zuul.thread.LogThread;
+import org.github.ycg000344.weiming.server.gateway.zuul.vo.BaseLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
@@ -56,10 +59,13 @@ public class AuthAccessFilter extends ZuulFilter {
 
 	@Autowired
 	private UserAuthConfig userAuthConfig;
+	
 	@Autowired
 	private UserAuthUtil userAuthUtil;
+	
+	@Autowired
+	private LogFeign logFeign ;
 
-	@SuppressWarnings("unused")
 	@Override
 	public Object run() throws ZuulException {
 		log.debug("***weiming专用log***路由网关鉴权过滤器***start***");
@@ -78,12 +84,15 @@ public class AuthAccessFilter extends ZuulFilter {
 		IJWTinfo user = null;
 		try {
 			user = getJWTUser(request, ctx);
+			LogThread.getInstance().setLogService(logFeign).offerQueue(new BaseLog(method,requestURI,user.getId(),user.getName(),request.getRemoteAddr()));
 			log.debug("***weiming专用log***路由网关鉴权过滤器***token信息为：标识id：【{}】，名称：【{}】***",user.getUniqueName(),user.getName());
 			log.debug("***weiming专用log***路由网关鉴权过滤器***successful***");
 		} catch (Exception e) {
 			log.error("***weiming专用log***路由网关鉴权过滤器***error***请求token非法***");
 			setFailedRequest(JSON.toJSONString(new AuthException(e.getMessage())), 500);
 		}
+		
+		
 		return null;
 	}
 
