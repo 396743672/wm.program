@@ -4,7 +4,7 @@ spring:
   application:
     name: wm-app-authserver
   redis:
-    host: 111.230.220.114
+    host: www.wm.org
 eureka:
   client:
     service-url:
