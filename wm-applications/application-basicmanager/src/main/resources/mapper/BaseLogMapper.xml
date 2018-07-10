@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.github.ycg000344.weiming.application.basicmanager.mapper.BaseLogMapper">
+  <resultMap id="BaseResultMap" type="org.github.ycg000344.weiming.application.basicmanager.entity.BaseLog">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="log_id" jdbcType="INTEGER" property="logId" />
+    <result column="menu" jdbcType="VARCHAR" property="menu" />
+    <result column="opt" jdbcType="VARCHAR" property="opt" />
+    <result column="uri" jdbcType="VARCHAR" property="uri" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_name" jdbcType="VARCHAR" property="createName" />
+    <result column="create_host" jdbcType="VARCHAR" property="createHost" />
+  </resultMap>
+</mapper>

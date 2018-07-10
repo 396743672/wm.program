@@ -5,7 +5,7 @@ spring:
   application:
     name: wm-app-basicmanager
   redis:
-    host: 111.230.220.114
+    host: www.wm.org
   datasource:
     name: weiming
     url: jdbc:mysql://www.wm.org:3306/weiming?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Hongkong
