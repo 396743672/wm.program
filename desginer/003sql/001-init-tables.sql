@@ -148,4 +148,34 @@ alter table t_base_user_roles add constraint FK_Reference_3 foreign key (user_id
 
 alter table t_base_user_routers add constraint FK_Reference_2 foreign key (user_id)
       references t_base_user (user_id) on delete restrict on update restrict;
+	  
+	  
+	  
+	  
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2018/7/10 14:45:41                           */
+/*==============================================================*/
+
+
+drop table if exists t_base_log;
+
+/*==============================================================*/
+/* Table: t_base_log                                            */
+/*==============================================================*/
+create table t_base_log
+(
+   log_id               int not null auto_increment comment 'id',
+   menu                 varchar(60) comment '菜单名称',
+   opt                  varchar(60) comment '操作',
+   uri                  varchar(60) comment '请求资源',
+   create_time          datetime default CURRENT_TIMESTAMP comment '创建时间',
+   create_user          varchar(60) comment 'user_id',
+   create_name          varchar(60) comment 'user_name',
+   create_host          varchar(60) comment 'host',
+   primary key (log_id)
+);
+
+alter table t_base_log comment '操作日志表';
+
 
