@@ -15,8 +15,6 @@ import org.github.ycg000344.weiming.common.basebusiness.service.BaseService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import lombok.extern.slf4j.Slf4j;
-
 /** 
  * ClassName:BaseRoleInfoService <br/><br/>  
  * Description: TODO <br/><br/>  
@@ -28,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Transactional
-@Slf4j
 public class BaseRoleInfoService extends BaseService<BaseRoleInfoMapper, BaseRoleInfo> {
 
 }

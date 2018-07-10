@@ -10,14 +10,12 @@
 package org.github.ycg000344.weiming.application.authserver.runner;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.github.ycg000344.weiming.application.authserver.configuration.KeyConfiguration;
 import org.github.ycg000344.weiming.common.auth.jjwt.helper.RsaKeyHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -39,10 +37,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthServerRunner implements CommandLineRunner {
 
-	@Autowired
-	private RedisTemplate<String, String> redisTemplate;
-	private static final String REDIS_USER_PRI_KEY = "WM:AUTH:JWT:PRI";
-	private static final String REDIS_USER_PUB_KEY = "WM:AUTH:JWT:PUB";
+//	@Autowired
+//	private RedisTemplate<String, String> redisTemplate;
+//	private static final String REDIS_USER_PRI_KEY = "WM:AUTH:JWT:PRI";
+//	private static final String REDIS_USER_PUB_KEY = "WM:AUTH:JWT:PUB";
 
 	@Autowired
 	private KeyConfiguration keyConfiguration;

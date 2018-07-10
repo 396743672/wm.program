@@ -12,10 +12,8 @@ package org.github.ycg000344.weiming.application.basicmanager.service;
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserRoutersInfo;
 import org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserRoutersInfoMapper;
 import org.github.ycg000344.weiming.common.basebusiness.service.BaseService;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /** 
  * ClassName:BaseUserRoutersInfoService <br/><br/>  
@@ -28,7 +26,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @Transactional
-@Slf4j
 public class BaseUserRoutersInfoService extends BaseService<BaseUserRoutersInfoMapper, BaseUserRoutersInfo> {
 
 }

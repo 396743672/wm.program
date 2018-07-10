@@ -15,7 +15,6 @@ import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRespons
 import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 
 import lombok.extern.slf4j.Slf4j;
 

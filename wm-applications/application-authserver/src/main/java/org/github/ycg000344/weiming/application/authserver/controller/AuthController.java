@@ -18,7 +18,6 @@ import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationRequest
 import org.github.ycg000344.weiming.common.auth.jjwt.vo.JwtAuthenticationResponse;
 import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

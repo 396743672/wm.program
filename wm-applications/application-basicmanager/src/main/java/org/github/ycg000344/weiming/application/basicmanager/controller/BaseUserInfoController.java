@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * ClassName:BaseUserInfoController <br/>
@@ -46,7 +45,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 @RestController
 @RequestMapping("/user")
-@Slf4j
 public class BaseUserInfoController extends BaseController<BaseUserInfoService, BaseUserInfo> {
 
 	@Autowired
