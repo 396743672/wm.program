@@ -4,7 +4,7 @@ spring:
   application:
     name: wm-svr-eurekaserver
   rabbitmq:
-    host: 111.230.220.114
+    host: www.wm.org
     port: 5672
     username: admin
     password: 123456
@@ -24,8 +24,8 @@ eureka:
     
 ################################
 config: 
-  rabbitmq:
-    queue: email
+#  rabbitmq:
+#    queue: email
   email: 
     to: lupo.f@outlook.com, 64558986@qq.com
     subject: 【加急】application err.

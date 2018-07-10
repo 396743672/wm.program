@@ -11,6 +11,7 @@ package org.github.ycg000344.weiming.server.eurekaserver.rabbitmq;
 
 import java.util.Arrays;
 
+import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,18 +36,17 @@ public class EmailSend {
 	@Autowired
 	private AmqpTemplate amqpTemplate;
 	
-	@Value("${config.rabbitmq.queue}")
-	private String queue;
+//	@Value("${config.rabbitmq.queue}")
+//	private String queue;
 	
 	@Value("${config.email.subject}")
 	private String subject;
 	
 	@Value("${config.email.to}")
 	private String[] to;
-
 	
 	public boolean send(BaseEmailInfo emailInfo) {
-		log.info("********************准备向 rabbitmq:111.230.220.114 发送 email信息****************");
+		log.info("********************准备向 rabbitmq:发送 email信息****************");
 		emailInfo.setSubject(subject);
 		emailInfo.setTo(to);
 		log.debug("******************** email的收件人如下：{}" ,Arrays.asList(emailInfo.getTo()));
@@ -54,13 +54,12 @@ public class EmailSend {
 		log.debug("******************** email具体信息如下：{}" ,emailInfo.toString());
 		boolean flag =false;
 		try {
-			amqpTemplate.convertAndSend(queue, emailInfo);
+			amqpTemplate.convertAndSend(CommonConstants.QUEUES_EMAIL, emailInfo);
 			flag = true;
-			log.debug("***************** 向 rabbitmq发送信息：发送成功 ");
+			log.debug("***************** 向 rabbitmq,队列名称为：【{}】发送信***发送成功 ***",CommonConstants.QUEUES_EMAIL);
 		} catch (Exception ex) {
-			log.error("***************** 向 rabbitmq发送信息：发送失败***,【{}】 ",ex);
+			log.error("***************** 向 rabbitmq,队列名称为：【{}】发送信***发送失败***,【{}】 ",CommonConstants.QUEUES_EMAIL,ex);
 		}
-		
 		return flag;
 	}
 }

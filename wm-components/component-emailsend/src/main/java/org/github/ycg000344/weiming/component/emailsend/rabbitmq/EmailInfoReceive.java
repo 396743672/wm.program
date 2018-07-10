@@ -9,6 +9,7 @@
   
 package org.github.ycg000344.weiming.component.emailsend.rabbitmq;
 
+import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
 import org.github.ycg000344.weiming.common.emailsend.bean.BaseEmailInfo;
 import org.github.ycg000344.weiming.component.emailsend.function.EmailSendFunction;
 import org.github.ycg000344.weiming.component.emailsend.thread.EmailSendThread;
@@ -30,7 +31,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Component
 @Slf4j
-@RabbitListener(queues = "email")
+@RabbitListener(queues = CommonConstants.QUEUES_EMAIL)
 public class EmailInfoReceive {
 	
 	@Autowired
@@ -38,7 +39,7 @@ public class EmailInfoReceive {
 	
 	@RabbitHandler
     public void process(BaseEmailInfo emailInfo) {
-		log.debug("********************接收到rabbitmq：111.230.220.114的消息：{}", emailInfo.toString());
+		log.debug("********************接收到rabbitmq,队列名称为：【{}】的消息：【{}】",CommonConstants.QUEUES_EMAIL, emailInfo.toString());
 		EmailSendThread.getInstance().setEmailSendFunction(emailSendFunction);
 		EmailSendThread.getInstance().offerEmailInfo(emailInfo);
     }

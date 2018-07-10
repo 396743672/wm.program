@@ -21,9 +21,6 @@ public class CommonConstants {
 
     public static final Integer EX_OTHER_CODE = 50000;
     
-    
-    
-    
     /** jjwt */
     /** 
      * JWT_KEY_ID:TODO . 
@@ -84,5 +81,17 @@ public class CommonConstants {
      * @since JDK 1.8
      */  
     public static final Integer ROUTER_PARENT_ID_DEFAULT = -1;
+    
+    /** rabbitmq*/
+    
+    /** 
+     * QUEUES_EMAIL:邮件发送队列名称. 
+     * @since JDK 1.8 
+     */  
+    public static final String QUEUES_EMAIL = "email";
+    
+    
+    
+    
 }
   
