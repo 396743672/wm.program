@@ -9,6 +9,8 @@
 
 package org.github.ycg000344.weiming.server.gateway.zuul.filter;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.github.ycg000344.weiming.application.authclient.config.UserAuthConfig;
@@ -75,7 +77,7 @@ public class AuthAccessFilter extends ZuulFilter {
 
 		String requestURI = request.getRequestURI().substring(prefix.length());
 		String method = request.getMethod();
-
+		log.debug("***weiming专用log***路由网关鉴权过滤器***本次请求 URI：【{}】，请求方法为：【{}】***",requestURI,method);
 		if (isStartWith(requestURI)) {
 			log.debug("***weiming专用log***路由网关鉴权过滤器***本次请求：【{}】属于请求白名单***",requestURI);
 			return null;
@@ -127,6 +129,15 @@ public class AuthAccessFilter extends ZuulFilter {
 	 * @see
 	 */
 	private IJWTinfo getJWTUser(HttpServletRequest request, RequestContext ctx) throws Exception {
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String name = headerNames.nextElement();
+			Enumeration<String> values = request.getHeaders(name);
+			while (values.hasMoreElements()) {
+				String value = values.nextElement();
+				log.debug("***weiming专用log***路由网关鉴权过滤器***请求头：key：【{}】，value：【{}】***",name, value);
+			}
+		}
 		String authToken = request.getHeader(userAuthConfig.getTokenHeader());
 		if (StrUtil.isBlank(authToken)) {
 			authToken = request.getParameter("token");
