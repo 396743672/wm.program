@@ -51,7 +51,7 @@ public class AutoConfiguration {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*");
+				registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("*").maxAge(3600).allowCredentials(true);
 			}
 		};
 	}
