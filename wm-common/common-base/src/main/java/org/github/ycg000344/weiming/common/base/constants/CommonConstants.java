@@ -59,7 +59,7 @@ public class CommonConstants {
      * AUTH_USER_TOKEN: user token header. 
      * @since JDK 1.8 
      */  
-    public static final String AUTH_USER_TOKEN = "X-USER-AUTHORIZATION";
+    public static final String AUTH_USER_TOKEN = "x-user-authorization";
     
     /** 
      * AUTH_CLIENT_SECRET: 
