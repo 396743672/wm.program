@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserRoutersInfoMapper" >
-  <resultMap id="BaseResultMap" type="org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserRoutersInfo" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.github.ycg000344.weiming.application.basicmanager.mapper.BaseUserRoutersInfoMapper">
+  <resultMap id="BaseResultMap" type="org.github.ycg000344.weiming.application.basicmanager.entity.BaseUserRoutersInfo">
     <!--
       WARNING - @mbg.generated
     -->
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="router_parent_ids" property="routerParentIds" jdbcType="VARCHAR" />
-    <result column="router_ids" property="routerIds" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="router_parent_id" jdbcType="INTEGER" property="routerParentId" />
+    <result column="router_ids" jdbcType="VARCHAR" property="routerIds" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
 </mapper>

@@ -3,10 +3,7 @@ package org.github.ycg000344.weiming.application.basicmanager.entity;
 import java.util.Date;
 import javax.persistence.*;
 
-import lombok.ToString;
-
 @Table(name = "t_base_user_routers")
-@ToString
 public class BaseUserRoutersInfo {
     /**
      * 用户id
@@ -15,10 +12,10 @@ public class BaseUserRoutersInfo {
     private Integer userId;
 
     /**
-     * 父路由皮ids，使用，分割
+     * 父路由id
      */
-    @Column(name = "router_parent_ids")
-    private String routerParentIds;
+    @Column(name = "router_parent_id")
+    private Integer routerParentId;
 
     /**
      * 路由ids,使用，分割
@@ -62,21 +59,21 @@ public class BaseUserRoutersInfo {
     }
 
     /**
-     * 获取父路由皮ids，使用，分割
+     * 获取父路由id
      *
-     * @return router_parent_ids - 父路由皮ids，使用，分割
+     * @return router_parent_id - 父路由id
      */
-    public String getRouterParentIds() {
-        return routerParentIds;
+    public Integer getRouterParentId() {
+        return routerParentId;
     }
 
     /**
-     * 设置父路由皮ids，使用，分割
+     * 设置父路由id
      *
-     * @param routerParentIds 父路由皮ids，使用，分割
+     * @param routerParentId 父路由id
      */
-    public void setRouterParentIds(String routerParentIds) {
-        this.routerParentIds = routerParentIds;
+    public void setRouterParentId(Integer routerParentId) {
+        this.routerParentId = routerParentId;
     }
 
     /**

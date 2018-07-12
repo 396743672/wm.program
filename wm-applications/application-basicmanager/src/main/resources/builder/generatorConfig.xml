@@ -59,13 +59,13 @@
 			</table> -->
 
 		<!-- 用户菜单路由 -->
-		<!-- <table tableName="t_base_user_routers" domainObjectName="BaseUserRoutersInfo"> 
-			</table> -->
+		<table tableName="t_base_user_routers" domainObjectName="BaseUserRoutersInfo"> 
+			</table>
 
 		<!-- 操作日志表 -->
-		<table tableName="t_base_log" domainObjectName="BaseLog">
+		<!-- <table tableName="t_base_log" domainObjectName="BaseLog">
 			<generatedKey column="log_id" identity="true"
 				sqlStatement="MySql" />
-		</table>
+		</table> -->
 	</context>
 </generatorConfiguration>
