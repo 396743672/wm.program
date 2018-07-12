@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LogRunner implements CommandLineRunner {
 
-	@Value("spring.application.name")
+	@Value("${spring.application.name}")
 	private String applicationName;
 	@Override
 	public void run(String... args) throws Exception {
