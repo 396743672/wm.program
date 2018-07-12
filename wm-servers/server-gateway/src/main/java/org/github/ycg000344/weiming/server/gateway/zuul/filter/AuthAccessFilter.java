@@ -25,6 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
 import com.netflix.zuul.ZuulFilter;
@@ -84,14 +85,16 @@ public class AuthAccessFilter extends ZuulFilter {
 		}
 
 		IJWTinfo user = null;
-		try {
-			user = getJWTUser(request, ctx);
-			LogThread.getInstance().setLogService(logFeign).offerQueue(new BaseLog(method,requestURI,user.getId(),user.getName(),request.getRemoteAddr()));
-			log.debug("***weiming专用log***路由网关鉴权过滤器***token信息为：标识id：【{}】，名称：【{}】***",user.getUniqueName(),user.getName());
-			log.debug("***weiming专用log***路由网关鉴权过滤器***successful***");
-		} catch (Exception e) {
-			log.error("***weiming专用log***路由网关鉴权过滤器***error***请求token非法***");
-			setFailedRequest(JSON.toJSONString(new AuthException(e.getMessage())), 500);
+		if (!method.equals(RequestMethod.OPTIONS.toString())) {
+			try {
+				user = getJWTUser(request, ctx);
+				LogThread.getInstance().setLogService(logFeign).offerQueue(new BaseLog(method,requestURI,user.getId(),user.getName(),request.getRemoteAddr()));
+				log.debug("***weiming专用log***路由网关鉴权过滤器***token信息为：标识id：【{}】，名称：【{}】***",user.getUniqueName(),user.getName());
+				log.debug("***weiming专用log***路由网关鉴权过滤器***successful***");
+			} catch (Exception e) {
+				log.error("***weiming专用log***路由网关鉴权过滤器***error***请求token非法***");
+				setFailedRequest(JSON.toJSONString(new AuthException(e.getMessage())), 500);
+			}
 		}
 		
 		
