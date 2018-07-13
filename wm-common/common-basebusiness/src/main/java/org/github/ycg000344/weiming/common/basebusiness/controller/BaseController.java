@@ -70,10 +70,15 @@ public class BaseController<Service extends BaseService, Entity> {
 		baseService.deleteById(id);
 		return new ObjectRestResponse<Entity>();
 	}
+	
+	@GetMapping("/list")
+	public ObjectRestResponse<List<Entity>> list(@RequestBody Entity entity) {
+		return baseService.selectList(entity);
+	}
 
 	@GetMapping("/all")
-	public List<Entity> all() {
-		return baseService.selectListAll();
+	public ObjectRestResponse<List<Entity>> all(@RequestParam Map<String, Object> params) {
+		return baseService.selectListAll(params);
 	}
 
 	@GetMapping("/page")

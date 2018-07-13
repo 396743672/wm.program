@@ -14,9 +14,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
 import org.github.ycg000344.weiming.common.basebusiness.util.Query;
 import org.github.ycg000344.weiming.common.basebusiness.vo.TableResultResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -57,12 +59,14 @@ public abstract class BaseService<M extends Mapper<T>, T> {
 		return Optional.ofNullable(mapper.selectByPrimaryKey(id));
 	}
 
-	public List<T> selectList(T entity) {
-		return mapper.select(entity);
+	@SuppressWarnings("unchecked")
+	public ObjectRestResponse<List<T>> selectList(T entity) {
+		return new ObjectRestResponse<List<T>>().rel(true).data(mapper.select(entity));
 	}
 
-	public List<T> selectListAll() {
-		return mapper.selectAll();
+	@SuppressWarnings("unchecked")
+	public ObjectRestResponse<List<T>> selectListAll(@RequestParam Map<String, Object> params) {
+		return new ObjectRestResponse<List<T>>().rel(true).data(mapper.selectAll());
 	}
 
 	public Long selectCount(T entity) {

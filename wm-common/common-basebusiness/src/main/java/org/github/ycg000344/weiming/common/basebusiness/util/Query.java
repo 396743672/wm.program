@@ -12,6 +12,7 @@ package org.github.ycg000344.weiming.common.basebusiness.util;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,28 +51,30 @@ public class Query extends LinkedHashMap<String, Object> {
 	private String orderStr = "order";
 
     public Query(Map<String, Object> params){
-        this.putAll(params);
-        /*分页参数*/
-        if(params.get(pageStr)!=null) {
-        	this.page = Integer.parseInt(params.get(pageStr).toString());
-        }
-            
-        if(params.get(limitStr)!=null) {
-        	this.limit = Integer.parseInt(params.get(limitStr).toString());
-        }
-            
-        this.remove(pageStr);
-        this.remove(limitStr);
-        
-		/* 排序参数 */
-		if (params.get(propStr) != null) {
-			this.prop = params.get(propStr).toString();
+    	if (MapUtil.isNotEmpty(params)) {
+    		this.putAll(params);
+    		/*分页参数*/
+    		if(params.get(pageStr)!=null) {
+    			this.page = Integer.parseInt(params.get(pageStr).toString());
+    		}
+    		
+    		if(params.get(limitStr)!=null) {
+    			this.limit = Integer.parseInt(params.get(limitStr).toString());
+    		}
+    		
+    		this.remove(pageStr);
+    		this.remove(limitStr);
+    		
+    		/* 排序参数 */
+    		if (params.get(propStr) != null) {
+    			this.prop = params.get(propStr).toString();
+    		}
+    		if (params.get(orderStr) != null) {
+    			this.order = params.get(orderStr).toString();
+    		}
+    		this.remove(propStr);
+    		this.remove(orderStr);
 		}
-		if (params.get(orderStr) != null) {
-			this.order = params.get(orderStr).toString();
-		}
-        this.remove(propStr);
-        this.remove(orderStr);
 		
     }
     
