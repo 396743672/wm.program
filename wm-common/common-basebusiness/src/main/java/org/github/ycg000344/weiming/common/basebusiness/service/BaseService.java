@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
+import cn.hutool.core.util.StrUtil;
+import lombok.extern.slf4j.Slf4j;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.entity.Example;
 
@@ -37,6 +39,7 @@ import tk.mybatis.mapper.entity.Example;
  * @since JDK 1.8
  * @see
  */
+@Slf4j
 public abstract class BaseService<M extends Mapper<T>, T> {
 
 	@Autowired
@@ -103,6 +106,10 @@ public abstract class BaseService<M extends Mapper<T>, T> {
 	public TableResultResponse<T> selectByQuery(Query query) {
 		Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 		Example example = new Example(clazz);
+		if (StrUtil.isNotEmpty(query.getOrder()) && StrUtil.isNotEmpty(query.getProp())) {
+			log.debug("***weiming专用日志打印语句：***进行排序：字段：【{}】，方式：【{}】***", query.getProp(), query.getOrder());
+			example.setOrderByClause(query.getOrderByClause());
+		}
 		Example.Criteria criteria = example.createCriteria();
 		for (Map.Entry<String, Object> entry : query.entrySet()) {
 			criteria.andLike(entry.getKey(), "%" + entry.getValue().toString() + "%");
