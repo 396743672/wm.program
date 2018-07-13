@@ -13,6 +13,8 @@ import java.util.List;
 
 import org.github.ycg000344.weiming.common.base.vo.BaseResponse;
 
+import lombok.ToString;
+
 /** 
  * ClassName:TableResultResponse <br/><br/>  
  * Description: 分页查询返回对象 <br/><br/>  
@@ -22,6 +24,7 @@ import org.github.ycg000344.weiming.common.base.vo.BaseResponse;
  * @since    JDK 1.8 
  * @see       
  */
+@ToString
 public class TableResultResponse<T> extends BaseResponse {
 	TableData<T> data;
 
@@ -52,6 +55,7 @@ public class TableResultResponse<T> extends BaseResponse {
     }
 
     @SuppressWarnings("hiding")
+    @ToString
 	class TableData<T> {
         long total;
         List<T> rows;
