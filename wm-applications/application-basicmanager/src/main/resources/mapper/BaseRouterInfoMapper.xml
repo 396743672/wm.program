@@ -49,7 +49,7 @@
   </select>
   
   <select id="getParentRouters" resultMap="BaseResultMap" parameterType="int">
- 	SELECT t.* FROM t_base_router t WHERE t.router_parent_id = #{routerParentIdDefault} ORDER BY t.update_time desc , t.create_time desc
+ 	SELECT t.* FROM t_base_router t WHERE t.router_parent_id = #{routerParentId} ORDER BY t.update_time desc , t.create_time desc
   </select>
   
   

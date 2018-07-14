@@ -43,7 +43,7 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 	private BaseRouterInfoController controller;
 	
 	
-	@Test
+//	@Test
 	public void testChildren() {
 		log.debug("*******【进入BaseRouterInfoControllerTest.testChildren()】***********");
 		Map<String, Object> params = new LinkedHashMap<>();
@@ -56,9 +56,9 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 		log.debug("***【{}】***",children.toString());
 	}
 	
-//	@Test
-	public void testgetParentRouters() {
-		log.debug("*******【进入BaseRouterInfoControllerTest.testgetParentRouters()】***********");
+	@Test
+	public void parents() {
+		log.debug("*******【进入BaseRouterInfoControllerTest.parents()】***********");
 		ObjectRestResponse<List<BaseRouterInfo>> parentRouters = controller.parents();
 		log.debug("***【{}】***",parentRouters.toString());
 	}
