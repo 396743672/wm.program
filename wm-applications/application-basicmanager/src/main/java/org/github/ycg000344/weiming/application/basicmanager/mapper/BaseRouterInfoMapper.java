@@ -31,4 +31,15 @@ public interface BaseRouterInfoMapper extends Mapper<BaseRouterInfo> {
 	 * @see
 	 */  
 	List<BaseRouterInfo> getRouterInfoByIds(@Param("routerParnetId") String routerParnetId, @Param("routerIds") String routerIds);
+
+	/** 
+	 * getParentRouters: 查询全部一级路由，默认按照更新时间、创建时间降序. <br/> 
+	 * 
+	 * @author po.lu
+	 * @param routerParentIdDefault
+	 * @return 
+	 * @since JDK 1.8 
+	 * @see
+	 */  
+	List<BaseRouterInfo> getParentRouters(Integer routerParentIdDefault);
 }
