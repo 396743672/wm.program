@@ -41,45 +41,57 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 
 	@Autowired
 	private BaseRouterInfoController controller;
-	
-	
-//	@Test
+
+	@Test
+	public void testAdd() {
+		// 添加新的路由--- routers
+		BaseRouterInfo entity = new BaseRouterInfo();
+		entity.setPath("/routers");
+		entity.setName("bascimanager_routers");
+		entity.setComponent("@/views/basicmanager/routers");
+		entity.setTitle("routers");
+		entity.setIcon("example");
+		entity.setRouterParentId(6);
+		controller.add(entity);
+	}
+
+	// @Test
 	public void testChildren() {
 		log.debug("*******【进入BaseRouterInfoControllerTest.testChildren()】***********");
 		Map<String, Object> params = new LinkedHashMap<>();
-		params.put("page", "1"); 
-		params.put("limit", "10"); 
-		params.put("prop", "create_time"); 
-		params.put("order", "desc"); 
-		params.put("routerParentId", "1"); 
-		TableResultResponse<BaseRouterInfo> children = controller.children(params );
-		log.debug("***【{}】***",children.toString());
+		params.put("page", "1");
+		params.put("limit", "10");
+		params.put("prop", "create_time");
+		params.put("order", "desc");
+		params.put("routerParentId", "1");
+		TableResultResponse<BaseRouterInfo> children = controller.children(params);
+		log.debug("***【{}】***", children.toString());
 	}
-	
-	@Test
+
+	// @Test
 	public void parents() {
 		log.debug("*******【进入BaseRouterInfoControllerTest.parents()】***********");
 		ObjectRestResponse<List<BaseRouterInfo>> parentRouters = controller.parents();
-		log.debug("***【{}】***",parentRouters.toString());
+		log.debug("***【{}】***", parentRouters.toString());
 	}
-	
-//	@Test
+
+	// @Test
 	public void TestList() {
 		log.debug("*******【进入BaseRouterInfoControllerTest.TestList()】***********");
 		BaseRouterInfo entity = new BaseRouterInfo();
 		entity.setRouterParentId(-1);
-		ObjectRestResponse<List<BaseRouterInfo>> list = controller.list(entity );
-		log.debug("***【{}】***",list.toString());
+		ObjectRestResponse<List<BaseRouterInfo>> list = controller.list(entity);
+		log.debug("***【{}】***", list.toString());
 	}
 
-	/** 
-	 * addRouetr:创建基础管理模块路由. <br/> 
+	/**
+	 * addRouetr:创建基础管理模块路由. <br/>
 	 * 
-	 * @author po.lu 
-	 * @since JDK 1.8 
+	 * @author po.lu
+	 * @since JDK 1.8
 	 * @see
-	 */  
-//	@Test
+	 */
+	// @Test
 	public void addRouetr() {
 		/** 基础管理 */
 		BaseRouterInfo entity = new BaseRouterInfo();
@@ -89,23 +101,23 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 		entity.setIcon("example");
 		entity.setRouterParentId(CommonConstants.ROUTER_PARENT_ID_DEFAULT);
 		controller.add(entity);
-		
+
 		// 子路由
 		Integer routerId = entity.getRouterId();
-		
-		/** 操作日志*/
+
+		/** 操作日志 */
 		BaseRouterInfo routerInfo = new BaseRouterInfo();
 		routerInfo.setPath("optlog");
-		routerInfo.setName("optlog");
+		routerInfo.setName("bascimanager_optlog");
 		routerInfo.setComponent("@/views/table/index");
 		routerInfo.setTitle("optlog");
-		routerInfo.setIcon("table");
+		routerInfo.setIcon("example");
 		routerInfo.setRouterParentId(routerId);
 		controller.add(routerInfo);
 
 	}
 
-//	@Test
+	// @Test
 	public void test() {
 
 		/**
