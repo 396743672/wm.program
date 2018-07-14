@@ -72,7 +72,7 @@ public class BaseController<Service extends BaseService, Entity> {
 	}
 	
 	@GetMapping("/list")
-	public ObjectRestResponse<List<Entity>> list(@RequestBody Entity entity) {
+	public ObjectRestResponse<List<Entity>> list(@RequestParam Entity entity) {
 		return baseService.selectList(entity);
 	}
 
