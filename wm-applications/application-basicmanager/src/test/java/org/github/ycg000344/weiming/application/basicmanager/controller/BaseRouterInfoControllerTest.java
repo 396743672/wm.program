@@ -9,11 +9,19 @@
 
 package org.github.ycg000344.weiming.application.basicmanager.controller;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.github.ycg000344.weiming.application.basicmanager.BasicManagerAppTest;
 import org.github.ycg000344.weiming.application.basicmanager.entity.BaseRouterInfo;
 import org.github.ycg000344.weiming.common.base.constants.CommonConstants;
+import org.github.ycg000344.weiming.common.base.vo.ObjectRestResponse;
+import org.github.ycg000344.weiming.common.basebusiness.vo.TableResultResponse;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ClassName:BaseRouterInfoControllerTest <br/>
@@ -28,10 +36,41 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since JDK 1.8
  * @see
  */
+@Slf4j
 public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 
 	@Autowired
 	private BaseRouterInfoController controller;
+	
+	
+	@Test
+	public void testChildren() {
+		log.debug("*******【进入BaseRouterInfoControllerTest.testChildren()】***********");
+		Map<String, Object> params = new LinkedHashMap<>();
+		params.put("page", "1"); 
+		params.put("limit", "10"); 
+		params.put("prop", "create_time"); 
+		params.put("order", "desc"); 
+		params.put("routerParentId", "1"); 
+		TableResultResponse<BaseRouterInfo> children = controller.children(params );
+		log.debug("***【{}】***",children.toString());
+	}
+	
+//	@Test
+	public void testgetParentRouters() {
+		log.debug("*******【进入BaseRouterInfoControllerTest.testgetParentRouters()】***********");
+		ObjectRestResponse<List<BaseRouterInfo>> parentRouters = controller.parents();
+		log.debug("***【{}】***",parentRouters.toString());
+	}
+	
+//	@Test
+	public void TestList() {
+		log.debug("*******【进入BaseRouterInfoControllerTest.TestList()】***********");
+		BaseRouterInfo entity = new BaseRouterInfo();
+		entity.setRouterParentId(-1);
+		ObjectRestResponse<List<BaseRouterInfo>> list = controller.list(entity );
+		log.debug("***【{}】***",list.toString());
+	}
 
 	/** 
 	 * addRouetr:创建基础管理模块路由. <br/> 
@@ -40,7 +79,7 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 	 * @since JDK 1.8 
 	 * @see
 	 */  
-	@Test
+//	@Test
 	public void addRouetr() {
 		/** 基础管理 */
 		BaseRouterInfo entity = new BaseRouterInfo();
@@ -66,7 +105,7 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 
 	}
 
-	@Test
+//	@Test
 	public void test() {
 
 		/**
