@@ -41,8 +41,19 @@ public class BaseRouterInfoControllerTest extends BasicManagerAppTest {
 
 	@Autowired
 	private BaseRouterInfoController controller;
-
+	
 	@Test
+	public void testUpdate() {
+		log.debug("*******【进入BaseRouterInfoControllerTest.testUpdate()】***********");
+		BaseRouterInfo entity = new BaseRouterInfo();
+		entity.setRouterId(1);
+		entity.setStatus(0);
+		controller.update(entity );
+		ObjectRestResponse<BaseRouterInfo> objectRestResponse = controller.get(1);
+		log.debug(objectRestResponse.toString());
+	}
+	
+//	@Test
 	public void testAdd() {
 		// 添加新的路由--- routers
 		BaseRouterInfo entity = new BaseRouterInfo();

@@ -4,7 +4,7 @@ spring:
   application:
     name: wm-svr-eurekaserver
   rabbitmq:
-    host: www.wm.org
+    host: www.2133.online
     port: 5672
     username: admin
     password: 123456

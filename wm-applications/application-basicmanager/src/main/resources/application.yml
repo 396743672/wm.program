@@ -5,10 +5,10 @@ spring:
   application:
     name: wm-app-basicmanager
   redis:
-    host: www.wm.org
+    host: www.2133.online
   datasource:
     name: weiming
-    url: jdbc:mysql://www.wm.org:3306/weiming?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Hongkong
+    url: jdbc:mysql://www.2133.online:3306/weiming?useUnicode=true&characterEncoding=UTF8&useSSL=false&serverTimezone=Hongkong
     username: average
     password: Average123!
     type: com.alibaba.druid.pool.DruidDataSource
