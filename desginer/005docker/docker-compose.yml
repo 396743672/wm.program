@@ -1,0 +1,45 @@
+version: '3.4'
+services: 
+    db: 
+        build: 
+            context: ./file
+            dockerfile: dbfile
+        restart: always
+        ports: 
+            - 3306:3306
+    auth: 
+        build: 
+            context: ./file
+            dockerfile: authfile
+        restart: always
+        depends_on: 
+            - db
+    basic: 
+        build: 
+            context: ./file
+            dockerfile: basicfile
+        restart: always
+        depends_on: 
+            - auth
+        links: 
+            - db
+    zuul: 
+        build: 
+            context: ./file
+            dockerfile: zuulfile
+        restart: always
+        depends_on: 
+            - basic
+        ports: 
+            - 443:443
+    front: 
+        build: 
+            context: ./file
+            dockerfile: frontfile
+        restart: always
+        ports: 
+            - 80:80
+        depends_on: 
+            - zuul
+        links:
+            - zuul
