@@ -1,4 +1,4 @@
-CREATE VIEW `v_user_roles_routers` AS SELECT
+CREATE OR REPLACE VIEW v_user_roles_routers AS SELECT
 	t3.user_id AS user_id,
 	t3.login_name AS login_name,
 	t3.user_name AS user_name,
@@ -30,4 +30,4 @@ GROUP BY
 	)
 	) t3
 	LEFT JOIN t_base_user_roles t4 ON ( ( ( t3.user_id = t4.user_id ) AND ( t4.status = 1 ) ) )
-	)
+	);

@@ -28,10 +28,12 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-    schema: classpath:sqls/001-init-tables.sql
+    schema:
+      - classpath:sqls/001-init-tables.sql
     data:
       - classpath:sqls/002-init-data.sql
       - classpath:sqls/003-v_user_roles_routers.sql
+    initialization-mode: always
 
 
 

@@ -12,11 +12,12 @@ drop table if exists t_base_role;
 
 drop table if exists t_base_router;
 
-drop table if exists t_base_user;
-
 drop table if exists t_base_user_roles;
 
 drop table if exists t_base_user_routers;
+
+drop table if exists t_base_user;
+
 
 /*==============================================================*/
 /* Table: t_base_dict                                           */
